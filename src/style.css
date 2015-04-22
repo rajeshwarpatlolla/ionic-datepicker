@@ -1,23 +1,35 @@
 /* Empty. Add your own CSS if you like */
 
-.timePickerColon {
-    padding-top: 38px;
-    text-align: center;
+.color_blue {
+    color: rgb(56, 126, 245) !important;
 }
 
-.timePickerArrows {
-    padding-left: 15px;
+.bg_color_blue {
+    background-color: rgb(56, 126, 245);
 }
 
-.timePickerBoxText {
-    text-align: center;
-    border: 1px solid #dddddd !important;
+.date_col:hover {
+    background-color: rgba(56, 126, 245, 0.5);
+    cursor: pointer;
 }
 
-.bar.bar-stable, .tabs {
-    box-shadow: 0px 0px 5px #555;
+.date_col:active {
+    background-color: rgba(56, 126, 245, 1);
+    cursor: pointer;
 }
 
-.overflowShow {
-    white-space: normal !important;
+.no_padding {
+    padding: 0;
+}
+
+.date_cell {
+    padding: 5px;
+}
+
+.error_msg {
+    color: #cc0000 !important;
+}
+
+.date_selected {
+    background-color: rgba(56, 126, 245, 1);
 }

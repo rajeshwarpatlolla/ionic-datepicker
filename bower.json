@@ -5,6 +5,11 @@
     "rajeshwarpatlolla <rajeshwar.patlolla@gmail.com>"
   ],
   "description": "A date picker component for ionic framework applications",
+  "main": [
+    "./dist/templates.js",
+    "./dist/ionic-datepicker.js",
+    "./dist/style.css"
+  ],
   "keywords": [
     "ionic-datepicker",
     "ionic",
@@ -20,8 +25,6 @@
     "tests"
   ],
   "dependencies": {
-    "moment": "~2.10.2",
-    "ionic": "~0.9.27",
-    "moment-range": "~1.0.9"
+    "ionic": "~0.9.27"
   }
 }
