@@ -11,7 +11,7 @@ gulp.task('html2js', function () {
     gulp.src(['./src/*.html'])
         .pipe(minifyHtml())
         .pipe(ngHtml2Js({
-            moduleName: "ionicdatepicker.templates"
+            moduleName: "ionic-datepicker.templates"
         }))
         .pipe(concat("templates.js"))
         .pipe(uglify())
