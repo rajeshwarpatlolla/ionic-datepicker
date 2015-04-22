@@ -11,7 +11,7 @@ gulp.task('html2js', function () {
     gulp.src(['./src/*.html'])
         .pipe(minifyHtml())
         .pipe(ngHtml2Js({
-            moduleName: "ionictimepicker.templates"
+            moduleName: "ionicdatepicker.templates"
         }))
         .pipe(concat("templates.js"))
         .pipe(uglify())
@@ -19,7 +19,7 @@ gulp.task('html2js', function () {
 });
 
 gulp.task('build',['html2js','cssminify'], function () {
-    gulp.src(['./src/ionic-timepicker.js'])
+    gulp.src(['./src/ionic-datepicker.js'])
         .pipe(uglify())
         .pipe(gulp.dest("./dist"));
 });
