@@ -1,7 +1,6 @@
 ##Introduction:
 
 This is a `ionic-datepicker` bower component which can be used with any Ionic framework's application.
-This is still under development. Once i am done with the full implementation i will post this in ionic forum.
 
 [View Demo](http://rajeshwarpatlolla.github.io/DatePickerForIonicFramework/demo/ "Demo") 
 
@@ -14,7 +13,7 @@ This is still under development. Once i am done with the full implementation i w
 
 1) In your project repository install the ionic date picker using bower
 
-    bower install ionic-datepicker --save-dev
+    bower install ionic-datepicker --save
     
 2) Then you can see the following directory structure see in your project folder
    
@@ -25,12 +24,12 @@ Give the path of  `style.css, templates.js and ionic-datepicker.js` in your `ind
 <link href="lib/ionic-datepicker/dist/style.css" rel="stylesheet"> 
 <!-- path to ionic/angularjs js -->
 <script src="lib/ionic-datepicker/dist/templates.js"></script>
-<script src="lib/ionic-datepicker/dist/ionic-timepicker.js"></script>
+<script src="lib/ionic-datepicker/dist/ionic-datepicker.js"></script>
 ````    
     
 3) In your application module inject the dependency `ionic-datepicker`, in order to work with the ionic time picker
 ````javascript
-angular.module('modulename', ['ionic', 'ionic-datepicker']){
+angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
  //
 }
 ````
@@ -44,7 +43,7 @@ $scope.currentDate = new Date();
 5) Then use the below format in your template / html file
 
 ````html
-<ionic-datepicker idate="pastDate" >
+<ionic-datepicker idate="currentDate" >
     <button class="button button-block button-positive"> {{pastDate | date:'dd - MMMM - yyyy'}} </button>
 </ionic-datepicker>
 ````
