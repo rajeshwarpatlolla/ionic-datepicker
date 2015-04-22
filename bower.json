@@ -1,0 +1,20 @@
+{
+  "name": "ionic-datepicker",
+  "version": "0.0.1",
+  "authors": [
+    "rajeshwarpatlolla <rajeshwar.patlolla@gmail.com>"
+  ],
+  "description": "A date picker component for ionic framework applications",
+  "keywords": [
+    "ionic-datepicker"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/rajeshwarpatlolla",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
