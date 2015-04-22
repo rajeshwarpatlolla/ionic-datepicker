@@ -18,5 +18,10 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "moment": "~2.10.2",
+    "ionic": "~0.9.27",
+    "moment-range": "~1.0.9"
+  }
 }
