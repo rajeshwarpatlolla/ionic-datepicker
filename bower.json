@@ -6,7 +6,9 @@
   ],
   "description": "A date picker component for ionic framework applications",
   "keywords": [
-    "ionic-datepicker"
+    "ionic-datepicker",
+    "ionic",
+    "datepicker"
   ],
   "license": "MIT",
   "homepage": "https://github.com/rajeshwarpatlolla",
