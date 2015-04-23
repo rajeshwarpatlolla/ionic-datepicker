@@ -83,7 +83,7 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
           refreshDateList(angular.copy(scope.ipDate));
 
           $ionicPopup.show({
-            templateUrl: 'templates/date-picker-modal.html',
+            templateUrl: 'date-picker-modal.html',
             title: '<strong>Select Date</strong>',
             subTitle: '',
             scope: scope,
