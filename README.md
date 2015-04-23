@@ -27,7 +27,7 @@ Give the path of  `style.css, templates.js and ionic-datepicker.js` in your `ind
 <script src="lib/ionic-datepicker/dist/ionic-datepicker.js"></script>
 ````    
     
-3) In your application module inject the dependency `ionic-datepicker`, in order to work with the ionic time picker
+3) In your application module inject the dependency `ionic-datepicker`, in order to work with the ionic date picker
 ````javascript
 angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
  //
@@ -44,7 +44,7 @@ $scope.currentDate = new Date();
 
 ````html
 <ionic-datepicker idate="currentDate" >
-    <button class="button button-block button-positive"> {{pastDate | date:'dd - MMMM - yyyy'}} </button>
+    <button class="button button-block button-positive"> {{currentDate | date:'dd - MMMM - yyyy'}} </button>
 </ionic-datepicker>
 ````
 
