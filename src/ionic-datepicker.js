@@ -4,7 +4,7 @@
 "use strict";
 angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
 
-  .directive('ionicDatepicker', ['ionicPopup', function ($ionicPopup) {
+  .directive('ionicDatepicker', ['$ionicPopup', function ($ionicPopup) {
     return {
       restrict: 'AE',
       replace: true,
