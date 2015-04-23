@@ -28,6 +28,7 @@
 
 .error_msg {
     color: #cc0000 !important;
+    font-size: 12px;
 }
 
 .date_selected {
