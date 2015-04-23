@@ -16,7 +16,8 @@ This is a `ionic-datepicker` bower component which can be used with any Ionic fr
     bower install ionic-datepicker --save
     
 2) Then you can see the following directory structure see in your project folder
-   
+
+![Directory structure](https://lh3.googleusercontent.com/8x3OByTXzzgJSxm-n5Yg8-0g-u2OZt18j9EbvNTgK3Q=w112-h207-p-no "Directory structure")
 
 Give the path of  `style.css, templates.js and ionic-datepicker.js` in your `index.html` file.
 
@@ -27,7 +28,7 @@ Give the path of  `style.css, templates.js and ionic-datepicker.js` in your `ind
 <script src="lib/ionic-datepicker/dist/ionic-datepicker.js"></script>
 ````    
     
-3) In your application module inject the dependency `ionic-datepicker`, in order to work with the ionic date picker
+3) In your application module inject the dependency `ionic-datepicker`, in order to work with the ionic time picker
 ````javascript
 angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
  //
@@ -44,7 +45,7 @@ $scope.currentDate = new Date();
 
 ````html
 <ionic-datepicker idate="currentDate" >
-    <button class="button button-block button-positive"> {{currentDate | date:'dd - MMMM - yyyy'}} </button>
+    <button class="button button-block button-positive"> {{pastDate | date:'dd - MMMM - yyyy'}} </button>
 </ionic-datepicker>
 ````
 
@@ -55,7 +56,16 @@ b) `idate` takes date object.
 
 Tested with `angular#1.3.6` and `ionic#1.0.0-rc.4`. 
 
+##Screen Shots:
+
+Once you are successfully done with the above steps, you should be able to see the below screen shots.
+I have used two buttons here. 
+
+The first screen shot shows only the buttons before clicking on them.
+Once you click on the button you should see the second screen shot.
  
+![Date picker buttons](https://lh3.googleusercontent.com/YYlyw-ozro_rq9QB7hB1OzGKxo4kJpeGpXFo0ZgxF24=w117-h207-p-no "Date picker buttons") 
+![Date picker modal](https://lh3.googleusercontent.com/GZPl7o0dx_Vp7lQB2IX35eM0u3wkK3bvSQw7mH3I5uY=w116-h207-p-no "Date picker modal")
 ##Versions:
 
 ### 1) v0.1.0
