@@ -45,7 +45,7 @@ $scope.currentDate = new Date();
 
 ````html
 <ionic-datepicker idate="currentDate" >
-    <button class="button button-block button-positive"> {{pastDate | date:'dd - MMMM - yyyy'}} </button>
+    <button class="button button-block button-positive"> {{currentDate | date:'dd - MMMM - yyyy'}} </button>
 </ionic-datepicker>
 ````
 

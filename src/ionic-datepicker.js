@@ -19,6 +19,8 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
         scope.weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
         var refreshDateList = function (current_date) {
+          currentDate = angular.copy(current_date);
+
           var firstDay = new Date(current_date.getFullYear(), current_date.getMonth(), 1).getDate();
           var lastDay = new Date(current_date.getFullYear(), current_date.getMonth() + 1, 0).getDate();
 
@@ -93,7 +95,6 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
                 text: 'Set',
                 type: 'button-positive',
                 onTap: function (e) {
-
                   scope.date_selection.submitted = true;
 
                   if (scope.date_selection.selected === true) {
