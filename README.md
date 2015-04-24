@@ -45,7 +45,7 @@ $scope.currentDate = new Date();
 
 ````html
 <ionic-datepicker idate="currentDate" >
-    <button class="button button-block button-positive"> {{currentDate | date:'dd - MMMM - yyyy'}} </button>
+    <button class="button button-block button-positive"> {{ currentDate | date:'dd - MMMM - yyyy' }} </button>
 </ionic-datepicker>
 ````
 
@@ -69,10 +69,9 @@ Once you click on the button you should see the second screen shot.
 ##Versions:
 
 ### 1) v0.1.0
-The whole date picker functionality has been implemented, and can be installed with 
-    
-    bower install ionic-datepicker --save
-
+The whole date picker functionality has been implemented, and can be installed with  `bower install ionic-datepicker --save`
+### 2) v0.1.1
+Bug Fix. This is the latest version of `ionic-datepicker` component.
 
 ##License:
 MIT
