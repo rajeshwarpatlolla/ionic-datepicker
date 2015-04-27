@@ -52,7 +52,7 @@ $scope.currentDate = new Date();
 
 a) `ionic-datepicker` is the directive, to which we can pass required vales.
 
-b) `idate` takes date object. If we don't pass any value, `new Date()` will be the default date object.
+b) `idate` takes date object. If we don't pass any value, the default value will be `new Date()`.
 
 Tested with `angular#1.3.6` and `ionic#1.0.0-rc.4`. 
 
