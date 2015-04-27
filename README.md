@@ -72,6 +72,8 @@ Once you click on the button you should see the second screen shot.
 The whole date picker functionality has been implemented, and can be installed with  `bower install ionic-datepicker --save`
 ### 2) v0.1.1
 Bug Fix. This is the latest version of `ionic-datepicker` component.
+### 2) v0.1.2
+Bug Fix. If we don't pass the date to the time picker it will pick the todays date by default.
 
 ##License:
 MIT

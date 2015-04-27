@@ -89,9 +89,11 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
 
         element.on("click", function () {
           if(!scope.ipDate){
-            scope.ipDate = new Date();
+            var defaultDate = new Date();
+            refreshDateList(defaultDate);
+          } else {
+            refreshDateList(angular.copy(scope.ipDate));
           }
-          refreshDateList(angular.copy(scope.ipDate));
 
           $ionicPopup.show({
             templateUrl: 'date-picker-modal.html',

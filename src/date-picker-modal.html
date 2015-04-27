@@ -14,7 +14,9 @@
   <div style="height: 180px;">
     <div class="row" ng-repeat="row in rows track by $index" style="text-align: center;">
       <div class="col no_padding" ng-repeat="col in cols track by $index"
-           ng-class="{'date_col': (dayList[$parent.$index * numColumns + $index].day != undefined), 'date_selected': (dayList[$parent.$index * numColumns + $index].dateString === selctedDateString && dayList[$parent.$index * numColumns + $index].day != undefined) }">
+           ng-class="{'date_col': (dayList[$parent.$index * numColumns + $index].day != undefined), 
+           'date_selected': (dayList[$parent.$index * numColumns + $index].dateString === selctedDateString && dayList[$parent.$index * numColumns + $index].day != undefined) ,
+           'today' : (dayList[$parent.$index * numColumns + $index].date == today.date && dayList[$parent.$index * numColumns + $index].month == today.month && dayList[$parent.$index * numColumns + $index].year == today.year)}">
         <div class="date_cell" ng-click="dateSelected(dayList[$parent.$index * numColumns + $index])">
           {{ dayList[$parent.$index * numColumns + $index].date }}
         </div>
