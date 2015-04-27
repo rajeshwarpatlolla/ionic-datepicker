@@ -34,3 +34,7 @@
 .date_selected {
     background-color: rgba(56, 126, 245, 1);
 }
+
+.today {
+    background-color: rgba(186, 186, 186, 1);
+}
