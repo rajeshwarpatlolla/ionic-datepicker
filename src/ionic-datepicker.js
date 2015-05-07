@@ -25,6 +25,7 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
         scope.today.year = (new Date()).getFullYear();
 
         var refreshDateList = function (current_date) {
+          scope.selctedDateString = (new Date(current_date)).toString();
           currentDate = angular.copy(current_date);
 
           var firstDay = new Date(current_date.getFullYear(), current_date.getMonth(), 1).getDate();
@@ -34,7 +35,15 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
 
           for (var i = firstDay; i <= lastDay; i++) {
             var tempDate = new Date(current_date.getFullYear(), current_date.getMonth(), i);
-            scope.dayList.push({date: tempDate.getDate(), month: tempDate.getMonth(), year: tempDate.getFullYear(), day: tempDate.getDay(), dateString: tempDate.toString(), epochLocal: tempDate.getTime(), epochUTC: (tempDate.getTime() + (tempDate.getTimezoneOffset() * 60 * 1000)) });
+            scope.dayList.push({
+              date: tempDate.getDate(),
+              month: tempDate.getMonth(),
+              year: tempDate.getFullYear(),
+              day: tempDate.getDay(),
+              dateString: tempDate.toString(),
+              epochLocal: tempDate.getTime(),
+              epochUTC: (tempDate.getTime() + (tempDate.getTimezoneOffset() * 60 * 1000))
+            });
           }
 
           var firstDay = scope.dayList[0].day;
@@ -46,7 +55,7 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
           scope.rows = [];
           scope.cols = [];
 
-          scope.currentMonth = monthsList[ current_date.getMonth() ];
+          scope.currentMonth = monthsList[current_date.getMonth()];
           scope.currentYear = current_date.getFullYear();
 
           scope.numColumns = 7;
@@ -61,7 +70,7 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
           }
           currentDate.setMonth(currentDate.getMonth() - 1);
 
-          scope.currentMonth = monthsList[ currentDate.getMonth() ];
+          scope.currentMonth = monthsList[currentDate.getMonth()];
           scope.currentYear = currentDate.getFullYear();
 
           refreshDateList(currentDate)
@@ -73,13 +82,13 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
           }
           currentDate.setMonth(currentDate.getMonth() + 1);
 
-          scope.currentMonth = monthsList[ currentDate.getMonth() ];
+          scope.currentMonth = monthsList[currentDate.getMonth()];
           scope.currentYear = currentDate.getFullYear();
 
           refreshDateList(currentDate)
         };
 
-        scope.date_selection = { selected : false, selectedDate : '', submitted : false };
+        scope.date_selection = {selected: false, selectedDate: '', submitted: false};
 
         scope.dateSelected = function (date) {
           scope.selctedDateString = date.dateString;
@@ -88,7 +97,7 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
         };
 
         element.on("click", function () {
-          if(!scope.ipDate){
+          if (!scope.ipDate) {
             var defaultDate = new Date();
             refreshDateList(defaultDate);
           } else {
@@ -101,8 +110,9 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
             subTitle: '',
             scope: scope,
             buttons: [
-              { text: 'Close' },
-              { text: 'Today',
+              {text: 'Close'},
+              {
+                text: 'Today',
                 onTap: function (e) {
                   refreshDateList(new Date());
                   e.preventDefault();
@@ -116,7 +126,7 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
 
                   if (scope.date_selection.selected === true) {
                     scope.ipDate = angular.copy(scope.date_selection.selectedDate);
-                  }else{
+                  } else {
                     e.preventDefault();
                   }
                 }
