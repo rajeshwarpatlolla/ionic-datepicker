@@ -74,8 +74,8 @@ The whole date picker functionality has been implemented, and can be installed w
 Bug Fix. This is the latest version of `ionic-datepicker` component.
 ### 3) v0.1.2
 Bug Fix. If we don't pass the date to the time picker it will pick the todays date by default.
-### 3) v0.1.3
-Bug Fix. (Pull from master branch to get the changes)
+### 4) New Version
+[Bug Fix](http://forum.ionicframework.com/t/ionic-datepicker-bower-component-for-ionic-framework-applications/21516/14) (Pull from master branch to get the changes)
 
 ##License:
 MIT
