@@ -78,7 +78,7 @@ Bug Fix. If we don't pass the date to the time picker it will pick the todays da
 [Bug Fix](http://forum.ionicframework.com/t/ionic-datepicker-bower-component-for-ionic-framework-applications/21516/14)
 
 ##License:
-MIT
+[MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")
 
 ##Contact:
 gmail : rajeshwar.patlolla@gmail.com
