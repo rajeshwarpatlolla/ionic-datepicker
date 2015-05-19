@@ -9,7 +9,8 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
       restrict: 'AE',
       replace: true,
       scope: {
-        ipDate: '=idate'
+        ipDate: '=idate',
+        closeOnSelection: '=closeOnSelection'
       },
       link: function (scope, element, attrs) {
         var monthsList = ["January", "February", "March", "April", "May", "June", "July",
@@ -100,6 +101,12 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
           scope.selctedDateString = date.dateString;
           scope.date_selection.selected = true;
           scope.date_selection.selectedDate = new Date(date.dateString);
+
+          if(scope.closeOnSelection){
+              scope.ipDate = angular.copy(scope.date_selection.selectedDate);
+              scope.popup.close();
+          }
+
         };
 
         element.on("click", function () {
@@ -110,34 +117,40 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
             refreshDateList(angular.copy(scope.ipDate));
           }
 
-          $ionicPopup.show({
-            templateUrl: 'date-picker-modal.html',
-            title: '<strong>Select Date</strong>',
-            subTitle: '',
-            scope: scope,
-            buttons: [
-              {text: 'Close'},
+          var popupButtons = [
+            {text: 'Close'},
               {
                 text: 'Today',
                 onTap: function (e) {
                   refreshDateList(new Date());
                   e.preventDefault();
                 }
-              },
-              {
-                text: 'Set',
-                type: 'button-positive',
-                onTap: function (e) {
-                  scope.date_selection.submitted = true;
+              }
+          ];
 
-                  if (scope.date_selection.selected === true) {
-                    scope.ipDate = angular.copy(scope.date_selection.selectedDate);
-                  } else {
-                    e.preventDefault();
-                  }
+          //adding the set if no closeOnSelection
+          if(!scope.closeOnSelection){
+            popupButtons.push({
+              text: 'Set',
+              type: 'button-positive',
+              onTap: function (e) {
+                scope.date_selection.submitted = true;
+
+                if (scope.date_selection.selected === true) {
+                  scope.ipDate = angular.copy(scope.date_selection.selectedDate);
+                } else {
+                  e.preventDefault();
                 }
               }
-            ]
+            });
+          }
+
+          scope.popup = $ionicPopup.show({
+            templateUrl: 'date-picker-modal.html',
+            title: '<strong>Select Date</strong>',
+            subTitle: '',
+            scope: scope,
+            buttons: popupButtons
           })
         })
       }
