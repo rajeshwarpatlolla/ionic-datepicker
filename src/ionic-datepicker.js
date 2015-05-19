@@ -25,6 +25,12 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
         scope.today.year = (new Date()).getFullYear();
 
         var refreshDateList = function (current_date) {
+
+          //converting parsed date to a date object
+          if(typeof current_date === 'string'){
+            current_date = new Date(current_date)
+          }
+
           scope.selctedDateString = (new Date(current_date)).toString();
           currentDate = angular.copy(current_date);
 
