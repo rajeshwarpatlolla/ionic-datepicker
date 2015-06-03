@@ -53,7 +53,7 @@ $scope.currentDate = new Date();
 a) `ionic-datepicker` is the directive, to which we can pass required vales.
 
 b) `idate` takes date object. If we don't pass any value, the default value will be `new Date()`.
-c) `disablepreviousdates` takes true or false. `true` disables the past dates, and `false` doen't.
+c) `disablepreviousdates` takes true or false. `true` disables the past dates, and `false` doesn't.
 
 ##Screen Shots:
 
@@ -75,7 +75,7 @@ Bug Fix. This is the latest version of `ionic-datepicker` component.
 Bug Fix. If we don't pass the date to the time picker it will pick the todays date by default.
 ### 4) v0.1.3
 [Bug Fix](http://forum.ionicframework.com/t/ionic-datepicker-bower-component-for-ionic-framework-applications/21516/14)
-### 4) v0.2.0
+### 5) v0.2.0
 Disabling previous dates functionality added.
 
 ##License:
