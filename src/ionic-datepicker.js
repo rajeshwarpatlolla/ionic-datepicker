@@ -9,13 +9,21 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
       restrict: 'AE',
       replace: true,
       scope: {
-        ipDate: '=idate'
+        ipDate: '=idate',
+        disablePreviousDates : '=disablepreviousdates'
       },
       link: function (scope, element, attrs) {
+
         var monthsList = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"];
 
+        if(!scope.ipDate){
+          scope.ipDate = new Date();
+        }
+
+        scope.previousDayEpoch = (+(new Date()) - 86400000);
         var currentDate = angular.copy(scope.ipDate);
+
         scope.weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
         scope.today = {};
@@ -47,6 +55,8 @@ angular.module('ionic-datepicker', ['ionic', 'ionic-datepicker.templates'])
           }
 
           var firstDay = scope.dayList[0].day;
+
+          scope.currentMonthFirstDayEpoch = scope.dayList[0].epochLocal;
 
           for (var j = 0; j < firstDay; j++) {
             scope.dayList.unshift({});
