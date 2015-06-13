@@ -79,7 +79,7 @@ I have used two buttons here.
 The first screen shot shows only the buttons before clicking on them.
 Once you click on the button you should see the second screen shot.
  
-![Date picker buttons](https://lh3.googleusercontent.com/YYlyw-ozro_rq9QB7hB1OzGKxo4kJpeGpXFo0ZgxF24=w117-h207-p-no"Date picker buttons") 
+![Date picker buttons](https://lh3.googleusercontent.com/-uhIkYlbcuqsZZneSPOwFoePWvhTeqRKa2kVkwN7mMI=w305-h553-no "Date picker buttons") 
 ![Date picker modal](https://lh3.googleusercontent.com/7iEejIcpprFmpgwWvs240Vn9Dn_Dh-R5HgtC_CJVZMs=w305-h553-no "Date picker modal")
 ##Versions:
 
