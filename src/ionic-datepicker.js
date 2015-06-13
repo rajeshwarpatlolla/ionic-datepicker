@@ -176,7 +176,7 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
         }
 
         $ionicPopup.show({
-          templateUrl: 'lib/ionic-datepicker/src/date-picker-modal.html',
+          templateUrl: 'date-picker-modal.html',
           title: '<strong>Select Date</strong>',
           subTitle: '',
           scope: scope,
