@@ -50,6 +50,7 @@ $scope.datePickerCallback = function (val) {
 ````
 
 a) `currentDate` is the date object which we are passing to the `ionic-datepicker`.
+
 b) `datePickerCallback` is the callback function which we have to pass to the `ionic-datepicker`. This function takes an argument which will return `undefined` if the user didnot selected any date. And returns a `date` object, if the user selects any date.
 
 
@@ -65,7 +66,9 @@ b) `datePickerCallback` is the callback function which we have to pass to the `i
 a) `ionic-datepicker` is the directive, to which we can pass required vales.
 
 b) `idate` takes date object. If we don't pass any value, the default value will be `new Date()`.
+
 c) `disablepreviousdates` takes true or false. `true` disables the past dates, and `false` doesn't.
+
 d) `callback` takes the callback function name which will be called once the date picker has been closed.
 
 ##Screen Shots:
@@ -76,8 +79,8 @@ I have used two buttons here.
 The first screen shot shows only the buttons before clicking on them.
 Once you click on the button you should see the second screen shot.
  
-![Date picker buttons](https://lh3.googleusercontent.com/YYlyw-ozro_rq9QB7hB1OzGKxo4kJpeGpXFo0ZgxF24=w117-h207-p-no "Date picker buttons") 
-![Date picker modal](https://lh3.googleusercontent.com/GZPl7o0dx_Vp7lQB2IX35eM0u3wkK3bvSQw7mH3I5uY=w116-h207-p-no "Date picker modal")
+![Date picker buttons](https://lh3.googleusercontent.com/YYlyw-ozro_rq9QB7hB1OzGKxo4kJpeGpXFo0ZgxF24=w117-h207-p-no"Date picker buttons") 
+![Date picker modal](https://lh3.googleusercontent.com/7iEejIcpprFmpgwWvs240Vn9Dn_Dh-R5HgtC_CJVZMs=w305-h553-no "Date picker modal")
 ##Versions:
 
 ### 1) v0.1.0
@@ -92,6 +95,7 @@ Bug Fix. If we don't pass the date to the time picker it will pick the todays da
 Disabling previous dates functionality added.
 ### 6) v0.3.0
 a) User can select the years and months using the dropdown.
+
 b) A callback function is added.
 
 ##License:
