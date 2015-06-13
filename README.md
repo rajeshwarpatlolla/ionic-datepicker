@@ -11,9 +11,11 @@ This is a `ionic-datepicker` bower component which can be used with any Ionic fr
 
 ##How to use:
 
-1) In your project repository install the ionic date picker using bower
+1) In your project repository install the ionic-datepicker using bower
 
     bower install ionic-datepicker --save
+
+This will install the latest version released.
     
 2) Then you can see the following directory structure see in your project folder
 
