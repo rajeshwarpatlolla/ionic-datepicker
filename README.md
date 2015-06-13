@@ -39,12 +39,24 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
 
 ````javascript
 $scope.currentDate = new Date();
+
+$scope.datePickerCallback = function (val) {
+	if(typeof(val)==='undefined'){		
+		console.log('Date not selected');
+	}else{
+		console.log('Selected date is : ', val);
+	}
+};
 ````
+
+a) `currentDate` is the date object which we are passing to the `ionic-datepicker`.
+b) `datePickerCallback` is the callback function which we have to pass to the `ionic-datepicker`. This function takes an argument which will return `undefined` if the user didnot selected any date. And returns a `date` object, if the user selects any date.
+
 
 5) Then use the below format in your template / html file
 
 ````html
-<ionic-datepicker idate="currentDate" disablepreviousdates="true">
+<ionic-datepicker idate="currentDate" disablepreviousdates="true"  callback="datePickerCallback">
     <button class="button button-block button-positive"> {{ currentDate | date:'dd - MMMM - yyyy' }} </button>
 </ionic-datepicker>
 ````
@@ -54,6 +66,7 @@ a) `ionic-datepicker` is the directive, to which we can pass required vales.
 
 b) `idate` takes date object. If we don't pass any value, the default value will be `new Date()`.
 c) `disablepreviousdates` takes true or false. `true` disables the past dates, and `false` doesn't.
+d) `callback` takes the callback function name which will be called once the date picker has been closed.
 
 ##Screen Shots:
 
@@ -77,6 +90,9 @@ Bug Fix. If we don't pass the date to the time picker it will pick the todays da
 [Bug Fix](http://forum.ionicframework.com/t/ionic-datepicker-bower-component-for-ionic-framework-applications/21516/14)
 ### 5) v0.2.0
 Disabling previous dates functionality added.
+### 6) v0.3.0
+a) User can select the years and months using the dropdown.
+b) A callback function is added.
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")
