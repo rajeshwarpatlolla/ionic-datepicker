@@ -38,7 +38,8 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
     scope: {
       ipDate: '=idate',
       disablePreviousDates: '=disablepreviousdates',
-      callback: '=callback'
+      callback: '=callback',
+      title: '=?title'
     },
     link: function (scope, element, attrs) {
 
@@ -177,7 +178,7 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
 
         $ionicPopup.show({
           templateUrl: 'date-picker-modal.html',
-          title: '<strong>Select Date</strong>',
+          title: scope.title || '<strong>Select Date</strong>',
           subTitle: '',
           scope: scope,
           buttons: [
