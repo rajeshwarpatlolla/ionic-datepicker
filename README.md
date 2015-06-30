@@ -60,7 +60,7 @@ b) `datePickerCallback` is the callback function which we have to pass to the `i
 
 ````html
 <ionic-datepicker idate="currentDate" disablepreviousdates="true"  callback="datePickerCallback">
-    <button class="button button-block button-positive"> {{ currentDate | date:'dd - MMMM - yyyy' }} </button>
+    <button type="button" class="button button-block button-positive"> {{ currentDate | date:'dd - MMMM - yyyy' }} </button>
 </ionic-datepicker>
 ````
 
