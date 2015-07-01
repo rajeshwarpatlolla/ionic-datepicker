@@ -38,6 +38,7 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
     scope: {
       ipDate: '=idate',
       disablePreviousDates: '=disablepreviousdates',
+      firstDayOfWeek: '=?firstday',
       callback: '=callback'
     },
     link: function (scope, element, attrs) {
@@ -53,6 +54,8 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
         scope.ipDate = new Date();
       }
 
+      scope.firstDayOfWeek = angular.isDefined(scope.firstDayOfWeek) ? scope.firstDayOfWeek : 0;
+
       scope.previousDayEpoch = (+(new Date()) - 86400000);
       var currentDate = angular.copy(scope.ipDate);
       currentDate.setHours(0);
@@ -62,6 +65,10 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
 
       scope.selctedDateString = currentDate.toString();
       scope.weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+      if(scope.firstDayOfWeek==1) {
+        var lastWeekDay = scope.weekNames.shift();
+        scope.weekNames.push(lastWeekDay);
+      }
       scope.today = {};
 
       var tempTodayObj = new Date();
@@ -105,10 +112,10 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
           });
         }
 
-        var firstDay = scope.dayList[0].day;
+        var firstDay = scope.dayList[0].day - scope.firstDayOfWeek;
 
         scope.currentMonthFirstDayEpoch = scope.dayList[0].epochLocal;
-
+        
         for (var j = 0; j < firstDay; j++) {
           scope.dayList.unshift({});
         }
