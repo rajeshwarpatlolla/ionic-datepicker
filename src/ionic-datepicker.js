@@ -38,6 +38,7 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
     scope: {
       ipDate: '=idate',
       disablePreviousDates: '=disablepreviousdates',
+      disabledDates: '=?disableddates',
       callback: '=callback'
     },
     link: function (scope, element, attrs) {
@@ -53,6 +54,14 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
         scope.ipDate = new Date();
       }
 
+      if(!angular.isDefined(scope.disabledDates)) {
+        scope.disabledDates = [];
+      } else {
+        for(var i=0; i<scope.disabledDates.length;i++) {
+          scope.disabledDates[i] = scope.disabledDates[i].getTime();
+        }
+      }
+      
       scope.previousDayEpoch = (+(new Date()) - 86400000);
       var currentDate = angular.copy(scope.ipDate);
       currentDate.setHours(0);
