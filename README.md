@@ -56,6 +56,7 @@ a) `currentDate` is the date object which we are passing to the `ionic-datepicke
 
 b) `datePickerCallback` is the callback function which we have to pass to the `ionic-datepicker`. This function takes an argument which will return `undefined` if the user didnot selected any date. And returns a `date` object, if the user selects any date.
 
+c) `title` is the string variable, which can be assigned to the datepicker modal's title.
 
 5) Then use the below format in your template / html file
 
