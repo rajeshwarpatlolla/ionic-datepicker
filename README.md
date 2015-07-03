@@ -107,12 +107,17 @@ b) A callback function is added.
 ### 6) v0.4.0
 
 Features
+
 a) Disabling future dates functionality added. You may use it for selecting DOB.
+
 b) Customised title text for datepicker modal's added.
 
 BugFixes
+
 [Bug Fix](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/22)
+
 [Bug Fix](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/26)
+
 [Bug Fix](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/29)
 
 ##License:
