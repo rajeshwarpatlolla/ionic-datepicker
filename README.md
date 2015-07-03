@@ -41,6 +41,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
 
 ````javascript
 $scope.currentDate = new Date();
+$scope.title = "Custom Title";
 
 $scope.datePickerCallback = function (val) {
 	if(typeof(val)==='undefined'){		
@@ -59,7 +60,7 @@ b) `datePickerCallback` is the callback function which we have to pass to the `i
 5) Then use the below format in your template / html file
 
 ````html
-<ionic-datepicker idate="currentDate" disablepreviousdates="true"  callback="datePickerCallback">
+<ionic-datepicker idate="currentDate" disablepreviousdates="true"  disablefuturedates="false" callback="datePickerCallback" title="title">
     <button class="button button-block button-positive"> {{ currentDate | date:'dd - MMMM - yyyy' }} </button>
 </ionic-datepicker>
 ````
@@ -71,7 +72,11 @@ b) `idate` takes date object. If we don't pass any value, the default value will
 
 c) `disablepreviousdates` takes true or false. `true` disables the past dates, and `false` doesn't.
 
+c) `disablefuturedates` takes true or false. `true` disables the future dates, and `false` doesn't.
+
 d) `callback` takes the callback function name which will be called once the date picker has been closed.
+
+e) `title` takes a variable of string type. This will be displayed as a title to the datepicker modal. If this attribute is not present, then it will show 'Select Date' by default.
 
 ##Screen Shots:
 
@@ -99,6 +104,16 @@ Disabling previous dates functionality added.
 a) User can select the years and months using the dropdown.
 
 b) A callback function is added.
+### 6) v0.4.0
+
+Features
+a) Disabling future dates functionality added. You may use it for selecting DOB.
+b) Customised title text for datepicker modal's added.
+
+BugFixes
+[Bug Fix](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/22)
+[Bug Fix](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/26)
+[Bug Fix](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/29)
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")
