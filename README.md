@@ -76,7 +76,7 @@ c) `disablefuturedates` takes true or false. `true` disables the future dates, a
 
 d) `callback` takes the callback function name which will be called once the date picker has been closed.
 
-e) `title` takes a variable with string type. This will be displayed as a title to the datepicker modal.
+e) `title` takes a variable of string type. This will be displayed as a title to the datepicker modal. If this attribute is not present, then it will show 'Select Date' by default.
 
 ##Screen Shots:
 
