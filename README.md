@@ -107,13 +107,13 @@ a) User can select the years and months using the dropdown.
 b) A callback function is added.
 ### 6) v0.4.0
 
-Features
+**Features**
 
 a) Disabling future dates functionality added. You may use it for selecting DOB.
 
 b) Customised title text for datepicker modal's added.
 
-BugFixes
+**BugFixes**
 
 [Bug Fix](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/22)
 
