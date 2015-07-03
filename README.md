@@ -1,6 +1,6 @@
 ##Introduction:
 
-This is a `ionic-datepicker` bower component which can be used with any Ionic framework's application.
+This is an `ionic-datepicker` bower component, which can be used in any Ionic framework's application.
 
 [View Demo](http://rajeshwarpatlolla.github.io/DatePickerForIonicFramework/demo/ "Demo") 
 
