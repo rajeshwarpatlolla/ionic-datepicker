@@ -39,9 +39,13 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
       ipDate: '=idate',
       disablePreviousDates: '=disablepreviousdates',
       mondayFirst: '=?mondayfirst',
-      callback: '=callback'
+      disableFutureDates: '=disablefuturedates',
+      callback: '=callback',
+      title: '=title'
     },
     link: function (scope, element, attrs) {
+
+      scope.datePickerTitle = scope.title || 'Select Date';
 
       var monthsList = DatepickerService.monthsList;
       scope.monthsList = monthsList;
@@ -61,6 +65,8 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
       }
 
       scope.previousDayEpoch = (+(new Date()) - 86400000);
+      scope.nextDayEpoch = (+(new Date()));
+
       var currentDate = angular.copy(scope.ipDate);
       currentDate.setHours(0);
       currentDate.setMinutes(0);
@@ -119,6 +125,7 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
         var firstDay = scope.dayList[0].day - scope.mondayFirst;
 
         scope.currentMonthFirstDayEpoch = scope.dayList[0].epochLocal;
+        scope.currentMonthLastDayEpoch = scope.dayList[scope.dayList.length - 1].epochLocal;
 
         for (var j = 0; j < firstDay; j++) {
           scope.dayList.unshift({});
@@ -129,6 +136,8 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
 
         scope.currentMonth = monthsList[current_date.getMonth()];
         scope.currentYear = current_date.getFullYear();
+        scope.currentMonthSelected = scope.currentMonth;
+        scope.currentYearSelected = scope.currentYear;
 
         scope.numColumns = 7;
         scope.rows.length = 6;
@@ -163,10 +172,8 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
           currentDate.setFullYear(currentDate.getFullYear());
         }
         currentDate.setMonth(currentDate.getMonth() + 1);
-
         scope.currentMonth = monthsList[currentDate.getMonth()];
         scope.currentYear = currentDate.getFullYear();
-
         refreshDateList(currentDate)
       };
 
@@ -188,7 +195,7 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
 
         $ionicPopup.show({
           templateUrl: 'date-picker-modal.html',
-          title: '<strong>Select Date</strong>',
+          title: scope.datePickerTitle,
           subTitle: '',
           scope: scope,
           buttons: [
@@ -203,6 +210,11 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
               onTap: function (e) {
 
                 var today = new Date();
+                today.setHours(0);
+                today.setMinutes(0);
+                today.setSeconds(0);
+                today.setMilliseconds(0);
+
                 var tempEpoch = new Date(today.getFullYear(), today.getMonth(), today.getDate());
                 var todayObj = {
                   date: today.getDate(),
