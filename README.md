@@ -44,11 +44,11 @@ $scope.currentDate = new Date();
 $scope.title = "Custom Title";
 
 $scope.datePickerCallback = function (val) {
-if(typeof(val)==='undefined'){		
-console.log('Date not selected');
-}else{
-console.log('Selected date is : ', val);
-}
+	if(typeof(val)==='undefined'){		
+		console.log('Date not selected');
+	}else{
+		console.log('Selected date is : ', val);
+	}
 };
 ````
 
@@ -80,12 +80,17 @@ d) `callback` takes the callback function name which will be called once the dat
 e) `title` takes a variable of string type. This will be displayed as a title to the datepicker modal. If this attribute is not present, then it will show 'Select Date' by default.
 
 f) `disableddates` is an array of dates to disable the particular dates.
-Example : $scope.disabledDates = [
+
+Example : In your controller you can define `disabledDates` as follows
+
+````javascript
+$scope.disabledDates = [
 	new Date(2015,7,10), //months are 0-based, this is August, 10th!
 	new Date('Wednesday, August 12, 2015'), //Works with any valid Date formats like long format
 	new Date("08-14-2015"), //Short format
 	new Date(1439676000000) //UNIX format
 ]; 
+````
 
 ##Screen Shots:
 
