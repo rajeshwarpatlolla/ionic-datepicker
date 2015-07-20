@@ -143,8 +143,10 @@ b) Customised title text for datepicker modal's added.
 
 [Bug Fix](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/29)
 ### 8) v0.5.0
-1) Feature for disabling particular dates has been added.
-2) CSS classes added for customization.
+
+a) Feature for disabling particular dates has been added.
+
+b) CSS classes added for customization.
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")
