@@ -62,7 +62,7 @@ c) `title` is the string variable, which can be assigned to the datepicker modal
 
 ````html
 <ionic-datepicker idate="currentDate" disablepreviousdates="true"  disablefuturedates="false" callback="datePickerCallback" disableddates="disabledDates" title="title">
-<button class="button button-block button-positive"> {{ currentDate | date:'dd - MMMM - yyyy' }} </button>
+	<button class="button button-block button-positive"> {{ currentDate | date:'dd - MMMM - yyyy' }} </button>
 </ionic-datepicker>
 ````
 
