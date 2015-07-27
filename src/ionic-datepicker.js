@@ -41,7 +41,8 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
       disableFutureDates: '=disablefuturedates',
       callback: '=callback',
       title: '=title',
-      disabledDates: '=?disableddates'
+      disabledDates: '=?disableddates',
+      mondayFirst: '=?mondayfirst'
     },
     link: function (scope, element, attrs) {
 
@@ -56,6 +57,12 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
 
       if (!scope.ipDate) {
         scope.ipDate = new Date();
+      }
+
+      if (!angular.isDefined(scope.mondayFirst) || scope.mondayFirst == "false") {
+        scope.mondayFirst = false;
+      } else {
+        scope.mondayFirst = true;
       }
 
       if (!angular.isDefined(scope.disabledDates)) {
@@ -78,6 +85,11 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
       scope.selctedDateString = currentDate.toString();
       scope.weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
       scope.today = {};
+
+      if (scope.mondayFirst == true) {
+        var lastWeekDay = scope.weekNames.shift();
+        scope.weekNames.push(lastWeekDay);
+      }
 
       var tempTodayObj = new Date();
       var tempToday = new Date(tempTodayObj.getFullYear(), tempTodayObj.getMonth(), tempTodayObj.getDate());
@@ -120,7 +132,8 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
           });
         }
 
-        var firstDay = scope.dayList[0].day;
+        //var firstDay = scope.dayList[0].day;
+        var firstDay = scope.dayList[0].day - scope.mondayFirst;
 
         scope.currentMonthFirstDayEpoch = scope.dayList[0].epochLocal;
         scope.currentMonthLastDayEpoch = scope.dayList[scope.dayList.length - 1].epochLocal;
@@ -179,6 +192,7 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
 
       scope.dateSelected = function (date) {
         scope.selctedDateString = date.dateString;
+        scope.selctedDateStringCopy = angular.copy(scope.selctedDateString);
         scope.date_selection.selected = true;
         scope.date_selection.selectedDate = new Date(date.dateString);
       };

@@ -61,7 +61,7 @@ c) `title` is the string variable, which can be assigned to the datepicker modal
 5) Then use the below format in your template / html file
 
 ````html
-<ionic-datepicker idate="currentDate" disablepreviousdates="true"  disablefuturedates="false" callback="datePickerCallback" disableddates="disabledDates" title="title">
+<ionic-datepicker idate="currentDate" disablepreviousdates="true"  disablefuturedates="false" callback="datePickerCallback" disableddates="disabledDates" title="title" mondayfirst="true">
 	<button class="button button-block button-positive"> {{ currentDate | date:'dd - MMMM - yyyy' }} </button>
 </ionic-datepicker>
 ````
@@ -91,6 +91,8 @@ $scope.disabledDates = [
 	new Date(1439676000000) //UNIX format
 ]; 
 ````
+
+g) `mondayfirst` takes true or false. If the given values is `true`, shows Monday as the first day of the week, and if `false` Sunday will be first day of the week.
 
 ##Screen Shots:
 
@@ -152,6 +154,11 @@ b) Customised title text for datepicker modal's added.
 a) Feature for disabling particular dates has been added.
 
 b) CSS classes added for customisation.
+### 9) v0.6.0
+
+a) Date selection color issue fixed.
+
+b) Added feature to show Monday as the first day of the week.
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")
