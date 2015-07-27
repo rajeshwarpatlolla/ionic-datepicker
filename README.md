@@ -92,7 +92,7 @@ $scope.disabledDates = [
 ]; 
 ````
 
-g) `mondayfirst` takes true or false. If the given values is `true`, shows Monday as the first day of the week, and if `false` Sunday will be first day of the week.
+g) `mondayfirst` takes true or false. If the given values is `true`, shows Monday as the first day of the week, and if the given value is `false`, then Sunday will be first day of the week.
 
 ##Screen Shots:
 
