@@ -1,14 +1,16 @@
 <div class="ionic-datepicker">
+  <div class="selected_date_full">{{selectedDateFull | date:"dd-MM-yyyy"}}</div>
   <div class="row no_padding">
     <div class="col col-10 left_arrow">
-      <button class="button-clear color_blue" ng-click="prevMonth()"
-              ng-class="{'pointer_events_none':(disablePreviousDates && previousDayEpoch > currentMonthFirstDayEpoch)}">
+      <button class="button-clear" ng-click="prevMonth()"
+              ng-class="{'pointer_events_none':(enableDatesFrom.isSet && enableDatesFrom.epoch > currentMonthFirstDayEpoch),
+              'color_blue':(enableDatesFrom.isSet && enableDatesFrom.epoch < currentMonthFirstDayEpoch) || !enableDatesFrom.isSet}">
         <i class="icon ion-chevron-left"></i>
       </button>
     </div>
-    <div class="col col-80 drop_down">
+    <div class="col col-80 drop_down no_padding">
       <div class="row select_section">
-        <div class="col-50">
+        <div class="col col-50">
           <div class="list">
             <label class="item item-input item-select">
               <select ng-model="currentMonth" ng-change="monthChanged(currentMonth)" class="month_select">
@@ -19,7 +21,7 @@
             </label>
           </div>
         </div>
-        <div class="col-50">
+        <div class="col col-50">
           <div class="list">
             <label class="item item-input item-select">
               <select ng-model="currentYear" ng-change="yearChanged(currentYear)" class="year_select">
@@ -33,8 +35,9 @@
       </div>
     </div>
     <div class="col col-10 right_arrow">
-      <button class="button-clear color_blue" ng-click="nextMonth()"
-              ng-class="{'pointer_events_none':(disableFutureDates && nextDayEpoch < currentMonthLastDayEpoch)}">
+      <button class="button-clear" ng-click="nextMonth()"
+              ng-class="{'pointer_events_none':(enableDatesTo.isSet && enableDatesTo.epoch < currentMonthLastDayEpoch),
+              'color_blue':(enableDatesTo.isSet && enableDatesTo.epoch > currentMonthLastDayEpoch)}">
         <i class="icon ion-chevron-right"></i>
       </button>
     </div>
@@ -50,15 +53,12 @@
       'date_selected': (dayList[$parent.$index * numColumns + $index].dateString === selctedDateStringCopy && dayList[$parent.$index * numColumns + $index].day != undefined) ,
       'today' : (dayList[$parent.$index * numColumns + $index].date == today.date && dayList[$parent.$index * numColumns + $index].month == today.month && dayList[$parent.$index * numColumns + $index].year == today.year)}">
           <div class="date_cell" ng-click="dateSelected(dayList[$parent.$index * numColumns + $index])"
-               ng-class="{'pointer_events_none':((disablePreviousDates && previousDayEpoch > dayList[$parent.$index * numColumns + $index].epochLocal) || (disableFutureDates && nextDayEpoch < dayList[$parent.$index * numColumns + $index].epochLocal) || (disabledDates.indexOf(dayList[$parent.$index * numColumns + $index].epochLocal)>-1))}">
+               ng-class="{'pointer_events_none':(disabledDates.indexOf(dayList[$parent.$index * numColumns + $index].epochLocal) > -1) || (enableDatesFrom.isSet && enableDatesFrom.epoch > dayList[$parent.$index * numColumns + $index].epochLocal) || (enableDatesTo.isSet && enableDatesTo.epoch < dayList[$parent.$index * numColumns + $index].epochLocal)}">
             {{ dayList[$parent.$index * numColumns + $index].date }}
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="error_msg" ng-show="date_selection.submitted === true && date_selection.selected === false">Please select
-    a
-    date.
-  </div>
+  <div class="error_msg padding-horizontal" ng-show="date_selection.submitted === true && date_selection.selected === false">{{errorMsgLabel}}</div>
 </div>
