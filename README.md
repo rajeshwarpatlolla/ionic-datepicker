@@ -14,7 +14,7 @@ This is an `ionic-datepicker` bower component, which can be used in any Ionic fr
 1) In your project repository install the ionic-datepicker using bower
 
 `bower install ionic-datepicker --save`
-or
+*OR*
 `npm i ionic-datepicker --save`
 
 This will install the latest version released.
@@ -61,7 +61,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
 
 **datepickerObject** is the main object, that we need to pass to the directive. The properties of this object are as follows.
 
-a) **titleLabel**(Optional) : The label for 'Title' of the ionic-datepicker popup. Default value is `Select Date`.
+a) **titleLabel**(Optional) : The label for 'Title' of the ionic-datepicker popup. Default value is `Select Date`
 
 b) **todayLabel**(Optional) : The label for `Today` button. Default value is `Today`
 
@@ -96,9 +96,9 @@ i) **monthList**(Optional) : This is an array with a list of all months. You can
  `["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];`
 ````
 
-j) **from**(Optional) : This is a date object, from which you wish to enable the dates. You can use this property to disable **previous dates** by specifying `from: new Date()`. By default all the dates are enabled.
+j) **from**(Optional) : This is a date object, from which you wish to enable the dates. You can use this property to disable **previous dates** by specifying `from: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
 
-k) **to**(Optional) : This is a date object, to which you wish to enable the dates. You can use this property to disable **future dates** by specifying `to: new Date()`. By default all the dates are enabled.
+k) **to**(Optional) : This is a date object, to which you wish to enable the dates. You can use this property to disable **future dates** by specifying `to: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
 
 l) **callback**(Mandatory) : This the callback function, which will get the selected date in to the controller. You can define this function as follows.
 ````javascript
