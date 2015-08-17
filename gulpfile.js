@@ -4,7 +4,6 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var ngHtml2Js = require("gulp-ng-html2js");
 var minifyHtml = require("gulp-minify-html");
-var minifycss = require("gulp-minify-css");
 var css2js = require("gulp-css2js");
 
 gulp.task('html2js', function () {
