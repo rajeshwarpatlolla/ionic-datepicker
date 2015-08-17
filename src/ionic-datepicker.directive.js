@@ -55,7 +55,7 @@
 
         //Setting the months list. This is useful, if the component needs to use some other language.
         var monthsList = [];
-        if (scope.inputObj.monthList.length === 12) {
+        if (scope.inputObj.monthList && scope.inputObj.monthList.length === 12) {
           monthsList = scope.inputObj.monthList;
         } else {
           monthsList = DatepickerService.monthsList;
@@ -71,7 +71,7 @@
         }
 
         //Setting the disabled dates list.
-        if (scope.inputObj.disabledDates.length == 0) {
+        if (scope.inputObj.disabledDates && scope.inputObj.disabledDates.length == 0) {
           scope.disabledDates = [];
         } else {
           angular.forEach(scope.inputObj.disabledDates, function (val, key) {
