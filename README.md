@@ -89,7 +89,7 @@ i) **monthList**(Optional) : This is an array with a list of all months. You can
  ````
  The default values are 
  ````javascript
- `["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];`
+ ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 ````
 
 j) **from**(Optional) : This is a date object, from which you wish to enable the dates. You can use this property to disable **previous dates** by specifying `from: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
@@ -184,21 +184,18 @@ b) CSS classes added for customisation.
 a) Date selection color issue fixed.
 
 b) Added feature to show Monday as the first day of the week.
-### 9) v0.7.0
+### 10) v0.7.0
 
 **Features**
 a) `From` and `to` dates functionality added, with code re-structuring.
 
 **BugFixes**
-[Bug#58](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/58)
-[Bug#56](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/56)
-[Bug#54](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/54)
-[Bug#42](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/42)
-[Bug#37](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/37)
+[Bug#58](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/58),
+[Bug#56](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/56),
+[Bug#54](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/54),
+[Bug#42](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/42),
+[Bug#37](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/37),
 [Bug#28](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/28)
-
-
-b) Added feature to show Monday as the first day of the week.
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")
