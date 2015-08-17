@@ -19,11 +19,7 @@ This is an `ionic-datepicker` bower component, which can be used in any Ionic fr
 
 This will install the latest version released.
 
-2) Then you can see the following directory structure see in your project folder
-
-![Directory structure](https://lh3.googleusercontent.com/8x3OByTXzzgJSxm-n5Yg8-0g-u2OZt18j9EbvNTgK3Q=w112-h207-p-no "Directory structure")
-
-Give the path of  `ionic-datepicker.bundle.min.js` in your `index.html` file.
+2) Give the path of  `ionic-datepicker.bundle.min.js` in your `index.html` file.
 
 ````html
 <!-- path to ionic/angularjs -->
