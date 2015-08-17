@@ -27,7 +27,7 @@
         scope.closeLabel = scope.inputObj.closeLabel ? (scope.inputObj.closeLabel) : 'Close';
         scope.setLabel = scope.inputObj.setLabel ? (scope.inputObj.setLabel) : 'Set';
         scope.errorMsgLabel = scope.inputObj.errorMsgLabel ? (scope.inputObj.errorMsgLabel) : 'Please select a date.';
-        scope.setButonType = scope.inputObj.setButonType ? (scope.inputObj.setButonType) : 'button-positive';
+        scope.setButtonType = scope.inputObj.setButtonType ? (scope.inputObj.setButtonType) : 'button-positive';
 
         scope.enableDatesFrom = {epoch: 0, isSet: false};
         scope.enableDatesTo = {epoch: 0, isSet: false};
@@ -256,7 +256,7 @@
               },
               {
                 text: scope.setLabel,
-                type: scope.setButonType,
+                type: scope.setButtonType,
                 onTap: function (e) {
                   scope.date_selection.submitted = true;
 
