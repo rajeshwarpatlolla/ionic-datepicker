@@ -186,7 +186,12 @@ b) Added feature to show Monday as the first day of the week.
 ### 10) v0.7.0
 
 **Features**
-a) `From` and `to` dates functionality added, along with code re-structuring & updated node modules.
+
+a) `From` and `to` dates functionality added.
+
+b) Code re-structuring.
+ 
+c) Updated node modules.
 
 **BugFixes**
 [Bug#58](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/58),
