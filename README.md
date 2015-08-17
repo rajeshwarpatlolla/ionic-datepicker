@@ -43,6 +43,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
       closeLabel: 'Close',	//Optional
       setLabel: 'Set',	//Optional
       errorMsgLabel : 'Please select time.',	//Optional
+      setButtonType : 'button-assertive',  //Optional
       inputDate: new Date(),	//Optional
       mondayFirst: true,	//Optional
       disabledDates:disabledDates,	//Optional
@@ -67,11 +68,13 @@ d) **setLabel**(Optional) : The label for `Set` button. Default value is `Set`
 
 e) **errorMsgLabel**(Optional) : The label for the error message. Default value is `Please select a date.`
 
-f) **inputDate**(Optional) : This is the date object to pass to the directive. You can give any date object to this property. Default value is `new Date()`. But if you wish to show the initial date in the HTML page, then you should define this property. 
+f) **setButtonType**(Optional) : This the type of the `Set` button. Default value is `button-positive`. You can give any valid ionic framework's button classes.
 
-g) **mondayFirst**(Optional) : Set `true` if you wish to show monday as the first day. Default value is `false`.
+g) **inputDate**(Optional) : This is the date object to pass to the directive. You can give any date object to this property. Default value is `new Date()`. But if you wish to show the initial date in the HTML page, then you should define this property. 
 
-h) **disabledDates**(Optional) : If you have a list of dates to disable, you can create an array like below. Default value is an empty array.
+h) **mondayFirst**(Optional) : Set `true` if you wish to show monday as the first day. Default value is `false`.
+
+i) **disabledDates**(Optional) : If you have a list of dates to disable, you can create an array like below. Default value is an empty array.
 ````javascript
 var disabledDates = [
       new Date(1437719836326),
@@ -83,7 +86,7 @@ var disabledDates = [
     ];
 ````
 
-i) **monthList**(Optional) : This is an array with a list of all months. You can use this if you want to show months in some other language or format. You can create an array like below.
+j) **monthList**(Optional) : This is an array with a list of all months. You can use this if you want to show months in some other language or format. You can create an array like below.
  ````javascript
  var monthList = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
  ````
@@ -92,11 +95,11 @@ i) **monthList**(Optional) : This is an array with a list of all months. You can
  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 ````
 
-j) **from**(Optional) : This is a date object, from which you wish to enable the dates. You can use this property to disable **previous dates** by specifying `from: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
+k) **from**(Optional) : This is a date object, from which you wish to enable the dates. You can use this property to disable **previous dates** by specifying `from: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
 
-k) **to**(Optional) : This is a date object, to which you wish to enable the dates. You can use this property to disable **future dates** by specifying `to: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
+l) **to**(Optional) : This is a date object, to which you wish to enable the dates. You can use this property to disable **future dates** by specifying `to: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
 
-l) **callback**(Mandatory) : This the callback function, which will get the selected date in to the controller. You can define this function as follows.
+m) **callback**(Mandatory) : This the callback function, which will get the selected date in to the controller. You can define this function as follows.
 ````javascript
 var datePickerCallback = function (val) {
   if (typeof(val) === 'undefined') {
