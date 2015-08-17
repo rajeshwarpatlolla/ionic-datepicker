@@ -27,6 +27,7 @@
         scope.closeLabel = scope.inputObj.closeLabel ? (scope.inputObj.closeLabel) : 'Close';
         scope.setLabel = scope.inputObj.setLabel ? (scope.inputObj.setLabel) : 'Set';
         scope.errorMsgLabel = scope.inputObj.errorMsgLabel ? (scope.inputObj.errorMsgLabel) : 'Please select a date.';
+        scope.setButonType = scope.inputObj.setButonType ? (scope.inputObj.setButonType) : 'button-positive';
 
         scope.enableDatesFrom = {epoch: 0, isSet: false};
         scope.enableDatesTo = {epoch: 0, isSet: false};
@@ -34,13 +35,11 @@
         //Setting the from and to dates
         if (scope.inputObj.from) {
           scope.enableDatesFrom.isSet = true;
-          //var fromDates = scope.inputObj.from.split(/[/-]+/);
           scope.enableDatesFrom.epoch = scope.inputObj.from.getTime();
         }
 
         if (scope.inputObj.to) {
           scope.enableDatesTo.isSet = true;
-          //var toDates = scope.inputObj.to.split(/[/-]+/);
           scope.enableDatesTo.epoch = scope.inputObj.to.getTime();
         }
 
@@ -50,7 +49,6 @@
         } else {
           scope.ipDate = new Date();
         }
-
         scope.selectedDateFull = scope.ipDate;
 
         //Setting the months list. This is useful, if the component needs to use some other language.
@@ -258,7 +256,7 @@
               },
               {
                 text: scope.setLabel,
-                type: 'button-positive',
+                type: scope.setButonType,
                 onTap: function (e) {
                   scope.date_selection.submitted = true;
 
