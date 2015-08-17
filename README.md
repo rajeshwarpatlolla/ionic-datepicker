@@ -67,7 +67,7 @@ d) **setLabel**(Optional) : The label for `Set` button. Default value is `Set`
 
 e) **errorMsgLabel**(Optional) : The label for the error message. Default value is `Please select a date.`
 
-f) **inputDate**(Optional) : This is the date object to pass to the directive. You can give any date object to this property. Default value is `new Date()`
+f) **inputDate**(Optional) : This is the date object to pass to the directive. You can give any date object to this property. Default value is `new Date()`. But if you wish to show the initial date in the HTML page, then you should define this property. 
 
 g) **mondayFirst**(Optional) : Set `true` if you wish to show monday as the first day. Default value is `false`.
 
