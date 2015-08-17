@@ -168,12 +168,12 @@
           }
 
           //To set Monday as the first day of the week.
-          var firstDay = scope.dayList[0].day - scope.mondayFirst;
+          var firstDayMonday = scope.dayList[0].day - scope.mondayFirst;
 
           scope.currentMonthFirstDayEpoch = scope.dayList[0].epochLocal;
           scope.currentMonthLastDayEpoch = scope.dayList[scope.dayList.length - 1].epochLocal;
 
-          for (var j = 0; j < firstDay; j++) {
+          for (var j = 0; j < firstDayMonday; j++) {
             scope.dayList.unshift({});
           }
 
@@ -193,12 +193,12 @@
         scope.monthChanged = function (month) {
           var monthNumber = scope.monthsList.indexOf(month);
           currentDate.setMonth(monthNumber);
-          refreshDateList(currentDate)
+          refreshDateList(currentDate);
         };
 
         scope.yearChanged = function (year) {
           currentDate.setFullYear(year);
-          refreshDateList(currentDate)
+          refreshDateList(currentDate);
         };
 
         scope.prevMonth = function () {
@@ -210,7 +210,7 @@
           scope.currentMonth = monthsList[currentDate.getMonth()];
           scope.currentYear = currentDate.getFullYear();
 
-          refreshDateList(currentDate)
+          refreshDateList(currentDate);
         };
 
         scope.nextMonth = function () {
@@ -220,7 +220,7 @@
           currentDate.setMonth(currentDate.getMonth() + 1);
           scope.currentMonth = monthsList[currentDate.getMonth()];
           scope.currentYear = currentDate.getFullYear();
-          refreshDateList(currentDate)
+          refreshDateList(currentDate);
         };
 
         scope.date_selection = {selected: false, selectedDate: '', submitted: false};
@@ -297,10 +297,10 @@
                 }
               }
             ]
-          })
-        })
+          });
+        });
       }
-    }
+    };
   }
 
 })();
