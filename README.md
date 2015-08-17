@@ -55,7 +55,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
     };
 ````
 
-**datepickerObject** is the main object, that we need to pass to the directive. The properties of this object are as follows.
+**$scope.datepickerObject** is the main object, that we need to pass to the directive. The properties of this object are as follows.
 
 a) **titleLabel**(Optional) : The label for 'Title' of the ionic-datepicker popup. Default value is `Select Date`
 
