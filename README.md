@@ -60,6 +60,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
 ````
 
 **datepickerObject** is the main object, that we need to pass to the directive. The properties of this object are as follows.
+
 a) **titleLabel**(Optional) : The label for 'Title' of the ionic-datepicker popup. Default value is `Select Date`.
 
 b) **todayLabel**(Optional) : The label for `Today` button. Default value is `Today`
@@ -102,12 +103,12 @@ k) **to**(Optional) : This is a date object, to which you wish to enable the dat
 l) **callback**(Mandatory) : This the callback function, which will get the selected date in to the controller. You can define this function as follows.
 ````javascript
 var datePickerCallback = function (val) {
-      if (typeof(val) === 'undefined') {
-        console.log('No date selected');
-      } else {
-        console.log('Selected date is : ', val)
-      }
-    };
+  if (typeof(val) === 'undefined') {
+	console.log('No date selected');
+  } else {
+	console.log('Selected date is : ', val)
+  }
+};
 ````
 
 5) Then use the below format in your template / html file
@@ -185,6 +186,21 @@ b) CSS classes added for customisation.
 ### 9) v0.6.0
 
 a) Date selection color issue fixed.
+
+b) Added feature to show Monday as the first day of the week.
+### 9) v0.7.0
+
+**Features**
+a) `From` and `to` dates functionality added, with code re-structuring.
+
+**BugFixes**
+[Bug#58](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/58)
+[Bug#56](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/56)
+[Bug#54](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/54)
+[Bug#42](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/42)
+[Bug#37](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/37)
+[Bug#28](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/28)
+
 
 b) Added feature to show Monday as the first day of the week.
 
