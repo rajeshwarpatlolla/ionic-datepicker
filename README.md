@@ -169,11 +169,10 @@ b) Customised title text for datepicker modal's added.
 
 **BugFixes**
 
-[Bug Fix](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/22)
+[Bug#22](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/22),
+[Bug#26](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/26),
+[Bug#29](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/29)
 
-[Bug Fix](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/26)
-
-[Bug Fix](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/29)
 ### 8) v0.5.0
 
 a) Feature for disabling particular dates has been added.
