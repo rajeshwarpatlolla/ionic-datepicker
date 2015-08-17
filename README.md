@@ -42,39 +42,39 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
 
 ````javascript
     $scope.datepickerObject = {
-      titleLabel: 'Title',
-      todayLabel: 'Today',
-      closeLabel: 'Close',
-      setLabel: 'Set',
-      errorMsgLabel : 'Please select time.',
-      inputDate: new Date(),
-      mondayFirst: true,
-      disabledDates:disabledDates,
-      monthList:monthList,
-      from: new Date(2015, 7, 2),
-      to: new Date(2015, 7, 29),
-      callback: function (val) {
+      titleLabel: 'Title',	//Optional
+      todayLabel: 'Today',	//Optional
+      closeLabel: 'Close',	//Optional
+      setLabel: 'Set',	//Optional
+      errorMsgLabel : 'Please select time.',	//Optional
+      inputDate: new Date(),	//Optional
+      mondayFirst: true,	//Optional
+      disabledDates:disabledDates,	//Optional
+      monthList:monthList,	//Optional
+      from: new Date(2015, 7, 2),	//Optional
+      to: new Date(2015, 7, 29),	//Optional
+      callback: function (val) {	//Mandatory
         datePickerCallback(val);
       }
     };
 ````
 
-`datepickerObject` is the main object, that we need to pass to the directive. The properties of this object are as follows.
-a) `titleLabel`(Optional) : The label for 'Title' of the ionic-datepicker popup. Default value is `Select Date`.
+**datepickerObject** is the main object, that we need to pass to the directive. The properties of this object are as follows.
+a) **titleLabel**(Optional) : The label for 'Title' of the ionic-datepicker popup. Default value is `Select Date`.
 
-b) `todayLabel`(Optional) : The label for `Today` button. Default value is `Today`
+b) **todayLabel**(Optional) : The label for `Today` button. Default value is `Today`
 
-c) `closeLabel`(Optional) : The label for `Close` button. Default value is `Close`
+c) **closeLabel**(Optional) : The label for `Close` button. Default value is `Close`
 
-d) `setLabel`(Optional) : The label for `Set` button. Default value is `Set`
+d) **setLabel**(Optional) : The label for `Set` button. Default value is `Set`
 
-e) `errorMsgLabel`(Optional) : The label for the error message. Default value is `Please select a date.`
+e) **errorMsgLabel**(Optional) : The label for the error message. Default value is `Please select a date.`
 
-f) `inputDate`(Optional) : This is the date object to pass to the directive. You can give any date object to this property. Default value is `new Date()`
+f) **inputDate**(Optional) : This is the date object to pass to the directive. You can give any date object to this property. Default value is `new Date()`
 
-g) `mondayFirst`(Optional) : Set `true` if you wish to show monday as the first day. Default value is `false`.
+g) **mondayFirst**(Optional) : Set `true` if you wish to show monday as the first day. Default value is `false`.
 
-h) `disabledDates`(Optional) : If you have a list of dates to disable, you can create an array like below. Default value is an empty array.
+h) **disabledDates**(Optional) : If you have a list of dates to disable, you can create an array like below. Default value is an empty array.
 ````javascript
 var disabledDates = [
       new Date(1437719836326),
@@ -86,7 +86,7 @@ var disabledDates = [
     ];
 ````
 
-i) `monthList`(Optional) : This is an array with a list of all months. You can use this if you want to show months in some other language or format. You can create an array like below.
+i) **monthList**(Optional) : This is an array with a list of all months. You can use this if you want to show months in some other language or format. You can create an array like below.
  ````javascript
  var monthList = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
  ````
@@ -95,11 +95,11 @@ i) `monthList`(Optional) : This is an array with a list of all months. You can u
  `["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];`
 ````
 
-j) `from`(Optional) : This is a date object, from which you wish to enable the dates. You can use this property to disable **previous dates** by specifying `from: new Date()`. By default all the dates are enabled.
+j) **from**(Optional) : This is a date object, from which you wish to enable the dates. You can use this property to disable **previous dates** by specifying `from: new Date()`. By default all the dates are enabled.
 
-k) `to`(Optional) : This is a date object, to which you wish to enable the dates. You can use this property to disable **future dates** by specifying `to: new Date()`. By default all the dates are enabled.
+k) **to**(Optional) : This is a date object, to which you wish to enable the dates. You can use this property to disable **future dates** by specifying `to: new Date()`. By default all the dates are enabled.
 
-l) `callback`(Mandatory) : This the callback function, which will get the selected date in to the controller. You can define this function as follows.
+l) **callback**(Mandatory) : This the callback function, which will get the selected date in to the controller. You can define this function as follows.
 ````javascript
 var datePickerCallback = function (val) {
       if (typeof(val) === 'undefined') {
@@ -118,9 +118,9 @@ var datePickerCallback = function (val) {
 </ionic-datepicker>
 ````
 
-a) `ionic-datepicker` is the directive, to which we can pass required vales.
+a) **ionic-datepicker** is the directive, to which we can pass required vales.
 
-b) `input-obj`(Mandatory) : This is an object. We have to pass an object as shown above.
+b) **input-obj**(Mandatory) : This is an object. We have to pass an object as shown above.
 
 ##Screen Shots:
 
