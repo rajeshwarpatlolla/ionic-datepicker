@@ -1,14 +1,14 @@
 //By Rajeshwar Patlolla - rajeshwar.patlolla@gmail.com
 //https://github.com/rajeshwarpatlolla
 
-(function(){
+(function () {
   'use strict';
 
   angular.module('ionic-datepicker')
-    .directive('ionicDatepicker',IonicDatepicker);
+    .directive('ionicDatepicker', IonicDatepicker);
 
   IonicDatepicker.$inject = ['$ionicPopup', 'DatepickerService'];
-  function IonicDatepicker($ionicPopup, DatepickerService){
+  function IonicDatepicker($ionicPopup, DatepickerService) {
     return {
       restrict: 'AE',
       replace: true,
