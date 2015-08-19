@@ -4,7 +4,7 @@
     <div class="col col-10 left_arrow">
       <button class="button-clear" ng-click="prevMonth()"
               ng-class="{'pointer_events_none':(enableDatesFrom.isSet && enableDatesFrom.epoch > currentMonthFirstDayEpoch),
-              'color_blue':(enableDatesFrom.isSet && enableDatesFrom.epoch < currentMonthFirstDayEpoch) || !enableDatesFrom.isSet}">
+              'color_blue':((enableDatesFrom.isSet && enableDatesFrom.epoch < currentMonthFirstDayEpoch) || (!enableDatesFrom.isSet))}">
         <i class="icon ion-chevron-left"></i>
       </button>
     </div>
@@ -37,7 +37,7 @@
     <div class="col col-10 right_arrow">
       <button class="button-clear" ng-click="nextMonth()"
               ng-class="{'pointer_events_none':(enableDatesTo.isSet && enableDatesTo.epoch < currentMonthLastDayEpoch),
-              'color_blue':(enableDatesTo.isSet && enableDatesTo.epoch > currentMonthLastDayEpoch)}">
+              'color_blue':((enableDatesTo.isSet && enableDatesTo.epoch > currentMonthLastDayEpoch) || (!enableDatesTo.isSet))}">
         <i class="icon ion-chevron-right"></i>
       </button>
     </div>
@@ -60,5 +60,7 @@
       </div>
     </div>
   </div>
-  <div class="error_msg padding-horizontal" ng-show="date_selection.submitted === true && date_selection.selected === false">{{errorMsgLabel}}</div>
+  <div class="error_msg padding-horizontal"
+       ng-show="date_selection.submitted === true && date_selection.selected === false">{{errorMsgLabel}}
+  </div>
 </div>
