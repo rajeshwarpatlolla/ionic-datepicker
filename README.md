@@ -139,12 +139,12 @@ I have used two buttons here.
 The first screen shot shows only the buttons before clicking on them.
 Once you click on the button you should see the second screen shot.
 
-![ionic-datepicker Modal](https://lh3.googleusercontent.com/IeNOa_UmMpRhWCP4Hl2Cc4ZO1YuwNAd4vmKBYzsX2FY=w434-h678-no "Date picker Modal") 
-![ionic-datepicker Popup](https://lh3.googleusercontent.com/IGjqpsiPj1_92DTiW2oJcSvBTdp93PGOYEk4VzQiABg=w442-h678-no "Date picker Popup")
+![ionic-datepicker Modal](https://lh3.googleusercontent.com/IeNOa_UmMpRhWCP4Hl2Cc4ZO1YuwNAd4vmKBYzsX2FY=w434-h678-no "ionic-datepicker Modal"){:height="36px" width="36px"}
+![ionic-datepicker Popup](https://lh3.googleusercontent.com/IGjqpsiPj1_92DTiW2oJcSvBTdp93PGOYEk4VzQiABg=w442-h678-no "ionic-datepicker Popup"){:height="36px" width="36px"}
 
 ##CSS Classes:
 
-![ionic-datepicker CSS Classes](https://lh3.googleusercontent.com/GHSRmZhfiOgOLuSR816vpS5EbSnzOdH5Uw_uCJDwr7U=w442-h678-no "Date picker CSS classes")
+![ionic-datepicker CSS Classes](https://lh3.googleusercontent.com/GHSRmZhfiOgOLuSR816vpS5EbSnzOdH5Uw_uCJDwr7U=w442-h678-no "ionic-datepicker CSS classes")
 
 #### 1) ionic_datepicker_modal_content
 #### 2) selected_date_full
@@ -154,6 +154,8 @@ Once you click on the button you should see the second screen shot.
 #### 6) calendar_grid
 #### 7) date_col
 #### 8) date_selected
+
+You can use these classes to customize the alignment, if required.
 
 ##Versions:
 
@@ -214,6 +216,7 @@ b) Code re-structuring.
 c) Updated node modules.
 
 **BugFixes**
+
 [Bug#58](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/58),
 [Bug#56](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/56),
 [Bug#54](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/54),
@@ -224,9 +227,11 @@ c) Updated node modules.
 ### 11) v0.8.0
 
 **Features**
+
 You can use either a popup or a modal for this `ionic-datepicker`.
 
 **BugFixes**
+
 [Bug#59](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/59),
 
 ##License:
