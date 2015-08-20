@@ -1,10 +1,10 @@
 <div class="ionic-datepicker">
   <div class="selected_date_full">{{selectedDateFull | date:"dd-MM-yyyy"}}</div>
   <div class="row no_padding">
-    <div class="col col-10 left_arrow">
-      <button class="button-clear" ng-click="prevMonth()"
-              ng-class="{'pointer_events_none':(enableDatesFrom.isSet && enableDatesFrom.epoch > currentMonthFirstDayEpoch),
-              'color_blue':((enableDatesFrom.isSet && enableDatesFrom.epoch < currentMonthFirstDayEpoch) || (!enableDatesFrom.isSet))}">
+    <div class="col col-10 left_arrow" ng-click="prevMonth()"
+         ng-class="{'pointer_events_none':(enableDatesFrom.isSet && enableDatesFrom.epoch > currentMonthFirstDayEpoch)}">
+      <button class="button-clear"
+              ng-class="{'color_blue':((enableDatesFrom.isSet && enableDatesFrom.epoch < currentMonthFirstDayEpoch) || (!enableDatesFrom.isSet))}">
         <i class="icon ion-chevron-left"></i>
       </button>
     </div>
@@ -34,10 +34,10 @@
         </div>
       </div>
     </div>
-    <div class="col col-10 right_arrow">
-      <button class="button-clear" ng-click="nextMonth()"
-              ng-class="{'pointer_events_none':(enableDatesTo.isSet && enableDatesTo.epoch < currentMonthLastDayEpoch),
-              'color_blue':((enableDatesTo.isSet && enableDatesTo.epoch > currentMonthLastDayEpoch) || (!enableDatesTo.isSet))}">
+    <div class="col col-10 right_arrow" ng-click="nextMonth()"
+         ng-class="{'pointer_events_none':(enableDatesTo.isSet && enableDatesTo.epoch < currentMonthLastDayEpoch)}">
+      <button class="button-clear"
+              ng-class="{'color_blue':((enableDatesTo.isSet && enableDatesTo.epoch > currentMonthLastDayEpoch) || (!enableDatesTo.isSet))}">
         <i class="icon ion-chevron-right"></i>
       </button>
     </div>
