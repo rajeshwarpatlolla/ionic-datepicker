@@ -226,11 +226,11 @@ c) Updated node modules.
 
 ### 11) v0.8.0
 
-**Features**
+**Feature**
 
 You can use either a popup or a modal for this `ionic-datepicker`.
 
-**BugFixes**
+**BugFix**
 
 [Bug#59](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/59),
 
