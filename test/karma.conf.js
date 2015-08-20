@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       'test/ionic.bundle.js',
       'test/angular-mocks.js',
+      'node_modules/phantomjs-polyfill/bind-polyfill.js',
       // 'src/ionic-datepicker.app.js',
       // 'src/ionic-datepicker.service.js',
       // 'src/ionic-datepicker.directive.js',
@@ -40,7 +41,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'], // 'growl'
+    reporters: ['progress'], // 
 
 
     // web server port
