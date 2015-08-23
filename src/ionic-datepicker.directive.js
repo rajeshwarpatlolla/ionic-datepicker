@@ -57,12 +57,17 @@
         //Setting the months list. This is useful, if the component needs to use some other language.
         var monthsList = [];
         if (scope.inputObj.monthList && scope.inputObj.monthList.length === 12) {
-          monthsList = scope.inputObj.monthList;
+          scope.monthsList = scope.inputObj.monthList;
         } else {
-          monthsList = IonicDatepickerService.monthsList;
+          scope.monthsList = IonicDatepickerService.monthsList;
         }
-        scope.monthsList = monthsList;
+        if (scope.inputObj.weekDaysList && scope.inputObj.weekDaysList.length === 7) {
+          scope.weekNames = scope.inputObj.weekDaysList;
+        } else {
+          scope.weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+        }
         scope.yearsList = IonicDatepickerService.yearsList;
+        
 
         //Setting whether to show Monday as the first day of the week or not.
         if (scope.inputObj.mondayFirst) {
@@ -92,7 +97,6 @@
         currentDate.setMilliseconds(0);
 
         scope.selctedDateString = currentDate.toString();
-        scope.weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
         scope.today = {};
 
         if (scope.mondayFirst == true) {
