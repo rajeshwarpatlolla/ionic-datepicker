@@ -46,11 +46,12 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
       setButtonType : 'button-assertive',  //Optional
       inputDate: new Date(),	//Optional
       mondayFirst: true,	//Optional
-      disabledDates:disabledDates,	//Optional
-      monthList:monthList,	//Optional
-      templateType:'popup', //Optional
-      modalHeaderColor:'bar-positive', //Optional
-      modalFooterColor:'bar-positive', //Optional
+      disabledDates: disabledDates,	//Optional
+      weekDaysList: weekDaysList,	//Optional
+      monthList: monthList,	//Optional
+      templateType: 'popup', //Optional
+      modalHeaderColor: 'bar-positive', //Optional
+      modalFooterColor: 'bar-positive', //Optional
       from: new Date(2015, 7, 2),	//Optional
       to: new Date(2015, 7, 29),	//Optional
       callback: function (val) {	//Mandatory
@@ -89,7 +90,16 @@ var disabledDates = [
     ];
 ````
 
-**j) monthList**(Optional) : This is an array with a list of all months. You can use this if you want to show months in some other language or format. You can create an array like below.
+**j) weekDaysList**(Optional) : This is an array with a list of all week days. You can use this if you want to show months in some other language or format or if you wish to use the modal instead of the popup for this component (Refer to point **l**), you can specify lengthy names like below.
+ ````javascript
+ var weekDaysList = ["Sun", "Mon", "Tue", "Wed", "thu", "Fri", "Sat"];
+ ````
+ The default values are 
+ ````javascript
+ ["S", "M", "T", "W", "T", "F", "S"];
+````
+
+**k) monthList**(Optional) : This is an array with a list of all months. You can use this if you want to show months in some other language or format. You can create an array like below.
  ````javascript
  var monthList = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
  ````
@@ -98,17 +108,17 @@ var disabledDates = [
  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 ````
 
-**k) templateType**(Optional) : This is string type which takes two values i.e. `modal` or `popup`. Default value is `modal`. If you wish to open in a popup, you can specify the value as `popup` or else you can ignore it.
+**l) templateType**(Optional) : This is string type which takes two values i.e. `modal` or `popup`. Default value is `modal`. If you wish to open in a popup, you can specify the value as `popup` or else you can ignore it.
 
-**l) modalHeaderColor**(Optional) : This takes any valid ionic framework's header color. Default value is `bar-stable`
+**m) modalHeaderColor**(Optional) : This takes any valid ionic framework's header color. Default value is `bar-stable`
 
-**m) modalFooterColor**(Optional) : This takes any valid ionic framework's footer color. Default value is `bar-stable`
+**n) modalFooterColor**(Optional) : This takes any valid ionic framework's footer color. Default value is `bar-stable`
       
-**n) from**(Optional) : This is a date object, from which you wish to enable the dates. You can use this property to disable **previous dates** by specifying `from: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
+**o) from**(Optional) : This is a date object, from which you wish to enable the dates. You can use this property to disable **previous dates** by specifying `from: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
 
-**o) to**(Optional) : This is a date object, to which you wish to enable the dates. You can use this property to disable **future dates** by specifying `to: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
+**p) to**(Optional) : This is a date object, to which you wish to enable the dates. You can use this property to disable **future dates** by specifying `to: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
 
-**p) callback**(Mandatory) : This the callback function, which will get the selected date in to the controller. You can define this function as follows.
+**q) callback**(Mandatory) : This the callback function, which will get the selected date in to the controller. You can define this function as follows.
 ````javascript
 var datePickerCallback = function (val) {
   if (typeof(val) === 'undefined') {
@@ -233,6 +243,9 @@ You can use either a popup or a modal for this `ionic-datepicker`.
 **BugFix**
 
 [Bug#59](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/59),
+
+### 12) v0.9.0
+Feature added to specify custom week names.
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")
