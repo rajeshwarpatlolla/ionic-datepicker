@@ -244,7 +244,7 @@ You can use either a popup or a modal for this `ionic-datepicker`.
 
 **BugFix**
 
-[Bug#63](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/63)
+[Bug#59](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/59)
 
 ### 12) v0.9.0
 
@@ -254,7 +254,7 @@ You can give your custom week names.
 
 **BugFix**
 
-[Bug#59](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/59)
+[Bug#63](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/63)
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")
