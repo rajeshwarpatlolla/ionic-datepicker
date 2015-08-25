@@ -160,8 +160,8 @@ Once you click on the button you should see the second screen shot.
 #### 2) selected_date_full
 #### 3) left_arrow
 #### 4) drop_down
-#### 5) month_select
-#### 6) year_select
+#### 5) month_dropdown
+#### 6) year_dropdown
 #### 7) right_arrow
 #### 8) date_col
 #### 9) date_selected
