@@ -17,8 +17,6 @@ This is an `ionic-datepicker` bower component, which can be used in any Ionic fr
 1) In your project repository install the ionic-datepicker using bower
 
 `bower install ionic-datepicker --save`
-*OR*
-`npm i ionic-datepicker --save`
 
 This will install the latest version released.
 
