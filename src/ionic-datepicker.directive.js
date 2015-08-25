@@ -76,7 +76,7 @@
         }
 
         //Setting the disabled dates list.
-        if (scope.inputObj.disabledDates && scope.inputObj.disabledDates.length == 0) {
+        if (scope.inputObj.disabledDates && scope.inputObj.disabledDates.length === 0) {
           scope.disabledDates = [];
         } else {
           angular.forEach(scope.inputObj.disabledDates, function (val, key) {
@@ -98,7 +98,7 @@
         scope.selctedDateString = currentDate.toString();
         scope.today = {};
 
-        if (scope.mondayFirst == true) {
+        if (scope.mondayFirst === true) {
           var lastWeekDay = scope.weekNames.shift();
           scope.weekNames.push(lastWeekDay);
         }
