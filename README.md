@@ -42,8 +42,9 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
       todayLabel: 'Today',	//Optional
       closeLabel: 'Close',	//Optional
       setLabel: 'Set',	//Optional
-      errorMsgLabel : 'Please select time.',	//Optional
       setButtonType : 'button-assertive',  //Optional
+      todayButtonType : 'button-assertive',  //Optional
+      closeButtonType : 'button-assertive',  //Optional
       inputDate: new Date(),	//Optional
       mondayFirst: true,	//Optional
       disabledDates: disabledDates,	//Optional
@@ -70,19 +71,17 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
 
 **d) setLabel**(Optional) : The label for `Set` button. Default value is `Set`
 
-**e) errorMsgLabel**(Optional) : The label for the error message. Default value is `Please select a date.`
+**e) setButtonType**(Optional) : This the type of the `Set` button. Default value is `button-positive`. You can give any valid ionic framework's button classes.
 
-**f) setButtonType**(Optional) : This the type of the `Set` button. Default value is `button-positive`. You can give any valid ionic framework's button classes.
+**f) todayButtonType**(Optional) : This the type of the `Today` button. Default value is `button-stable`. You can give any valid ionic framework's button classes.
 
-**g) todayButtonType**(Optional) : This the type of the `Today` button. Default value is `button-positive`. You can give any valid ionic framework's button classes.
+**g) closeButtonType**(Optional) : This the type of the `Close` button. Default value is `button-stable`. You can give any valid ionic framework's button classes.
 
-**h) closeButtonType**(Optional) : This the type of the `Close` button. Default value is `button-positive`. You can give any valid ionic framework's button classes.
+**h) inputDate**(Optional) : This is the date object to pass to the directive. You can give any date object to this property. Default value is `new Date()`. But if you wish to show the initial date in the HTML page, then you should define this property. 
 
-**i) inputDate**(Optional) : This is the date object to pass to the directive. You can give any date object to this property. Default value is `new Date()`. But if you wish to show the initial date in the HTML page, then you should define this property. 
+**i) mondayFirst**(Optional) : Set `true` if you wish to show monday as the first day. Default value is `false`.
 
-**j) mondayFirst**(Optional) : Set `true` if you wish to show monday as the first day. Default value is `false`.
-
-**k) disabledDates**(Optional) : If you have a list of dates to disable, you can create an array like below. Default value is an empty array.
+**j) disabledDates**(Optional) : If you have a list of dates to disable, you can create an array like below. Default value is an empty array.
 ````javascript
 var disabledDates = [
       new Date(1437719836326),
@@ -94,7 +93,7 @@ var disabledDates = [
     ];
 ````
 
-**l) weekDaysList**(Optional) : This is an array with a list of all week days. You can use this if you want to show months in some other language or format or if you wish to use the modal instead of the popup for this component (Refer to point **l**), you can define the `weekDaysList` array in your controller as shown below.
+**k) weekDaysList**(Optional) : This is an array with a list of all week days. You can use this if you want to show months in some other language or format or if you wish to use the modal instead of the popup for this component (Refer to point **l**), you can define the `weekDaysList` array in your controller as shown below.
  ````javascript
  var weekDaysList = ["Sun", "Mon", "Tue", "Wed", "thu", "Fri", "Sat"];
  ````
@@ -103,7 +102,7 @@ var disabledDates = [
  ["S", "M", "T", "W", "T", "F", "S"];
 ````
 
-**m) monthList**(Optional) : This is an array with a list of all months. You can use this if you want to show months in some other language or format. You can create an array like below.
+**l) monthList**(Optional) : This is an array with a list of all months. You can use this if you want to show months in some other language or format. You can create an array like below.
  ````javascript
  var monthList = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
  ````
@@ -112,17 +111,17 @@ var disabledDates = [
  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 ````
 
-**n) templateType**(Optional) : This is string type which takes two values i.e. `modal` or `popup`. Default value is `modal`. If you wish to open in a popup, you can specify the value as `popup` or else you can ignore it.
+**m) templateType**(Optional) : This is string type which takes two values i.e. `modal` or `popup`. Default value is `modal`. If you wish to open in a popup, you can specify the value as `popup` or else you can ignore it.
 
-**o) modalHeaderColor**(Optional) : This takes any valid ionic framework's header color. Default value is `bar-stable`
+**n) modalHeaderColor**(Optional) : This takes any valid ionic framework's header color. Default value is `bar-stable`
 
-**p) modalFooterColor**(Optional) : This takes any valid ionic framework's footer color. Default value is `bar-stable`
+**o) modalFooterColor**(Optional) : This takes any valid ionic framework's footer color. Default value is `bar-stable`
       
-**q) from**(Optional) : This is a date object, from which you wish to enable the dates. You can use this property to disable **previous dates** by specifying `from: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
+**p) from**(Optional) : This is a date object, from which you wish to enable the dates. You can use this property to disable **previous dates** by specifying `from: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
 
-**r) to**(Optional) : This is a date object, to which you wish to enable the dates. You can use this property to disable **future dates** by specifying `to: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
+**q) to**(Optional) : This is a date object, to which you wish to enable the dates. You can use this property to disable **future dates** by specifying `to: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
 
-**s) callback**(Mandatory) : This the callback function, which will get the selected date in to the controller. You can define this function as follows.
+**r) callback**(Mandatory) : This the callback function, which will get the selected date in to the controller. You can define this function as follows.
 ````javascript
 var datePickerCallback = function (val) {
   if (typeof(val) === 'undefined') {
