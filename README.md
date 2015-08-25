@@ -154,16 +154,18 @@ Once you click on the button you should see the second screen shot.
 
 ##CSS Classes:
 
-<img src="https://lh3.googleusercontent.com/GHSRmZhfiOgOLuSR816vpS5EbSnzOdH5Uw_uCJDwr7U=w442-h678-no" width="300" height="450" />
+<img src="https://lh3.googleusercontent.com/tX9IyFN9w3GigHnltCJCdSj1Df5OjDDqxPXmNr7oAdQ=w423-h634-no" width="300" height="450" />
 
 #### 1) ionic_datepicker_modal_content
 #### 2) selected_date_full
 #### 3) left_arrow
 #### 4) drop_down
-#### 5) right_arrow
-#### 6) calendar_grid
-#### 7) date_col
-#### 8) date_selected
+#### 5) month_select
+#### 6) year_select
+#### 7) right_arrow
+#### 8) date_col
+#### 9) date_selected
+#### 10) calendar_grid
 
 You can use these classes to customize the alignment, if required.
 
