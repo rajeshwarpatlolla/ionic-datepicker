@@ -7,7 +7,11 @@ This is an `ionic-datepicker` bower component, which can be used in any Ionic fr
 
 ##Prerequisites.
 
-1) node.js, bower and gulp.
+1) node.js
+
+2) bower
+
+3) gulp.
 
 ##How to use:
 
