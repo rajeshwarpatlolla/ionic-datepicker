@@ -52,8 +52,8 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
       templateType: 'popup', //Optional
       modalHeaderColor: 'bar-positive', //Optional
       modalFooterColor: 'bar-positive', //Optional
-      from: new Date(2015, 7, 2),	//Optional
-      to: new Date(2015, 7, 29),	//Optional
+      from: new Date(2012, 8, 2),	//Optional
+      to: new Date(2018, 8, 25),	//Optional
       callback: function (val) {	//Mandatory
         datePickerCallback(val);
       }
@@ -90,7 +90,7 @@ var disabledDates = [
     ];
 ````
 
-**j) weekDaysList**(Optional) : This is an array with a list of all week days. You can use this if you want to show months in some other language or format or if you wish to use the modal instead of the popup for this component (Refer to point **l**), you can specify lengthy names like below.
+**j) weekDaysList**(Optional) : This is an array with a list of all week days. You can use this if you want to show months in some other language or format or if you wish to use the modal instead of the popup for this component (Refer to point **l**), you can define the `weekDaysList` array in your controller as shown below.
  ````javascript
  var weekDaysList = ["Sun", "Mon", "Tue", "Wed", "thu", "Fri", "Sat"];
  ````
@@ -242,10 +242,17 @@ You can use either a popup or a modal for this `ionic-datepicker`.
 
 **BugFix**
 
-[Bug#59](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/59),
+[Bug#63](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/63)
 
 ### 12) v0.9.0
-Feature added to specify custom week names.
+
+**Feature**
+
+You can give your custom week names.
+
+**BugFix**
+
+[Bug#59](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/59)
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")

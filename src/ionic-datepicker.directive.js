@@ -147,6 +147,7 @@
 
           //To set Monday as the first day of the week.
           var firstDayMonday = scope.dayList[0].day - scope.mondayFirst;
+          firstDayMonday = (firstDayMonday < 0) ? 6 : firstDayMonday;
 
           scope.currentMonthFirstDayEpoch = scope.dayList[0].epochLocal;
           scope.currentMonthLastDayEpoch = scope.dayList[scope.dayList.length - 1].epochLocal;
@@ -214,21 +215,6 @@
           scope.selectedDateFull = scope.date_selection.selectedDate;
         };
 
-        //Getting the reference for the 'ionic-datepicker' modal.
-        $ionicModal.fromTemplateUrl('ionic-datepicker-modal.html', {
-          scope: scope,
-          animation: 'slide-in-up'
-        }).then(function (modal) {
-          scope.modal = modal;
-        });
-        scope.openModal = function () {
-          scope.modal.show();
-        };
-
-        scope.closeModal = function () {
-          scope.modal.hide();
-        };
-
         //Called when the user clicks on any date.
         function dateSelected() {
           scope.date_selection.submitted = true;
@@ -276,6 +262,21 @@
         scope.setIonicDatePickerDate = function () {
           dateSelected();
           scope.closeModal();
+        };
+
+        //Getting the reference for the 'ionic-datepicker' modal.
+        $ionicModal.fromTemplateUrl('ionic-datepicker-modal.html', {
+          scope: scope,
+          animation: 'slide-in-up'
+        }).then(function (modal) {
+          scope.modal = modal;
+        });
+        scope.openModal = function () {
+          scope.modal.show();
+        };
+
+        scope.closeModal = function () {
+          scope.modal.hide();
         };
 
         //Called when the user clicks on the button to invoke the 'ionic-datepicker'
