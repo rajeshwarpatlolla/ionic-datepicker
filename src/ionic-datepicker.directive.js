@@ -301,7 +301,7 @@
               buttons: [
                 {
                   text: scope.closeLabel,
-                  type: scope.todayButtonType,
+                  type: scope.closeButtonType,
                   onTap: function (e) {
                     scope.inputObj.callback(undefined);
                   }
