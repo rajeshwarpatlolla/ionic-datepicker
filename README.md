@@ -25,8 +25,7 @@ This will install the latest version released.
 ````html
 <!-- path to ionic/angularjs -->
 <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
-````    
-The path will change if you have installed with npm.
+````
 
 3) In your application module inject the dependency `ionic-datepicker`, in order to work with the ionic time picker
 ````javascript

@@ -55,7 +55,7 @@
         scope.selectedDateFull = scope.ipDate;
 
         //Setting the months list. This is useful, if the component needs to use some other language.
-        var monthsList = [];
+        scope.monthsList = [];
         if (scope.inputObj.monthList && scope.inputObj.monthList.length === 12) {
           scope.monthsList = scope.inputObj.monthList;
         } else {
@@ -67,7 +67,6 @@
           scope.weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
         }
         scope.yearsList = IonicDatepickerService.yearsList;
-        
 
         //Setting whether to show Monday as the first day of the week or not.
         if (scope.inputObj.mondayFirst) {
@@ -159,7 +158,7 @@
           scope.rows = [];
           scope.cols = [];
 
-          scope.currentMonth = monthsList[current_date.getMonth()];
+          scope.currentMonth = scope.monthsList[current_date.getMonth()];
           scope.currentYear = current_date.getFullYear();
           scope.currentMonthSelected = scope.currentMonth;
           scope.currentYearSelected = scope.currentYear;
@@ -186,7 +185,7 @@
           }
           currentDate.setMonth(currentDate.getMonth() - 1);
 
-          scope.currentMonth = monthsList[currentDate.getMonth()];
+          scope.currentMonth = scope.monthsList[currentDate.getMonth()];
           scope.currentYear = currentDate.getFullYear();
 
           refreshDateList(currentDate);
@@ -197,7 +196,7 @@
             currentDate.setFullYear(currentDate.getFullYear());
           }
           currentDate.setMonth(currentDate.getMonth() + 1);
-          scope.currentMonth = monthsList[currentDate.getMonth()];
+          scope.currentMonth = scope.monthsList[currentDate.getMonth()];
           scope.currentYear = currentDate.getFullYear();
           refreshDateList(currentDate);
         };
