@@ -28,6 +28,8 @@
         scope.setLabel = scope.inputObj.setLabel ? (scope.inputObj.setLabel) : 'Set';
         scope.errorMsgLabel = scope.inputObj.errorMsgLabel ? (scope.inputObj.errorMsgLabel) : 'Please select a date.';
         scope.setButtonType = scope.inputObj.setButtonType ? (scope.inputObj.setButtonType) : 'button-positive';
+        scope.todayButtonType = scope.inputObj.todayButtonType ? (scope.inputObj.todayButtonType) : 'button-stable';
+        scope.closeButtonType = scope.inputObj.closeButtonType ? (scope.inputObj.closeButtonType) : 'button-stable';
         scope.templateType = scope.inputObj.templateType ? (scope.inputObj.templateType) : 'modal';
         scope.modalHeaderColor = scope.inputObj.modalHeaderColor ? (scope.inputObj.modalHeaderColor) : 'bar-stable';
         scope.modalFooterColor = scope.inputObj.modalFooterColor ? (scope.inputObj.modalFooterColor) : 'bar-stable';
@@ -76,7 +78,7 @@
         }
 
         //Setting the disabled dates list.
-        if (scope.inputObj.disabledDates && scope.inputObj.disabledDates.length == 0) {
+        if (scope.inputObj.disabledDates && scope.inputObj.disabledDates.length === 0) {
           scope.disabledDates = [];
         } else {
           angular.forEach(scope.inputObj.disabledDates, function (val, key) {
@@ -98,7 +100,7 @@
         scope.selctedDateString = currentDate.toString();
         scope.today = {};
 
-        if (scope.mondayFirst == true) {
+        if (scope.mondayFirst === true) {
           var lastWeekDay = scope.weekNames.shift();
           scope.weekNames.push(lastWeekDay);
         }
@@ -299,12 +301,14 @@
               buttons: [
                 {
                   text: scope.closeLabel,
+                  type: scope.closeButtonType,
                   onTap: function (e) {
                     scope.inputObj.callback(undefined);
                   }
                 },
                 {
                   text: scope.todayLabel,
+                  type: scope.todayButtonType,
                   onTap: function (e) {
                     todaySelected();
                     e.preventDefault();
