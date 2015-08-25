@@ -8,10 +8,9 @@ This is an `ionic-datepicker` bower component, which can be used in any Ionic fr
 ##Prerequisites.
 
 1) node.js
-
-2) bower
-
-3) gulp.
+2) npm
+3) bower
+4) gulp
 
 ##How to use:
 
