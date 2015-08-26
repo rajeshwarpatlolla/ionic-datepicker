@@ -220,7 +220,7 @@
         function dateSelected() {
           scope.date_selection.submitted = true;
           if (scope.date_selection.selected === true) {
-            scope.inputObj.callback(scope.date_selection.selectedDate);
+            scope.inputObj.callback(scope.date_selection.selectedDate, element);
           }
         }
 
