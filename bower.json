@@ -2,7 +2,7 @@
   "name": "ionic-datepicker",
   "version": "0.9.0",
   "authors": [
-    "rajeshwarpatlolla <rajeshwar.patlolla@gmail.com>"
+    "rajeshwarpatlolla <rajeshwar.patlolla@gmail.com>", "tsungting <john.chen@rangle.io>"
   ],
   "description": "A date picker component for ionic framework",
   "main": [
