@@ -5,7 +5,7 @@
   'use strict';
 
   angular.module('ionic-datepicker')
-    .directive('ionicDatepicker', IonicDatepicker);
+      .directive('ionicDatepicker', IonicDatepicker);
 
   IonicDatepicker.$inject = ['$ionicPopup', '$ionicModal', 'IonicDatepickerService'];
   function IonicDatepicker($ionicPopup, $ionicModal, IonicDatepickerService) {
@@ -39,13 +39,13 @@
 
         //Setting the from and to dates
         if (scope.inputObj.from) {
+          scope.enableDatesFrom = scope.inputObj.from;
           scope.enableDatesFrom.isSet = true;
-          scope.enableDatesFrom.epoch = scope.inputObj.from.getTime();
         }
 
         if (scope.inputObj.to) {
+          scope.enableDatesTo = scope.inputObj.to;
           scope.enableDatesTo.isSet = true;
-          scope.enableDatesTo.epoch = scope.inputObj.to.getTime();
         }
 
         //Setting the input date for the date picker
@@ -68,8 +68,8 @@
         } else {
           scope.weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
         }
-        scope.yearsList = IonicDatepickerService.yearsList;
 
+        scope.yearsList = [new Date().getFullYear(), new Date().getFullYear() - 1];
         //Setting whether to show Monday as the first day of the week or not.
         if (scope.inputObj.mondayFirst) {
           scope.mondayFirst = true;
@@ -304,14 +304,6 @@
                   type: scope.closeButtonType,
                   onTap: function (e) {
                     scope.inputObj.callback(undefined);
-                  }
-                },
-                {
-                  text: scope.todayLabel,
-                  type: scope.todayButtonType,
-                  onTap: function (e) {
-                    todaySelected();
-                    e.preventDefault();
                   }
                 },
                 {
