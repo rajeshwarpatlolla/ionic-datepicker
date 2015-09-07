@@ -6,7 +6,6 @@ This is an `ionic-datepicker` bower component, which can be used in any Ionic fr
 
 [View Demo](http://rajeshwarpatlolla.github.io/DatePickerForIonicFramework/demo/ "Demo") 
 
-
 ##Prerequisites.
 
 * node.js
