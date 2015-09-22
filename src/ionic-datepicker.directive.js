@@ -26,6 +26,7 @@
         scope.todayLabel = scope.inputObj.todayLabel ? (scope.inputObj.todayLabel) : 'Today';
         scope.closeLabel = scope.inputObj.closeLabel ? (scope.inputObj.closeLabel) : 'Close';
         scope.setLabel = scope.inputObj.setLabel ? (scope.inputObj.setLabel) : 'Set';
+        scope.showTodayButton = scope.inputObj.showTodayButton ? (scope.inputObj.showTodayButton) : 'true';
         scope.errorMsgLabel = scope.inputObj.errorMsgLabel ? (scope.inputObj.errorMsgLabel) : 'Please select a date.';
         scope.setButtonType = scope.inputObj.setButtonType ? (scope.inputObj.setButtonType) : 'button-positive';
         scope.todayButtonType = scope.inputObj.todayButtonType ? (scope.inputObj.todayButtonType) : 'button-stable';
@@ -36,6 +37,14 @@
 
         scope.enableDatesFrom = {epoch: 0, isSet: false};
         scope.enableDatesTo = {epoch: 0, isSet: false};
+
+        // creating buttons
+        var buttons  = [];
+        buttons.push({text: scope.closeLabel,type: scope.closeButtonType,onTap: function (e) {scope.inputObj.callback(undefined);}});
+        if(scope.showTodayButton == 'true'){
+          buttons.push({text: scope.todayLabel, type: scope.todayButtonType, onTap: function (e) { todaySelected(); e.preventDefault();}});
+        }
+        buttons.push({text: scope.setLabel,type: scope.setButtonType,onTap: function () { dateSelected();}});
 
         //Setting the from and to dates
         if (scope.inputObj.from) {
@@ -298,30 +307,7 @@
               title: scope.titleLabel,
               subTitle: '',
               scope: scope,
-              buttons: [
-                {
-                  text: scope.closeLabel,
-                  type: scope.closeButtonType,
-                  onTap: function (e) {
-                    scope.inputObj.callback(undefined);
-                  }
-                },
-                {
-                  text: scope.todayLabel,
-                  type: scope.todayButtonType,
-                  onTap: function (e) {
-                    todaySelected();
-                    e.preventDefault();
-                  }
-                },
-                {
-                  text: scope.setLabel,
-                  type: scope.setButtonType,
-                  onTap: function () {
-                    dateSelected();
-                  }
-                }
-              ]
+              buttons: buttons
             });
           }
         });
