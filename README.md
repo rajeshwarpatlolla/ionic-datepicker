@@ -52,6 +52,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
       weekDaysList: weekDaysList,	//Optional
       monthList: monthList,	//Optional
       templateType: 'popup', //Optional
+      showTodayButton: 'true', //Optional
       modalHeaderColor: 'bar-positive', //Optional
       modalFooterColor: 'bar-positive', //Optional
       from: new Date(2012, 8, 2),	//Optional
