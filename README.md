@@ -273,3 +273,5 @@ twitter : https://twitter.com/rajeshwar_9032
 facebook : https://www.facebook.com/rajeshwarpatlolla
 
 paypal : rajeshwar.patlolla@gmail.com
+
+Comment or Rate it : http://market.ionic.io/plugins/ionicdatepicker
