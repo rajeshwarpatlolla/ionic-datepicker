@@ -88,7 +88,7 @@
                 }
 
                 //Setting whether to show the Today button;
-                scope.showTodayButton = !!(scope.inputObj.showTodayButton || true);
+                scope.showTodayButton = angular.isDefined(scope.inputObj.showTodayButton) && !!scope.inputObj.showTodayButton;
 
                 var currentDate = angular.copy(scope.ipDate);
                 currentDate.setHours(0);

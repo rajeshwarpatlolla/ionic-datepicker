@@ -74,9 +74,9 @@
   </ion-content>
   <ion-footer-bar  ng-class="modalFooterColor">
     <div class="row no_padding">
-      <div class="col-33 text-center" ng-click="closeIonicDatePickerModal()"><button class="button button-clear">{{closeLabel}}</button></div>
-      <div class="col-34 text-center" ng-click="setIonicDatePickerTodayDate()"><button class="button button-clear">{{todayLabel}}</button></div>
-      <div class="col-33 text-center" ng-click="setIonicDatePickerDate()"><button class="button button-clear">{{setLabel}}</button></div>
+      <div class="text-center" ng-class="{'col-33': showTodayButton, 'col-50': !showTodayButton}" ng-click="closeIonicDatePickerModal()"><button class="button button-clear">{{closeLabel}}</button></div>
+      <div class="col-34 text-center ng-hide" ng-show="showTodayButton" ng-click="setIonicDatePickerTodayDate()"><button class="button button-clear">{{todayLabel}}</button></div>
+      <div class="text-center" ng-class="{'col-33': showTodayButton, 'col-50': !showTodayButton}" ng-click="setIonicDatePickerDate()"><button class="button button-clear">{{setLabel}}</button></div>
     </div>
   </ion-footer-bar>
 </ion-modal-view>
