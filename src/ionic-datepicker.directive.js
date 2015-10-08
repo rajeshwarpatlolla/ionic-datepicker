@@ -217,7 +217,7 @@
         scope.date_selection.selectedDate = scope.ipDate;
 
         scope.dateSelected = function (date) {
-          if(!date) return;
+          if (!date || Object.keys(date).length === 0) return;
           scope.selctedDateString = date.dateString;
           scope.selctedDateStringCopy = angular.copy(scope.selctedDateString);
           scope.date_selection.selected = true;
