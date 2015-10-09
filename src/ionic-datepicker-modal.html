@@ -7,15 +7,14 @@
       <div class="selected_date_full">{{selectedDateFull | date:"dd-MM-yyyy"}}</div>
       <div class="row">
         <div class="col col-10 left_arrow" ng-click="prevMonth()"
-             ng-class="{'pointer_events_none':(enableDatesFrom.isSet && enableDatesFrom.epoch > currentMonthFirstDayEpoch)}">
-          <button class="button-clear font_22px"
-                  ng-class="{'color_blue':((enableDatesFrom.isSet && enableDatesFrom.epoch < currentMonthFirstDayEpoch) || (!enableDatesFrom.isSet))}">
-            <i class="icon ion-chevron-left"></i>
+             ng-class="{'pointer_events_none':(enableDatesFrom.epoch > currentMonthFirstDayEpoch)}">
+          <button class="button-clear font_22px">
+            <i class="icon ion-chevron-left" ng-class="{'color_blue':(enableDatesFrom.epoch < currentMonthFirstDayEpoch)}"></i>
           </button>
         </div>
         <div class="col col-80 drop_down">
           <div class="row select_section">
-            <div class="col col-50 month_dropdown">
+            <div class="col col-50 month_select">
               <div class="list">
                 <label class="item item-input item-select">
                   <select ng-model="currentMonth" ng-change="monthChanged(currentMonth)" class="month_select">
@@ -27,7 +26,7 @@
                 </label>
               </div>
             </div>
-            <div class="col col-50 year_dropdown">
+            <div class="col col-50 year_select">
               <div class="list">
                 <label class="item item-input item-select">
                   <select ng-model="currentYear" ng-change="yearChanged(currentYear)" class="year_select">
@@ -41,10 +40,9 @@
           </div>
         </div>
         <div class="col col-10 right_arrow" ng-click="nextMonth()"
-             ng-class="{'pointer_events_none':(enableDatesTo.isSet && enableDatesTo.epoch < currentMonthLastDayEpoch)}">
-          <button class="button-clear font_22px"
-                  ng-class="{'color_blue':((enableDatesTo.isSet && enableDatesTo.epoch > currentMonthLastDayEpoch) || (!enableDatesTo.isSet))}">
-            <i class="icon ion-chevron-right"></i>
+             ng-class="{'pointer_events_none':(enableDatesTo.epoch < currentMonthLastDayEpoch)}">
+          <button class="button-clear font_22px">
+            <i class="icon ion-chevron-right" ng-class="{'color_blue':(enableDatesTo.epoch > currentMonthLastDayEpoch)}"></i>
           </button>
         </div>
       </div>
@@ -60,7 +58,7 @@
       'date_selected': (dayList[$parent.$index * numColumns + $index].dateString === selctedDateStringCopy && dayList[$parent.$index * numColumns + $index].day != undefined) ,
       'today' : (dayList[$parent.$index * numColumns + $index].date == today.date && dayList[$parent.$index * numColumns + $index].month == today.month && dayList[$parent.$index * numColumns + $index].year == today.year)}">
               <div class="date_cell" ng-click="dateSelected(dayList[$parent.$index * numColumns + $index])"
-                   ng-class="{'pointer_events_none':(disabledDates.indexOf(dayList[$parent.$index * numColumns + $index].epochLocal) > -1) || (enableDatesFrom.isSet && enableDatesFrom.epoch > dayList[$parent.$index * numColumns + $index].epochLocal) || (enableDatesTo.isSet && enableDatesTo.epoch < dayList[$parent.$index * numColumns + $index].epochLocal)}">
+                   ng-class="{'pointer_events_none':(disabledDates.indexOf(dayList[$parent.$index * numColumns + $index].epochLocal) > -1) || (enableDatesFrom.epoch > dayList[$parent.$index * numColumns + $index].epochLocal) || (enableDatesTo.epoch < dayList[$parent.$index * numColumns + $index].epochLocal)}">
                 {{ dayList[$parent.$index * numColumns + $index].date }}
               </div>
             </div>
@@ -72,11 +70,17 @@
       </div>
     </div>
   </ion-content>
-  <ion-footer-bar  ng-class="modalFooterColor">
+  <ion-footer-bar ng-class="modalFooterColor">
     <div class="row no_padding">
-      <div class="text-center" ng-class="{'col-33': showTodayButton, 'col-50': !showTodayButton}" ng-click="closeIonicDatePickerModal()"><button class="button button-clear">{{closeLabel}}</button></div>
-      <div class="col-34 text-center ng-hide" ng-show="showTodayButton" ng-click="setIonicDatePickerTodayDate()"><button class="button button-clear">{{todayLabel}}</button></div>
-      <div class="text-center" ng-class="{'col-33': showTodayButton, 'col-50': !showTodayButton}" ng-click="setIonicDatePickerDate()"><button class="button button-clear">{{setLabel}}</button></div>
+      <div class="text-center" ng-class="{'col-33': showTodayButton, 'col-50': !showTodayButton}" ng-click="closeIonicDatePickerModal()">
+        <button class="button button-clear">{{closeLabel}}</button>
+      </div>
+      <div class="col-34 text-center ng-hide" ng-show="showTodayButton" ng-click="setIonicDatePickerTodayDate()">
+        <button class="button button-clear">{{todayLabel}}</button>
+      </div>
+      <div class="text-center" ng-class="{'col-33': showTodayButton, 'col-50': !showTodayButton}" ng-click="setIonicDatePickerDate()">
+        <button class="button button-clear">{{setLabel}}</button>
+      </div>
     </div>
   </ion-footer-bar>
 </ion-modal-view>

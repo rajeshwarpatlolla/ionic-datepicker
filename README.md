@@ -59,7 +59,10 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
       to: new Date(2018, 8, 25),	//Optional
       callback: function (val) {	//Mandatory
         datePickerCallback(val);
-      }
+      },
+      subTitleLabel: 'SubTitle', //Optional
+      showTodayButton: true, //Optional
+      reverseTheYears: false, //Optional
     };
 ````
 
@@ -133,6 +136,12 @@ var datePickerCallback = function (val) {
   }
 };
 ````
+**s) subTitleLabel**(Optional) : The label for 'SubTitle' of the ionic-datepicker popup. Default value is an empty string.
+
+**t) showTodayButton**(Optional) : Set `false` if you do not wish to show the `Today` button. Default value is `true`.
+
+**u) reverseTheYears**(Optional) : Set `true` if you want the years in the select button to appear in reverse (descending) order. Default value is `false`.
+
 
 5) Then use the below format in your template / html file
 
