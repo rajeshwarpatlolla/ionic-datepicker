@@ -82,6 +82,10 @@
 .font_22px {
   font-size: 22px;
 }
+.cal-button {
+    padding: 0px !important;
+    font-size: 14px !important;
+}
 .ionic_datepicker_modal_content {
   padding-top: 10%;
 }
