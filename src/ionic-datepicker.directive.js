@@ -225,6 +225,18 @@
           scope.selectedDateFull = scope.date_selection.selectedDate;
         };
 
+        var selectedInputDateObject = {
+          dateObj: scope.ipDate,
+          date: scope.ipDate.getDate(),
+          month: scope.ipDate.getMonth(),
+          year: scope.ipDate.getFullYear(),
+          day: scope.ipDate.getDay(),
+          dateString: scope.ipDate.toString(),
+          epochLocal: scope.ipDate.getTime(),
+          epochUTC: (scope.ipDate.getTime() + (scope.ipDate.getTimezoneOffset() * 60 * 1000))
+        };
+        scope.dateSelected(selectedInputDateObject);
+
         //Called when the user clicks on any date.
         function dateSelected() {
           scope.date_selection.submitted = true;
