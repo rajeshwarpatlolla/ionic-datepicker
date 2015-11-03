@@ -257,18 +257,16 @@
 
         // Watch for selected date change
         scope.$watch('date_selection.selectedDate', function (newVal, oldVal) {
-          if (newVal !== oldVal){
-            // Close modal/popup if date selected
-            if (scope.closeOnSelect) {
+          // Close modal/popup if date selected
+          if (scope.closeOnSelect) {
 
-              dateSelected();
+            dateSelected();
 
-              if (scope.templateType.toLowerCase() === 'modal') {
-                scope.closeModal();
-              }
-              else {
-                scope.popup.close();
-              }
+            if (scope.templateType.toLowerCase() === 'modal') {
+              scope.closeModal();
+            }
+            else {
+              scope.popup.close();
             }
           }
         });
