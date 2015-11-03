@@ -1,5 +1,5 @@
 <div class="ionic-datepicker">
-  <div class="selected_date_full">{{selectedDateFull | date:"dd-MM-yyyy"}}</div>
+  <div class="selected_date_full">{{selectedDateFull | date:dateFormat}}</div>
   <div class="row no_padding">
     <div class="col col-10 left_arrow" ng-click="prevMonth()"
     ng-class="{'pointer_events_none':(enableDatesFrom.isSet && enableDatesFrom.epoch > currentMonthFirstDayEpoch)}">

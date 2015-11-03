@@ -34,6 +34,7 @@
         scope.templateType = scope.inputObj.templateType ? (scope.inputObj.templateType) : 'modal';
         scope.modalHeaderColor = scope.inputObj.modalHeaderColor ? (scope.inputObj.modalHeaderColor) : 'bar-stable';
         scope.modalFooterColor = scope.inputObj.modalFooterColor ? (scope.inputObj.modalFooterColor) : 'bar-stable';
+        scope.dateFormat = scope.inputObj.dateFormat ? (scope.inputObj.dateFormat) : 'dd-MM-yyyy';
 
         scope.enableDatesFrom = {epoch: 0, isSet: false};
         scope.enableDatesTo = {epoch: 0, isSet: false};
@@ -47,15 +48,28 @@
         buttons.push({text: scope.setLabel,type: scope.setButtonType,onTap: function () { dateSelected();}});
 
         //Setting the from and to dates
-        if (scope.inputObj.from) {
-          scope.enableDatesFrom.isSet = true;
-          scope.enableDatesFrom.epoch = scope.inputObj.from.getTime();
-        }
+        //Watch for changes. So we can make two datepickers what are connected
+        scope.$watch('inputObj.from', function (newVal, oldVal) {
+          if (newVal){
+            scope.enableDatesFrom.isSet = true;
+            scope.enableDatesFrom.epoch = newVal.getTime();
+          }
+          else {
+            scope.enableDatesFrom.isSet = false;
+            scope.enableDatesFrom.epoch = 0;
+          }
+        });
 
-        if (scope.inputObj.to) {
-          scope.enableDatesTo.isSet = true;
-          scope.enableDatesTo.epoch = scope.inputObj.to.getTime();
-        }
+        scope.$watch('inputObj.to', function (newVal, oldVal) {
+          if (newVal){
+            scope.enableDatesTo.isSet = true;
+            scope.enableDatesTo.epoch = newVal.getTime();
+          }
+          else {
+            scope.enableDatesTo.isSet = false;
+            scope.enableDatesTo.epoch = 0;
+          }
+        });
 
         //Setting the input date for the date picker
         if (scope.inputObj.inputDate) {
@@ -77,7 +91,7 @@
         } else {
           scope.weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
         }
-        scope.yearsList = IonicDatepickerService.yearsList;
+        scope.yearsList = IonicDatepickerService.getYearsList(scope.inputObj.from, scope.inputObj.to);
 
         //Setting whether to show Monday as the first day of the week or not.
         if (scope.inputObj.mondayFirst) {

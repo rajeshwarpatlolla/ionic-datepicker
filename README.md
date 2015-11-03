@@ -4,7 +4,7 @@
 
 This is an `ionic-datepicker` bower component, which can be used in any Ionic framework's application. No additional plugins required for this component.
 
-[View Demo](http://rajeshwarpatlolla.github.io/DatePickerForIonicFramework/demo/ "Demo") 
+[View Demo](http://rajeshwarpatlolla.github.io/DatePickerForIonicFramework/demo/ "Demo")
 
 ##Prerequisites.
 
@@ -39,27 +39,28 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
 
 ````javascript
     $scope.datepickerObject = {
-      titleLabel: 'Title',	//Optional
-      todayLabel: 'Today',	//Optional
-      closeLabel: 'Close',	//Optional
-      setLabel: 'Set',	//Optional
+      titleLabel: 'Title',  //Optional
+      todayLabel: 'Today',  //Optional
+      closeLabel: 'Close',  //Optional
+      setLabel: 'Set',  //Optional
       setButtonType : 'button-assertive',  //Optional
       todayButtonType : 'button-assertive',  //Optional
       closeButtonType : 'button-assertive',  //Optional
-      inputDate: new Date(),	//Optional
-      mondayFirst: true,	//Optional
-      disabledDates: disabledDates,	//Optional
-      weekDaysList: weekDaysList,	//Optional
-      monthList: monthList,	//Optional
+      inputDate: new Date(),  //Optional
+      mondayFirst: true,  //Optional
+      disabledDates: disabledDates, //Optional
+      weekDaysList: weekDaysList, //Optional
+      monthList: monthList, //Optional
       templateType: 'popup', //Optional
       showTodayButton: 'true', //Optional
       modalHeaderColor: 'bar-positive', //Optional
       modalFooterColor: 'bar-positive', //Optional
-      from: new Date(2012, 8, 2),	//Optional
-      to: new Date(2018, 8, 25),	//Optional
-      callback: function (val) {	//Mandatory
+      from: new Date(2012, 8, 2), //Optional
+      to: new Date(2018, 8, 25),  //Optional
+      callback: function (val) {  //Mandatory
         datePickerCallback(val);
       }
+      dateFormat: 'dd-MM-yyyy', //Optional
     };
 ````
 
@@ -79,7 +80,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
 
 **g) closeButtonType**(Optional) : This the type of the `Close` button. Default value is `button-stable`. You can give any valid ionic framework's button classes.
 
-**h) inputDate**(Optional) : This is the date object to pass to the directive. You can give any date object to this property. Default value is `new Date()`. But if you wish to show the initial date in the HTML page, then you should define this property. 
+**h) inputDate**(Optional) : This is the date object to pass to the directive. You can give any date object to this property. Default value is `new Date()`. But if you wish to show the initial date in the HTML page, then you should define this property.
 
 **i) mondayFirst**(Optional) : Set `true` if you wish to show monday as the first day. Default value is `false`.
 
@@ -99,7 +100,7 @@ var disabledDates = [
  ````javascript
  var weekDaysList = ["Sun", "Mon", "Tue", "Wed", "thu", "Fri", "Sat"];
  ````
- The default values are 
+ The default values are
  ````javascript
  ["S", "M", "T", "W", "T", "F", "S"];
 ````
@@ -108,7 +109,7 @@ var disabledDates = [
  ````javascript
  var monthList = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
  ````
- The default values are 
+ The default values are
  ````javascript
  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 ````
@@ -118,7 +119,7 @@ var disabledDates = [
 **n) modalHeaderColor**(Optional) : This takes any valid ionic framework's header color. Default value is `bar-stable`
 
 **o) modalFooterColor**(Optional) : This takes any valid ionic framework's footer color. Default value is `bar-stable`
-      
+
 **p) from**(Optional) : This is a date object, from which you wish to enable the dates. You can use this property to disable **previous dates** by specifying `from: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
 
 **q) to**(Optional) : This is a date object, to which you wish to enable the dates. You can use this property to disable **future dates** by specifying `to: new Date()`. By default all the dates are enabled. Please note that months are 0 based.
@@ -133,6 +134,8 @@ var datePickerCallback = function (val) {
   }
 };
 ````
+
+**s) dateFormat**(Optional) : This is date format used in template. Defaults to `dd-MM-yyyy`. For how to format date, see: http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.15
 
 5) Then use the below format in your template / html file
 
@@ -149,7 +152,7 @@ var datePickerCallback = function (val) {
 ##Screen Shots:
 
 Once you are successfully done with the above steps, you should be able to see the below screen shots.
-I have used two buttons here. 
+I have used two buttons here.
 
 The first screen shot shows only the buttons before clicking on them.
 Once you click on the button you should see the second screen shot.
@@ -229,7 +232,7 @@ b) Added feature to show Monday as the first day of the week.
 a) `From` and `to` dates functionality added.
 
 b) Code re-structuring.
- 
+
 c) Updated node modules.
 
 **BugFixes**
