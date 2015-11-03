@@ -4,7 +4,7 @@
   </ion-header-bar>
   <ion-content class="ionic_datepicker_modal_content">
     <div class="ionic_datepicker">
-      <div class="selected_date_full">{{selectedDateFull | date:"dd-MM-yyyy"}}</div>
+      <div class="selected_date_full">{{selectedDateFull | date:dateFormat}}</div>
       <div class="row">
         <div class="col col-10 left_arrow" ng-click="prevMonth()"
              ng-class="{'pointer_events_none':(enableDatesFrom.isSet && enableDatesFrom.epoch > currentMonthFirstDayEpoch)}">
@@ -75,21 +75,15 @@
   </ion-content>
   <ion-footer-bar ng-class="modalFooterColor">
     <div class="row no_padding">
-<<<<<<< HEAD
-      <div class="text-center" ng-class="showTodayButton == 'true' ? 'col-33' : 'col-50'" ng-click="closeIonicDatePickerModal()"><button class="button button-clear">{{closeLabel}}</button></div>
-      <div class="col-34 text-center" ng-if="showTodayButton == 'true'" ng-click="setIonicDatePickerTodayDate()"><button class="button button-clear">{{todayLabel}}</button></div>
-      <div class="text-center" ng-class="showTodayButton == 'true' ? 'col-33' : 'col-50'" ng-click="setIonicDatePickerDate()"><button class="button button-clear">{{setLabel}}</button></div>
-=======
-      <div class="col-33 text-center" ng-click="closeIonicDatePickerModal()">
+      <div class="text-center" ng-class="{'col-33': !closeOnSelect, 'col-50': closeOnSelect}" ng-click="closeIonicDatePickerModal()">
         <button class="button button-clear">{{closeLabel}}</button>
       </div>
-      <div class="col-34 text-center" ng-click="setIonicDatePickerTodayDate()">
+      <div class="text-center" ng-class="{'col-34': !closeOnSelect, 'col-50': closeOnSelect}" ng-click="setIonicDatePickerTodayDate()">
         <button class="button button-clear">{{todayLabel}}</button>
       </div>
-      <div class="col-33 text-center" ng-click="setIonicDatePickerDate()">
+      <div ng-if="!closeOnSelect" class="col-33 text-center" ng-click="setIonicDatePickerDate()">
         <button class="button button-clear">{{setLabel}}</button>
       </div>
->>>>>>> develop
     </div>
   </ion-footer-bar>
 </ion-modal-view>

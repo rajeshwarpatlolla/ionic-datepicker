@@ -34,6 +34,8 @@
         scope.templateType = scope.inputObj.templateType ? (scope.inputObj.templateType) : 'modal';
         scope.modalHeaderColor = scope.inputObj.modalHeaderColor ? (scope.inputObj.modalHeaderColor) : 'bar-stable';
         scope.modalFooterColor = scope.inputObj.modalFooterColor ? (scope.inputObj.modalFooterColor) : 'bar-stable';
+        scope.dateFormat = scope.inputObj.dateFormat ? (scope.inputObj.dateFormat) : 'dd-MM-yyyy';
+        scope.closeOnSelect = scope.inputObj.closeOnSelect ? (scope.inputObj.closeOnSelect) : false;
 
         scope.enableDatesFrom = {epoch: 0, isSet: false};
         scope.enableDatesTo = {epoch: 0, isSet: false};
@@ -41,25 +43,41 @@
         // creating buttons
         var buttons  = [];
         buttons.push({text: scope.closeLabel,type: scope.closeButtonType,onTap: function (e) {scope.inputObj.callback(undefined);}});
-        if(scope.showTodayButton == 'true'){
+        if (scope.showTodayButton == 'true') {
           buttons.push({text: scope.todayLabel, type: scope.todayButtonType, onTap: function (e) { todaySelected(); e.preventDefault();}});
         }
-        buttons.push({text: scope.setLabel,type: scope.setButtonType,onTap: function () { dateSelected();}});
+
+        if (!scope.closeOnSelect) {
+          buttons.push({text: scope.setLabel,type: scope.setButtonType,onTap: function () { dateSelected();}});
+        }
 
         //Setting the from and to dates
-        if (scope.inputObj.from) {
-          scope.enableDatesFrom.isSet = true;
-          scope.enableDatesFrom.epoch = scope.inputObj.from.getTime();
-        }
+        //Watch for changes. So we can make two datepickers what are connected
+        scope.$watch('inputObj.from', function (newVal, oldVal) {
+          if (newVal){
+            scope.enableDatesFrom.isSet = true;
+            scope.enableDatesFrom.epoch = newVal.getTime();
+          }
+          else {
+            scope.enableDatesFrom.isSet = false;
+            scope.enableDatesFrom.epoch = 0;
+          }
+        });
 
-        if (scope.inputObj.to) {
-          scope.enableDatesTo.isSet = true;
-          scope.enableDatesTo.epoch = scope.inputObj.to.getTime();
-        }
+        scope.$watch('inputObj.to', function (newVal, oldVal) {
+          if (newVal){
+            scope.enableDatesTo.isSet = true;
+            scope.enableDatesTo.epoch = newVal.getTime();
+          }
+          else {
+            scope.enableDatesTo.isSet = false;
+            scope.enableDatesTo.epoch = 0;
+          }
+        });
 
         //Setting the input date for the date picker
         if (scope.inputObj.inputDate) {
-          scope.ipDate = scope.inputObj.inputDate;
+          scope.ipDate = new Date(scope.inputObj.inputDate.getFullYear(), scope.inputObj.inputDate.getMonth(), scope.inputObj.inputDate.getDate());
         } else {
           scope.ipDate = new Date();
         }
@@ -77,7 +95,7 @@
         } else {
           scope.weekNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
         }
-        scope.yearsList = IonicDatepickerService.yearsList;
+        scope.yearsList = IonicDatepickerService.getYearsList(scope.inputObj.from, scope.inputObj.to);
 
         //Setting whether to show Monday as the first day of the week or not.
         if (scope.inputObj.mondayFirst) {
@@ -237,6 +255,24 @@
         };
         scope.dateSelected(selectedInputDateObject);
 
+        // Watch for selected date change
+        scope.$watch('date_selection.selectedDate', function (newVal, oldVal) {
+          if (newVal !== oldVal){
+            // Close modal/popup if date selected
+            if (scope.closeOnSelect) {
+
+              dateSelected();
+
+              if (scope.templateType.toLowerCase() === 'modal') {
+                scope.closeModal();
+              }
+              else {
+                scope.popup.close();
+              }
+            }
+          }
+        });
+
         //Called when the user clicks on any date.
         function dateSelected() {
           scope.date_selection.submitted = true;
@@ -314,7 +350,7 @@
             scope.openModal();
           } else {
             //Getting the reference for the 'ionic-datepicker' popup.
-            $ionicPopup.show({
+            scope.popup = $ionicPopup.show({
               templateUrl: 'ionic-datepicker-popup.html',
               title: scope.titleLabel,
               subTitle: '',
