@@ -35,6 +35,7 @@
         scope.modalHeaderColor = scope.inputObj.modalHeaderColor ? (scope.inputObj.modalHeaderColor) : 'bar-stable';
         scope.modalFooterColor = scope.inputObj.modalFooterColor ? (scope.inputObj.modalFooterColor) : 'bar-stable';
         scope.dateFormat = scope.inputObj.dateFormat ? (scope.inputObj.dateFormat) : 'dd-MM-yyyy';
+        scope.closeOnSelect = scope.inputObj.closeOnSelect ? (scope.inputObj.closeOnSelect) : false;
 
         scope.enableDatesFrom = {epoch: 0, isSet: false};
         scope.enableDatesTo = {epoch: 0, isSet: false};
@@ -42,10 +43,13 @@
         // creating buttons
         var buttons  = [];
         buttons.push({text: scope.closeLabel,type: scope.closeButtonType,onTap: function (e) {scope.inputObj.callback(undefined);}});
-        if(scope.showTodayButton == 'true'){
+        if (scope.showTodayButton == 'true') {
           buttons.push({text: scope.todayLabel, type: scope.todayButtonType, onTap: function (e) { todaySelected(); e.preventDefault();}});
         }
-        buttons.push({text: scope.setLabel,type: scope.setButtonType,onTap: function () { dateSelected();}});
+
+        if (!scope.closeOnSelect) {
+          buttons.push({text: scope.setLabel,type: scope.setButtonType,onTap: function () { dateSelected();}});
+        }
 
         //Setting the from and to dates
         //Watch for changes. So we can make two datepickers what are connected
@@ -251,6 +255,24 @@
         };
         scope.dateSelected(selectedInputDateObject);
 
+        // Watch for selected date change
+        scope.$watch('date_selection.selectedDate', function (newVal, oldVal) {
+          if (newVal !== oldVal){
+            // Close modal/popup if date selected
+            if (scope.closeOnSelect) {
+
+              dateSelected();
+
+              if (scope.templateType.toLowerCase() === 'modal') {
+                scope.closeModal();
+              }
+              else {
+                scope.popup.close();
+              }
+            }
+          }
+        });
+
         //Called when the user clicks on any date.
         function dateSelected() {
           scope.date_selection.submitted = true;
@@ -328,7 +350,7 @@
             scope.openModal();
           } else {
             //Getting the reference for the 'ionic-datepicker' popup.
-            $ionicPopup.show({
+            scope.popup = $ionicPopup.show({
               templateUrl: 'ionic-datepicker-popup.html',
               title: scope.titleLabel,
               subTitle: '',

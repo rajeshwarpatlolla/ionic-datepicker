@@ -61,6 +61,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
         datePickerCallback(val);
       }
       dateFormat: 'dd-MM-yyyy', //Optional
+      closeOnSelect: false, //Optional
     };
 ````
 
@@ -136,6 +137,8 @@ var datePickerCallback = function (val) {
 ````
 
 **s) dateFormat**(Optional) : This is date format used in template. Defaults to `dd-MM-yyyy`. For how to format date, see: http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.15
+
+**t) closeOnSelect**(Optional) : Boolean to indicate wheteher datepicker will be closed after date selection. If set to `true`, "Set" button will be hidden. Defaults to `false`.
 
 5) Then use the below format in your template / html file
 
