@@ -73,7 +73,7 @@
 
         //Setting the input date for the date picker
         if (scope.inputObj.inputDate) {
-          scope.ipDate = scope.inputObj.inputDate;
+          scope.ipDate = new Date(scope.inputObj.inputDate.getFullYear(), scope.inputObj.inputDate.getMonth(), scope.inputObj.inputDate.getDate());
         } else {
           scope.ipDate = new Date();
         }
