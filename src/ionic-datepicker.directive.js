@@ -224,6 +224,7 @@
           if (currentDate.getMonth() === 11) {
             currentDate.setFullYear(currentDate.getFullYear());
           }
+          currentDate.setDate(1);
           currentDate.setMonth(currentDate.getMonth() + 1);
           scope.currentMonth = scope.monthsList[currentDate.getMonth()];
           scope.currentYear = currentDate.getFullYear();
