@@ -144,7 +144,7 @@ var datePickerCallback = function (val) {
 
 ````html
 <ionic-datepicker input-obj="datepickerObject">
-  <button class="button button-block button-positive"> {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}</button>
+  <button class="button button-block button-positive"> {{datepickerObject.inputDate | date:datepickerObject.dateFormat}}</button>
 </ionic-datepicker>
 ````
 
