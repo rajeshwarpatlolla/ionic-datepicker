@@ -59,7 +59,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
       to: new Date(2018, 8, 25),  //Optional
       callback: function (val) {  //Mandatory
         datePickerCallback(val);
-      }
+      },
       dateFormat: 'dd-MM-yyyy', //Optional
       closeOnSelect: false, //Optional
     };
