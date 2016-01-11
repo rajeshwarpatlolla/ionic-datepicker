@@ -420,6 +420,10 @@
                     scope.modal.hide();
                 };
 
+                scope.on('$destroy', function () {
+                    scope.modal.remove();
+                });
+
                 }
                 //Called when the user clicks on the button to invoke the 'ionic-datepicker'
                 element.on("click", function () {
