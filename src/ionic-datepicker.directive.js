@@ -17,7 +17,11 @@
                 inputObj: "=inputObj"
             },
             link: function (scope, element, attrs) {
-
+                
+                if(typeOf scope.inputObj.inputDate === 'string'){
+                    scope.inputObj.inputDate = new Date(scope.inputObj.inputDate);
+                }
+                
                 scope.currentMonth = '';
                 scope.currentYear = '';
                 scope.disabledDates = [];
