@@ -39,10 +39,10 @@
                 scope.templateType = scope.inputObj.templateType ? (scope.inputObj.templateType) : 'popup';
                 scope.modalHeaderColor = scope.inputObj.modalHeaderColor ? (scope.inputObj.modalHeaderColor) : 'bar-stable';
                 scope.modalFooterColor = scope.inputObj.modalFooterColor ? (scope.inputObj.modalFooterColor) : 'bar-stable';
-               scope.showClear = scope.inputObj.showClear ? (scope.inputObj.showClear) : false;
+                scope.showClear = scope.inputObj.showClear ? (scope.inputObj.showClear) : false;
                 scope.clearLabel = scope.inputObj.clearLabel ? (scope.inputObj.clearLabel) : 'Clear';
                 scope.clearButtonType = scope.inputObj.clearButtonType ? (scope.inputObj.clearButtonType) : 'button-stable cal-button';
-               scope.dateFormat = scope.inputObj.dateFormat ? (scope.inputObj.dateFormat) : 'dd-MM-yyyy';
+                scope.dateFormat = scope.inputObj.dateFormat ? (scope.inputObj.dateFormat) : 'dd-MM-yyyy';
                 scope.closeOnSelect = scope.inputObj.closeOnSelect ? (scope.inputObj.closeOnSelect) : false;
 
                 scope.enableDatesFrom = {
@@ -318,10 +318,11 @@
 
                         dateSelected();
 
-                        if (scope.templateType.toLowerCase() === 'modal') {
-                            scope.closeModal();
-                        } else {
-                            scope.popup.close();
+                        if (scope.templateType.toLowerCase() === 'modal' && scope.modal) {
+                          scope.closeModal();
+                        }
+                        else if(scope.popup) {
+                          scope.popup.close();
                         }
                     }
                 });
