@@ -167,6 +167,7 @@
                 currentDate.setMilliseconds(0);
 
                 scope.selctedDateString = currentDate.toString();
+                scope.selctedDateStringCopy = angular.copy(scope.selctedDateString);
                 scope.today = {};
 
                 if (scope.mondayFirst === true) {
