@@ -311,6 +311,16 @@
                 scope.date_selection.selected = true;
                 scope.date_selection.selectedDate = scope.ipDate;
 
+                scope.date_cell_clicked = function(date) {
+                  scope.dateSelected(date);
+
+                  if (scope.closeOnSelect) {
+                    dateSelected();
+                    if (scope.modal)  scope.closeModal();
+                    else if(scope.popup) scope.popup.close();
+                  }
+                }
+
                 scope.dateSelected = function (date) {
                     if (!date || Object.keys(date).length === 0) return;
                     scope.selctedDateString = date.dateString;
@@ -331,22 +341,6 @@
                     epochUTC: (scope.ipDate.getTime() + (scope.ipDate.getTimezoneOffset() * 60 * 1000))
                 };
                 scope.dateSelected(selectedInputDateObject);
-
-                // Watch for selected date change
-                scope.$watch('date_selection.selectedDate', function (newVal, oldVal) {
-                    // Close modal/popup if date selected
-                    if (scope.closeOnSelect) {
-
-                        dateSelected();
-
-                        if (scope.templateType.toLowerCase() === 'modal' && scope.modal) {
-                          scope.closeModal();
-                        }
-                        else if(scope.popup) {
-                          scope.popup.close();
-                        }
-                    }
-                });
 
                 //Called when the user clicks on any date.
                 function dateCleared() {
