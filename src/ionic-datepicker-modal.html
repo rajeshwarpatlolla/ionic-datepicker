@@ -41,7 +41,7 @@
           <div class="row" ng-repeat="row in rows track by $index" style="text-align: center;">
                         <div class="col no_padding date_col" ng-repeat="col in cols track by $index" ng-class="{'date_selected': (dayList[row + $index].dateString === selctedDateStringCopy && dayList[row + $index].day != undefined),
         'today' : (dayList[row + $index].dateString == today.dateString )}">
-                            <div class="date_cell" ng-click="dateSelected(dayList[row + $index])" ng-class="{'pointer_events_none':dayList[row + $index].dateDisabled}">
+                            <div class="date_cell" ng-click="date_cell_clicked(dayList[row + $index])" ng-class="{'pointer_events_none':dayList[row + $index].dateDisabled, 'has_event':dayList[row + $index].dateHasEvent}">
                                 {{ dayList[row + $index].date }}
               </div>
             </div>

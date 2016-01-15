@@ -49,6 +49,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-datepicker']){
       inputDate: new Date(),  //Optional
       mondayFirst: true,  //Optional
       disabledDates: disabledDates, //Optional
+      eventDates: eventDates, //Optional
       weekDaysList: weekDaysList, //Optional
       monthList: monthList, //Optional
       templateType: 'popup', //Optional
@@ -95,6 +96,18 @@ var disabledDates = [
       new Date("08-14-2015"), //Short format
       new Date(1439676000000) //UNIX format
     ];
+
+**k) eventDates**(Optional) : Marks date green. Accepts array of dates just like disabledDates. Default value is an empty array.
+````javascript
+var eventDates = [
+      new Date(1437719836326),
+      new Date(),
+      new Date(2015, 7, 10), //months are 0-based, this is August, 10th!
+      new Date('Wednesday, August 12, 2015'), //Works with any valid Date formats like long format
+      new Date("08-14-2015"), //Short format
+      new Date(1439676000000) //UNIX format
+    ];
+
 ````
 
 **k) weekDaysList**(Optional) : This is an array with a list of all week days. You can use this if you want to show months in some other language or format or if you wish to use the modal instead of the popup for this component (Refer to point **l**), you can define the `weekDaysList` array in your controller as shown below.

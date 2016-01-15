@@ -44,6 +44,10 @@
   color: #AAAAAA;
 }
 
+.ionic_datepicker .has_event {
+  background-color: rgb(103, 245, 56);
+}
+
 .ionic_datepicker .select_section {
   padding: 0;
 }
