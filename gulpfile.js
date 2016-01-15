@@ -13,7 +13,6 @@ gulp.task('html2js', function () {
       moduleName: "ionic-datepicker.templates"
     }))
     .pipe(concat("templates.js"))
-    //.pipe(uglify())
     .pipe(gulp.dest("./dist"));
 });
 
@@ -39,4 +38,4 @@ gulp.task('del', function () {
   del(['dist/*']);
 });
 
-gulp.task('build', ['del-temp-files']);
+gulp.task('default', ['del-temp-files']);
