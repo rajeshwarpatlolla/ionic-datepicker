@@ -20,15 +20,15 @@ gulp.task('html2js', function () {
 gulp.task('css2js', function () {
   return gulp.src("./src/*.css")
     .pipe(css2js())
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(gulp.dest("./dist/"));
 });
 
 gulp.task('make-bundle', ['del', 'html2js', 'css2js'], function () {
   return gulp.src(['dist/*', './src/*.js'])
     .pipe(concat('ionic-datepicker.bundle.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/'));
+    //.pipe(uglify().on('error', function(e){console.log(e)}))
+    .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('del-temp-files', ['make-bundle'], function () {
@@ -40,4 +40,3 @@ gulp.task('del', function () {
 });
 
 gulp.task('build', ['del-temp-files']);
-

@@ -17,14 +17,15 @@
                 inputObj: "=inputObj"
             },
             link: function (scope, element, attrs) {
-                
-                if(typeOf scope.inputObj.inputDate === 'string'){
+
+                if(typeof scope.inputObj.inputDate === 'string'){
                     scope.inputObj.inputDate = new Date(scope.inputObj.inputDate);
                 }
-                
+
                 scope.currentMonth = '';
                 scope.currentYear = '';
                 scope.disabledDates = [];
+                scope.eventDates = [];
 
                 //Setting the title, today, close and set strings for the date picker
                 scope.titleLabel = scope.inputObj.titleLabel ? (scope.inputObj.titleLabel) : 'Select Date';
@@ -160,6 +161,19 @@
                     });
                 }
 
+                if (scope.inputObj.eventDates && scope.inputObj.eventDates.length === 0) {
+                    scope.eventDates = [];
+                } else {
+                    angular.forEach(scope.inputObj.eventDates, function (val, key) {
+                        val.setHours(0);
+                        val.setMinutes(0);
+                        val.setSeconds(0);
+                        val.setMilliseconds(0);
+
+                        scope.eventDates.push(val.getTime());
+                    });
+                }
+
                 var currentDate = angular.copy(scope.ipDate);
                 currentDate.setHours(0);
                 currentDate.setMinutes(0);
@@ -192,6 +206,10 @@
                     var epochLocal = date.getTime();
                     return ((scope.disabledDates.indexOf(epochLocal) > -1) || (scope.enableDatesFrom.isSet && scope.enableDatesFrom.epoch > epochLocal) || (scope.enableDatesTo.isSet && scope.enableDatesTo.epoch < epochLocal));
                 };
+                var checkDateHasEvent = function (date) {
+                  var epochLocal = date.getTime();
+                  return scope.eventDates.indexOf(epochLocal) > -1;
+                };
                 var refreshDateList = function (current_date) {
                     current_date.setHours(0);
                     current_date.setMinutes(0);
@@ -212,13 +230,15 @@
                     for (var i = firstDay; i <= lastDay; i++) {
                         var tempDate = new Date(current_date.getFullYear(), current_date.getMonth(), i);
                         var dateDisabled = checkDateIsDisabled(tempDate);
+                        var dateHasEvent = checkDateHasEvent(tempDate);
                         scope.dayList.push({
                             date: tempDate.getDate(),
                             month: tempDate.getMonth(),
                             year: tempDate.getFullYear(),
                             day: tempDate.getDay(),
                             dateString: tempDate.toString(),
-                             dateDisabled: dateDisabled
+                            dateDisabled: dateDisabled,
+                            dateHasEvent: dateHasEvent
                         });
                         if (tempDate.getDate() == current_date.getDate()) {
                             scope.dateSelected(scope.dayList[scope.dayList.length - 1]);
