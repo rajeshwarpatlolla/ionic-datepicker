@@ -191,7 +191,7 @@
                 var checkDateIsDisabled = function (date) {
                     var epochLocal = date.getTime();
                     var isDisabled = ((scope.disabledDates.indexOf(epochLocal) > -1) || (scope.enableDatesFrom.isSet && scope.enableDatesFrom.epoch > epochLocal) || (scope.enableDatesTo.isSet && scope.enableDatesTo.epoch < epochLocal));
-                    if(!isDisabled && angular.isUndefined(scope.inputObj.dateIsDisabled)){
+                    if(!isDisabled && !angular.isUndefined(scope.inputObj.dateIsDisabled)){
                         isDisabled = scope.inputObj.dateIsDisabled(date);
                     }
                     return isDisabled;
