@@ -18,7 +18,7 @@
             },
             link: function (scope, element, attrs) {
                 
-                if(typeOf scope.inputObj.inputDate === 'string'){
+                if(typeof scope.inputObj.inputDate === 'string'){
                     scope.inputObj.inputDate = new Date(scope.inputObj.inputDate);
                 }
                 
@@ -190,7 +190,11 @@
                 };
                 var checkDateIsDisabled = function (date) {
                     var epochLocal = date.getTime();
-                    return ((scope.disabledDates.indexOf(epochLocal) > -1) || (scope.enableDatesFrom.isSet && scope.enableDatesFrom.epoch > epochLocal) || (scope.enableDatesTo.isSet && scope.enableDatesTo.epoch < epochLocal));
+                    var isDisabled = ((scope.disabledDates.indexOf(epochLocal) > -1) || (scope.enableDatesFrom.isSet && scope.enableDatesFrom.epoch > epochLocal) || (scope.enableDatesTo.isSet && scope.enableDatesTo.epoch < epochLocal));
+                    if(!isDisabled && !angular.isUndefined(scope.inputObj.dateIsDisabled)){
+                        isDisabled = scope.inputObj.dateIsDisabled(date);
+                    }
+                    return isDisabled;
                 };
                 var refreshDateList = function (current_date) {
                     current_date.setHours(0);
