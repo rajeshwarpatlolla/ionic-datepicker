@@ -198,6 +198,14 @@ Other classes are same as the popup classes. You can use any one of the below cl
 ####ionic_datepicker_popup
 ####ionic_datepicker_modal
 
+The css class names for the buttons are as follows
+
+a) For `Set` button the class name is `button_set` 
+
+b) For `Today` button the class name is `button_today`
+ 
+c) For `Close` button the class name is `button_close` 
+
 ##Versions:
 
 ### 1) v0.1.0
