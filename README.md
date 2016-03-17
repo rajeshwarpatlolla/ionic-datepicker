@@ -22,7 +22,7 @@ This plugin is completely open source. Please rate this plugin @ [Ionic Market](
 
 This will install the latest version of this plugin. If you wish to install any specific version(eg : 0.9.0) then
  
-`bower install ionic-datepicker@0.9.0 --save`
+`bower install ionic-datepicker#0.9.0 --save`
 
 2) Specify the path of  `ionic-datepicker.bundle.min.js` in your `index.html` file.
 
