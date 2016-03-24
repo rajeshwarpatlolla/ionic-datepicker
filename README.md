@@ -114,7 +114,7 @@ The properties you can configure are as follows.
 
 **l) dateFormat**(Optional) : This is date format used in template. Defaults to `dd-MM-yyyy`. For how to format date, see: http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.15
 
-**m) showTodayButton**(Optional) : Boolean to specify whether to show the `Today` button or not. The default values is `true`.
+**m) showTodayButton**(Optional) : Boolean to specify whether to show the `Today` button or not. The default values is `false`.
 
 **n) closeOnSelect**(Optional) : Boolean to indicate whether date picker popup/modal will be closed after selection. If set to `true`, `Set` button will be hidden. The default value is `false`.
 
