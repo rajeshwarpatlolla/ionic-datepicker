@@ -22,7 +22,7 @@ This plugin is completely open source. Please rate this plugin @ [Ionic Market](
 
 This will install the latest version of this plugin. If you wish to install any specific version(eg : 0.9.0) then
  
-`bower install ionic-datepicker#0.9.0 --save`
+`bower install ionic-datepicker#1.0.1 --save`
 
 2) Specify the path of  `ionic-datepicker.bundle.min.js` in your `index.html` file.
 
@@ -58,6 +58,8 @@ Your config method may look like this if you wish to setup the configuration. Bu
       dateFormat: 'dd MMMM yyyy',
       closeOnSelect: false,
       disableWeekdays: [6],
+      setTheme: 'positive',
+      setThemeSecondary: 'positive'
     };
     ionicDatePickerProvider.configDatePicker(datePickerObj);
   })
@@ -120,6 +122,11 @@ The properties you can configure are as follows.
 
 **o) disableWeekdays**(Optional) : Accepts array of numbers starting from 0(Sunday) to 6(Saturday). If you specify any values for this array, then it will disable that week day in the whole calendar. For example if you pass [0,6], then all the Sundays and Saturdays will be disabled.
 
+**p) setTheme**(Optional) : This is string type which takes two values i.e. `positive`, `calm`, `balanced`, `energized`, `assertive`, `royal` or `dark`. Default value is `positive`.
+
+**q) setThemeSecondary**(Optional) : This is string type which takes two values i.e. `positive`, `calm`, `balanced`, `energized`, `assertive`, `royal` or `dark`. Default value is `positive`.
+
+
 5) Inject `ionicDatePicker` in the controller, where you wish to use this component. Then using the below method you can call the datepicker.
 ````javascript
 .controller('HomeCtrl', function ($scope, ionicDatePicker) {
@@ -175,7 +182,7 @@ The first screen shot shows the popup and the second shows the modal of this plu
 ##CSS Classes:
 
 ###popup
-<img src="https://lh3.googleusercontent.com/O4DlaheQZM_s-xC85sF-AJIGmSpNFRuZFEtNClCimRDRnrk3zGEfumJrn9J75jtS5A53PMi5FiinH-S-D7nMwe4XdHbwPnWvGGuECdMA5aUPt5vB1_wMVa9kDZhf7BHJ3rxGORqIhKk5LcyOMuMj5dN5tB80KPgJ4YjQvk3P4EI8HMpP9FRhTBCfDqQzxNbl9qLFaos89YJzuwL6w30-GIFYhuHzO8I7s-kR5NZ5ocbVuhCGWqlnkcGJUUApOvll5410RBQmIUIdJg2goxDZatITYiBSpuzPFgSST1LqphZwpjnxcNYqvHNqScqyGWvLLqbpeQ5_a6JrtOSo0EtTrfh7C_lDIcg_RA9gatAo5_4WfJiTZw6tHVAXItUvr8aBIokjVebn6XXP6PUWOp1oj30_PgQ-XGe56mE2RSAYfiEWIefHixJrqwg3IEQ60JFeHUxnwWY-rptVew6s3SF2m81p1_Z3A1x-cuZrUmwHPLcDV2s7mxTQxyt7QeEWXbAd4foznBvpBeIH1n2iuAvFUG16QrMptpwxigkPi1R8kmhCWDRqMox14ZWe7-5IJuMFlAab=w382-h678-no" width="360" height="640" />
+<img src="https://lh3.googleusercontent.com/ftY-EzWLPO4T86ZqF3npN8_cCM2Ao4hRZPiZymEsz7GCrVE3n0rpvAY6PSd94OGShYBIU5ANidRzG8p0euPwnxdVus4enOragUmXTh33EWpbYZRbMp6xjlCqmNCj1lh0jJPXbeHOo-xLDdLu0_txwv8WooCwa3mV9BpQ1e1k8gxIuhhJ-R35IXl1UmL_1uL4Wp1K2HQ7qsWiNKgSHuDLRMRS8OqnYDmcOn4nbSikiHW0a0TBID8lyW81A_CzdWxPiHu6TGvS_EqL9u28-Nl-n1lvqeNaURm5m77FfGXH5MMB9u120TSmavSkbo3Hn4s1AmPJ-CZjQ2pHJGxnQpCVU-jEfHXnDugPJSQWlhEWLmdCYA2e2UOoY_qFZ8g7Z_IuDLQfW3HO6V-XQKL1FSJ9dCHuspOoeuMS9HQ6p-fKMv_rET1q91na3bnvUeeLE_w-gKg2WBJRz-L2rlZW56siWRKfuD2KaVay22E23b0q_pNX2ix1K6vTRvOTDbqSmN-j6CjGUpZO51oSWa1eXAc8PAVo-uqbbzGlOYW53rcUJbx-lEktEmtGewpK8_zC5rwTZ7lj=w382-h678-no" width="360" height="640" />
 
 #### 1) prev_btn_section
 #### 2) next_btn_section
@@ -189,7 +196,7 @@ The first screen shot shows the popup and the second shows the modal of this plu
 #### 10) today
 
 ###modal
-<img src="https://lh3.googleusercontent.com/tbNgGKK0QtKxVBfRr8NlYhQy6iSKDtagbDispAMNoE8a72Eyq102Bn2qnX5mQmmgxZGho5xWK0fx6ZoG0lPKYiG-pGzzhBE8NLeGH8lCu1tTVrk8FiyRaOmyycBRJft1gURavyCA0nLFd_tFrHdmVyxOXD7IIy2mncc7tnMQIIDXTH99Rb1Hkd0GOF9-UvCLMjEld361VDZsmZUamJ79dlv_u4gyPmBMfG9Q6vmh2uOVai_mfKQ8M6mKRDzq9venYp-UEU-S9LVy3VI4kaftHYlNsSggVd0b1q2PWpCMjGEMGmdYY5XXcGYvumefmZypjBCmas_M_86IU9aZYU07Z9DKnIl1NBQNpFSAv_T0Z-urto5I-y6o6gz3BYn8jh_u5_YEgeva5iyOJIqJwg1cynjlmGoampRt2ajyGQb93GZkLjB1C7J-ERFZWgeXaXbHPmVVLGWFI7nH40QohHMQbAGB1JwmsbVP8qe1OnzlNXrEdy6jdphCP3rBqFSigkd1JMbejwcQcCfoP9xFFSPh0n6cUqBTukY7y0RskLVddwiNQLFbtRL_hebCQLqmUwsETUY9=w382-h678-no" width="360" height="640" />
+<img src="https://lh3.googleusercontent.com/A_9xjUI3dXgZsOVVmujQQSs2XtCA1H0Le7m6trVxLPBFcfy8rx5L-_PU1G7iWApIi3IwtzBqclGbL4gDgCgKJA7i-FadbYAa21QCXTRwoX8J-ioJWV7CgXtmUDuiwc_OFrNbvyORzLZEY40aYJNTuRBZ_jWUL-R-Bpxf_cEKCtOCJdzi0tDz_XFAhzc3OL_jNSwKROpQQsyBcOTVFkFsWgQaataoH6D1lKjtyvh_Mc5NO-2xhXXASrCiW7TMFImJzEYeYKNdmCS_dY-4lAvJ2jGkkRZAvhs5XcB0Bv--CYub7hTNEtVXHpTYpatKkytNuaMQWk32UO6TU4IhJzFfW3IgXxwcU0-BcINOq27JBtysmdKa2GgFMwNXz1KrDQPfv6M6_QZ6SXoV8-w7LX9Dvh0fM3e6FMCNADMAc4r1g8Y8I8q2vaXaPmiMfaCAwPc4yfY4J1s4uzspYu9M5qZ39_sEvNjnjdAIPBuDgyYwJ2ceRhA3NBhidM6RGYZWT6RC8vfTHU2gcNcoOLqJ1_Yb1e24sN2cVT0Z6q20GNefCiflstMxl_AE-y1Mw6muxu4bnY8m=w382-h678-no" width="360" height="640" />
 
 #### 1) left_arrow
 #### 2) right_arrow
@@ -331,6 +338,16 @@ Few more features are also added apart from the above mentioned features.
 [Bug#168](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/168),
 [Bug#171](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/171)
 
+### 13) v1.0.1
+
+**Features**
+a) You can configure color theme the ionic-datepicker from the config method.
+b) New CSS
+c) Buttons with label attributes in modal
+
+**BugFixes**
+size difference between elements in date_col with border.
+set 
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")
