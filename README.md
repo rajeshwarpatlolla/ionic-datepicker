@@ -338,7 +338,7 @@ Few more features are also added apart from the above mentioned features.
 [Bug#171](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/171)
 
 
-### 13) v1.0.1
+### 14) v1.0.1
 
 **Features**
 
@@ -350,6 +350,7 @@ c) Buttons with label attributes in modal
 
 
 **BugFixes**
+
 size difference between elements in date_col with border.
 
 
