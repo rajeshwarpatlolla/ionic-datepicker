@@ -13,6 +13,8 @@ angular.module('ionic-datepicker.provider', [])
       templateType: 'popup',
       showTodayButton: false,
       closeOnSelect: false,
+      setTheme: 'positive',
+      setThemeSecondary: 'positive',
       disableWeekdays: []
     };
 
@@ -92,6 +94,7 @@ angular.module('ionic-datepicker.provider', [])
         closeModal();
       };
 
+
       //Setting the disabled dates list.
       function setDisabledDates(mainObj) {
         if (!mainObj.disabledDates || mainObj.disabledDates.length === 0) {
@@ -123,6 +126,31 @@ angular.module('ionic-datepicker.provider', [])
 
         $scope.dayList = [];
 
+        //Set theme
+        $scope.theme = {
+          'color': config.setTheme,
+          'bar': 'bar-' + config.setTheme,
+          'button': 'button-' + config.setTheme,
+          'border': config.setTheme + '-border',
+          'bg': config.setTheme + '-bg'
+        };
+
+        //Set theme-secundary
+        $scope.themeSecundary = {
+          'color': config.setThemeSecondary,
+          'bar': 'bar-' + config.setThemeSecondary,
+          'button': 'button-' + config.setThemeSecondary,
+          'border': config.setThemeSecondary + '-border',
+          'bg': config.setThemeSecondary + '-bg'
+        };
+
+        $scope.getDayListClass = function (value){
+          value[$scope.themeSecundary.bg] = value.selected_date;
+          value[$scope.themeSecundary.border] = value.today;
+          value[$scope.themeSecundary.color] = value.today;
+          return value;
+        };
+
         var tempDate, disabled;
         $scope.firstDayEpoch = resetHMSM(new Date(currentDate.getFullYear(), currentDate.getMonth(), firstDay)).getTime();
         $scope.lastDayEpoch = resetHMSM(new Date(currentDate.getFullYear(), currentDate.getMonth(), lastDay)).getTime();
@@ -140,6 +168,7 @@ angular.module('ionic-datepicker.provider', [])
             disabled: disabled
           });
         }
+
 
         //To set Monday as the first day of the week.
         var firstDayMonday = $scope.dayList[0].day - $scope.mainObj.mondayFirst;
@@ -230,20 +259,28 @@ angular.module('ionic-datepicker.provider', [])
         }
         setInitialObj($scope.mainObj);
 
-        if (!$scope.mainObj.closeOnSelect) {
           buttons = [{
+            text: $scope.mainObj.closeLabel,
+            type: $scope.theme.button,
+            onTap: function (e) {
+              console.log('ionic-datepicker popup closed.');
+            }
+          }];
+
+        if (!$scope.mainObj.closeOnSelect) {
+          buttons.push({
             text: $scope.mainObj.setLabel,
-            type: 'button_set',
+            type: $scope.theme.button,
             onTap: function (e) {
               $scope.mainObj.callback($scope.selctedDateEpoch);
             }
-          }];
+          });
         }
 
         if ($scope.mainObj.showTodayButton) {
           buttons.push({
             text: $scope.mainObj.todayLabel,
-            type: 'button_today',
+            type: $scope.theme.button,
             onTap: function (e) {
               var today = new Date();
               refreshDateList(new Date());
@@ -255,13 +292,6 @@ angular.module('ionic-datepicker.provider', [])
           });
         }
 
-        buttons.push({
-          text: $scope.mainObj.closeLabel,
-          type: 'button_close',
-          onTap: function (e) {
-            console.log('ionic-datepicker popup closed.');
-          }
-        });
 
         if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
           $scope.popup = $ionicPopup.show({
