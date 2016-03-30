@@ -128,20 +128,20 @@ angular.module('ionic-datepicker.provider', [])
 
         //Set theme
         $scope.theme = {
-          'color': config.setTheme,
-          'bar': 'bar-' + config.setTheme,
-          'button': 'button-' + config.setTheme,
-          'border': config.setTheme + '-border',
-          'bg': config.setTheme + '-bg'
+          'color': $scope.mainObj.setTheme,
+          'bar': 'bar-' + $scope.mainObj.setTheme,
+          'button': 'button-' + $scope.mainObj.setTheme,
+          'border': $scope.mainObj.setTheme + '-border',
+          'bg': $scope.mainObj.setTheme + '-bg'
         };
 
         //Set theme-secundary
         $scope.themeSecundary = {
-          'color': config.setThemeSecondary,
-          'bar': 'bar-' + config.setThemeSecondary,
-          'button': 'button-' + config.setThemeSecondary,
-          'border': config.setThemeSecondary + '-border',
-          'bg': config.setThemeSecondary + '-bg'
+          'color': $scope.mainObj.setThemeSecondary,
+          'bar': 'bar-' + $scope.mainObj.setThemeSecondary,
+          'button': 'button-' + $scope.mainObj.setThemeSecondary,
+          'border': $scope.mainObj.setThemeSecondary + '-border',
+          'bg': $scope.mainObj.setThemeSecondary + '-bg'
         };
 
         $scope.getDayListClass = function (value){
@@ -158,6 +158,11 @@ angular.module('ionic-datepicker.provider', [])
         for (var i = firstDay; i <= lastDay; i++) {
           tempDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
           disabled = (tempDate.getTime() < $scope.fromDate) || (tempDate.getTime() > $scope.toDate) || $scope.mainObj.disableWeekdays.indexOf(tempDate.getDay()) >= 0;
+
+          // add a callback to check if the date is disabled
+          if(!disabled && $scope.mainObj.dateIsDisabled){
+            disabled = $scope.mainObj.dateIsDisabled(tempDate);
+          }
 
           $scope.dayList.push({
             date: tempDate.getDate(),
