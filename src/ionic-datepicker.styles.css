@@ -168,7 +168,7 @@
   font-size: 22px;
 }
 
-.platform-android .bar .title.title-left {
+.platform-android .ionic_datepicker_modal .bar .title.title-left {
   text-align: center;
 }
 .platform-android .ionic_datepicker_modal select {
