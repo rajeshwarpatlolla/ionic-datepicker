@@ -131,6 +131,11 @@ angular.module('ionic-datepicker.provider', [])
           tempDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
           disabled = (tempDate.getTime() < $scope.fromDate) || (tempDate.getTime() > $scope.toDate) || $scope.mainObj.disableWeekdays.indexOf(tempDate.getDay()) >= 0;
 
+          // add a callback to check if the date is disabled
+          if(!disabled && $scope.mainObj.dateIsDisabled){
+            disabled = $scope.mainObj.dateIsDisabled(tempDate);
+          }
+
           $scope.dayList.push({
             date: tempDate.getDate(),
             month: tempDate.getMonth(),
