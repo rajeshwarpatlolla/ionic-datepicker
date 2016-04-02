@@ -331,6 +331,14 @@ Few more features are also added apart from the above mentioned features.
 [Bug#168](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/168),
 [Bug#171](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/171)
 
+### 13) v1.1.0
+
+**BugFixes**
+
+[Bug#178](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/178),
+[Bug#179](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/179),
+[Bug#180](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/180)
+
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")
