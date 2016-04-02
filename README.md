@@ -331,7 +331,7 @@ Few more features are also added apart from the above mentioned features.
 [Bug#168](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/168),
 [Bug#171](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/171)
 
-### 13) v1.1.0
+### 14) v1.1.0
 
 **BugFixes**
 
