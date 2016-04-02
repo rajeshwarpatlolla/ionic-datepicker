@@ -97,6 +97,7 @@ angular.module('ionic-datepicker.provider', [])
         if (!mainObj.disabledDates || mainObj.disabledDates.length === 0) {
           $scope.disabledDates = [];
         } else {
+          $scope.disabledDates = [];
           angular.forEach(mainObj.disabledDates, function (val, key) {
             val = resetHMSM(new Date(val));
             $scope.disabledDates.push(val.getTime());
