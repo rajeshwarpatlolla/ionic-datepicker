@@ -214,6 +214,39 @@ angular.module('ionic-datepicker.provider', [])
         closeModal();
       };
 
+      function checkInvalidity() {
+        //check whether the default inputDate is already there in disabledWeekdays array
+        if ($scope.mainObj.disableWeekdays.length > 0) {
+          for (var index in $scope.mainObj.disableWeekdays) {
+            if ($scope.mainObj.disableWeekdays[index] === new Date($scope.selctedDateEpoch).getDay()) return true;
+          }
+        }
+        //check whether the default inputDate is already there in disabledDates array
+        for (var index in $scope.mainObj.disabledDates) {
+          if ($scope.mainObj.disabledDates[index].toDateString() === new Date($scope.selctedDateEpoch).toDateString()) return true;
+        }
+        //if valid, then return false  
+        return false;
+      }
+
+      var invalidBtn = [];
+      invalidBtn.push({
+        text: 'close',
+        type: 'button_close',
+        onTap: function (e) {
+          console.log('invalid popup closed.');
+        }
+      });
+      
+      function showInvalidAlert() {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Invalid date',
+          template: 'You can\'t set a date that is already disabled',
+          cssClass: 'ionic_datepicker_popup show-title',
+          buttons:invalidBtn
+        });
+      };
+
       //Open datepicker popup
       provider.openDatePicker = function (ipObj) {
         var buttons = [];
@@ -235,7 +268,13 @@ angular.module('ionic-datepicker.provider', [])
             text: $scope.mainObj.setLabel,
             type: 'button_set',
             onTap: function (e) {
-              $scope.mainObj.callback($scope.selctedDateEpoch);
+              
+              if (checkInvalidity()) {
+                showInvalidAlert();
+              } else {
+                $scope.mainObj.callback($scope.selctedDateEpoch);
+              }
+              
             }
           }];
         }

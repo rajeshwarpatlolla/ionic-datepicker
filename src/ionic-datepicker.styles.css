@@ -31,6 +31,9 @@
   background-color: #009688;
   display: none;
 }
+.ionic_datepicker_popup.show-title .popup-head {
+  display: block;
+}
 .ionic_datepicker_popup .popup-head .popup-title {
   color: #ffffff;
 }
