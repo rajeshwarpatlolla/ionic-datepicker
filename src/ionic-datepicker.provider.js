@@ -258,7 +258,7 @@ angular.module('ionic-datepicker.provider', [])
             text: $scope.mainObj.setLabel,
             type: 'button_set',
             onTap: function (e) {
-              $scope.mainObj.callback($scope.selctedDateEpoch);              
+              $scope.mainObj.callback($scope.selctedDateEpoch);
             }
           }];
         }
@@ -288,7 +288,7 @@ angular.module('ionic-datepicker.provider', [])
 
         if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
           $scope.popup = $ionicPopup.show({
-            templateUrl: 'lib/ionic-datepicker/src/ionic-datepicker-popup.html',
+            templateUrl: 'ionic-datepicker-popup.html',
             scope: $scope,
             cssClass: 'ionic_datepicker_popup',
             buttons: buttons
