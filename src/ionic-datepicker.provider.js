@@ -210,6 +210,26 @@ angular.module('ionic-datepicker.provider', [])
         $scope.modal.hide();
       }
 
+      function setDefaultDate(obj) {
+        //check in disableWeekdays array
+        if(obj.disableWeekdays.indexOf(new Date(obj.inputDate).getDay()) === -1) {
+          //if not in disableWeekdays array check in disabledDates array, toDateString() is used to avoid timeStamp mismatches  
+          for (var index in obj.disabledDates) {
+            if (obj.disabledDates[index].toDateString() === new Date(obj.inputDate).toDateString()) {
+              obj.inputDate.setDate(new Date(obj.inputDate).getDate() + 1);
+              //check again
+              setDefaultDate(obj);
+            }
+          }
+          //if everything is fine return from function
+          return;
+        } else {
+          obj.inputDate.setDate(new Date(obj.inputDate).getDate() + 1);
+          //check again
+          setDefaultDate(obj);
+        }
+      }
+
       $scope.closeIonicDatePickerModal = function () {
         closeModal();
       };
@@ -228,6 +248,9 @@ angular.module('ionic-datepicker.provider', [])
         if (ipObj.disableWeekdays && config.disableWeekdays) {
           $scope.mainObj.disableWeekdays = ipObj.disableWeekdays.concat(config.disableWeekdays);
         }
+        
+        setDefaultDate($scope.mainObj);
+
         setInitialObj($scope.mainObj);
 
         if (!$scope.mainObj.closeOnSelect) {
@@ -235,7 +258,7 @@ angular.module('ionic-datepicker.provider', [])
             text: $scope.mainObj.setLabel,
             type: 'button_set',
             onTap: function (e) {
-              $scope.mainObj.callback($scope.selctedDateEpoch);
+              $scope.mainObj.callback($scope.selctedDateEpoch);              
             }
           }];
         }
@@ -265,7 +288,7 @@ angular.module('ionic-datepicker.provider', [])
 
         if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
           $scope.popup = $ionicPopup.show({
-            templateUrl: 'ionic-datepicker-popup.html',
+            templateUrl: 'lib/ionic-datepicker/src/ionic-datepicker-popup.html',
             scope: $scope,
             cssClass: 'ionic_datepicker_popup',
             buttons: buttons
