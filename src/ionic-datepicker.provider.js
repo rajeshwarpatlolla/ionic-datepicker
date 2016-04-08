@@ -11,6 +11,8 @@ angular.module('ionic-datepicker.provider', [])
       weeksList: ["S", "M", "T", "W", "T", "F", "S"],
       monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
       templateType: 'popup',
+      popupTemplate: 'ionic-datepicker-popup.html',
+      modalTemplate: 'ionic-datepicker-modal.html',
       showTodayButton: false,
       closeOnSelect: false,
       disableWeekdays: []
@@ -192,7 +194,7 @@ angular.module('ionic-datepicker.provider', [])
         setDisabledDates($scope.mainObj);
       }
 
-      $ionicModal.fromTemplateUrl('ionic-datepicker-modal.html', {
+      $ionicModal.fromTemplateUrl(config.modalTemplate, {
         scope: $scope,
         animation: 'slide-in-up'
       }).then(function (modal) {
@@ -266,7 +268,7 @@ angular.module('ionic-datepicker.provider', [])
 
         if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
           $scope.popup = $ionicPopup.show({
-            templateUrl: 'ionic-datepicker-popup.html',
+            templateUrl: config.popupTemplate,
             scope: $scope,
             cssClass: 'ionic_datepicker_popup',
             buttons: buttons
