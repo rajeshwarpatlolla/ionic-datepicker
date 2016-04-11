@@ -57,7 +57,7 @@ Your config method may look like this if you wish to setup the configuration. Bu
       showTodayButton: true,
       dateFormat: 'dd MMMM yyyy',
       closeOnSelect: false,
-      disableWeekdays: [6],
+      disableWeekdays: [6]
     };
     ionicDatePickerProvider.configDatePicker(datePickerObj);
   })
