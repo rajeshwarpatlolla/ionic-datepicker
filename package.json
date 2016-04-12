@@ -2,9 +2,7 @@
   "name": "ionic-datepicker",
   "version": "1.1.0",
   "description": "A date picker for ionic framework",
-  "main": [
-    "./dist/ionic-datepicker.bundle.min.js"
-  ],
+  "main": "./dist/ionic-datepicker.bundle.min.js",
   "scripts": {},
   "author": "https://github.com/rajeshwarpatlolla, rajeshwar.patlolla@gmail.com",
   "license": "MIT",
