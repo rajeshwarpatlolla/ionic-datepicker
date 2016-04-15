@@ -5,6 +5,8 @@
 This is an `ionic-datepicker` bower component, which can be used in any Ionic framework's application. No additional plugins required for this component.
 This plugin is completely open source. Please rate this plugin @ [Ionic Market](http://market.ionic.io/plugins/ionicdatepicker)
 
+From version 1.0.0, this component has completely new features and the way you should use is different from the older version of this component. If you wish to see the documentation for the previous versions of this component, please check the [previous releases](https://github.com/rajeshwarpatlolla/ionic-datepicker/releases)
+
 [View Demo](http://rajeshwarpatlolla.github.io/DatePickerForIonicFramework/demo/ "Demo")
 
 ##Prerequisites.
