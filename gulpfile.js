@@ -25,18 +25,18 @@ gulp.task('css2js', function () {
 });
 
 gulp.task('make-bundle', ['del', 'html2js', 'css2js'], function () {
-  return gulp.src(['dist/*', './src/*.js'])
+  return gulp.src(['./dist/*', './src/*.js'])
     .pipe(concat('ionic-datepicker.bundle.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('del-temp-files', ['make-bundle'], function () {
-  del(['dist/templates.js', 'dist/ionic-datepicker.styles.js']);
+  del(['./dist/templates.js', './dist/ionic-datepicker.styles.js']);
 });
 
 gulp.task('del', function () {
-  del(['dist/*']);
+  del(['./dist/*']);
 });
 
 gulp.task('build', ['del-temp-files']);
