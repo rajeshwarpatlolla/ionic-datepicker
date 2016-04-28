@@ -54,8 +54,8 @@ Your config method may look like this if you wish to setup the configuration. Bu
       weeksList: ["S", "M", "T", "W", "T", "F", "S"],
       monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
       templateType: 'popup',
-      from: new Date(2012, 8, 1)
-      to: new Date(2018, 8, 1)
+      from: new Date(2012, 8, 1),
+      to: new Date(2018, 8, 1),
       showTodayButton: true,
       dateFormat: 'dd MMMM yyyy',
       closeOnSelect: false,
@@ -123,6 +123,7 @@ The properties you can configure are as follows.
 **o) disableWeekdays**(Optional) : Accepts array of numbers starting from 0(Sunday) to 6(Saturday). If you specify any values for this array, then it will disable that week day in the whole calendar. For example if you pass [0,6], then all the Sundays and Saturdays will be disabled.
 
 5) Inject `ionicDatePicker` in the controller, where you wish to use this component. Then using the below method you can call the datepicker.
+
 ````javascript
 .controller('HomeCtrl', function ($scope, ionicDatePicker) {
 
