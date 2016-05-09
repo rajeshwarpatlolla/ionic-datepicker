@@ -150,7 +150,8 @@ The properties you can configure are as follows.
     };
   
     $scope.openDatePicker = function(){
-      ionicDatePicker.openDatePicker(ipObj1);
+      var closePicker = ionicDatePicker.openDatePicker(ipObj1);
+      // closePicker();
     };
 };
 ````
