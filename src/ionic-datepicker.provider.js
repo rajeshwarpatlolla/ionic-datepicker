@@ -222,6 +222,9 @@ angular.module('ionic-datepicker.provider', [])
       //Open datepicker popup
       provider.openDatePicker = function (ipObj) {
         var buttons = [];
+        delete $scope.fromDate;
+        delete $scope.toDate;
+
         $scope.mainObj = angular.extend({}, config, ipObj);
         if ($scope.mainObj.from) {
           $scope.fromDate = resetHMSM(new Date($scope.mainObj.from)).getTime();
