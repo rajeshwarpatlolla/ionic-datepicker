@@ -154,7 +154,7 @@ angular.module('ionic-datepicker.provider', [])
         $scope.cols = [0, 1, 2, 3, 4, 5, 6];
 
         $scope.currentMonth = $scope.mainObj.monthsList[currentDate.getMonth()];
-        $scope.currentYear = currentDate.getFullYear();
+        $scope.currentYear = currentDate.getFullYear().toString();
         $scope.currentMonthSelected = angular.copy($scope.currentMonth);
         $scope.currentYearSelected = angular.copy($scope.currentYear);
         $scope.numColumns = 7;
@@ -218,6 +218,9 @@ angular.module('ionic-datepicker.provider', [])
       //Open datepicker popup
       provider.openDatePicker = function (ipObj) {
         var buttons = [];
+        delete $scope.fromDate;
+        delete $scope.toDate;
+
         $scope.mainObj = angular.extend({}, config, ipObj);
         if ($scope.mainObj.from) {
           $scope.fromDate = resetHMSM(new Date($scope.mainObj.from)).getTime();
