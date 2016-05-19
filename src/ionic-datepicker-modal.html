@@ -17,7 +17,7 @@
               <label class="item item-input item-select month_select">
                 <span class="input-label">&nbsp;</span>
                 <select ng-model="currentMonth" ng-change="monthChanged(currentMonth)">
-                  <option ng-repeat="month in monthsList" ng-selected="month == currentMonthSelected" value="{{month}}">
+                  <option ng-repeat="month in getMonthsList() track by $index" ng-selected="month == currentMonthSelected" value="{{month}}">
                     {{month}}
                   </option>
                 </select>
@@ -41,7 +41,7 @@
       <div class="calendar_grid">
         <div class="row padding-top weeks_row">
           <div class="col text-center font_bold"
-               ng-repeat="weekName in weeksList track by $index" ng-bind="weekName"></div>
+               ng-repeat="weekName in getWeeksList() track by $index" ng-bind="weekName"></div>
         </div>
         <div>
           <div class="row text-center padding_top_zero" ng-repeat="row in rows track by $index">
@@ -62,13 +62,13 @@
   <ion-footer-bar class="footer">
     <div class="row padding_zero">
       <button class="button button-clear button-block button_set" ng-if="!mainObj.closeOnSelect"
-              ng-click="setIonicDatePickerDate()">{{mainObj.setLabel}}
+              ng-click="setIonicDatePickerDate()">{{translate('setLabel')}}
       </button>
       <button class="button button-clear button-block button_today"  ng-if="mainObj.showTodayButton"
-              ng-click="setIonicDatePickerTodayDate()">{{mainObj.todayLabel}}
+              ng-click="setIonicDatePickerTodayDate()">{{translate('todayLabel')}}
       </button>
       <button class="button button-clear button-block button_close"
-              ng-click="closeIonicDatePickerModal()">{{mainObj.closeLabel}}
+              ng-click="closeIonicDatePickerModal()">{{translate('closeLabel')}}
       </button>
     </div>
   </ion-footer-bar>
