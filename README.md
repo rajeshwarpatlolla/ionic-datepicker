@@ -45,14 +45,10 @@ Your config method may look like this if you wish to setup the configuration. Bu
 
 ````javascript
 .config(function (ionicDatePickerProvider) {
+
     var datePickerObj = {
       inputDate: new Date(),
-      setLabel: 'Set',
-      todayLabel: 'Today',
-      closeLabel: 'Close',
       mondayFirst: false,
-      weeksList: ["S", "M", "T", "W", "T", "F", "S"],
-      monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
       templateType: 'popup',
       from: new Date(2012, 8, 1),
       to: new Date(2018, 8, 1),
@@ -62,6 +58,24 @@ Your config method may look like this if you wish to setup the configuration. Bu
       disableWeekdays: [6]
     };
     ionicDatePickerProvider.configDatePicker(datePickerObj);
+    
+    ionicDatePickerProvider.addLocale('ru-RU', {
+        setLabel: 'OK',
+        todayLabel: 'Сегодня',
+        closeLabel: 'Отмена',
+        weeksList: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+        monthsList: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+    });
+
+    ionicDatePickerProvider.addLocale('en-US', {
+        setLabel: 'OK',
+        todayLabel: 'Today',
+        closeLabel: 'Cancel',
+        weeksList: ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"],
+        monthsList: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    });    
+    
+    ionicDatePickerProvider.setLocale('en-US');    
   })
 ````
 In the above code i am not configuring all the properties, but you can configure as many properties as you can.
@@ -125,6 +139,13 @@ The properties you can configure are as follows.
 5) Inject `ionicDatePicker` in the controller, where you wish to use this component. Then using the below method you can call the datepicker.
 
 ````javascript
+// 
+.controller('Settings', function($scope, ionicDatePicker) {
+    $scope.setLocale(loc)  {
+      ionicDatePicker.setLocale(loc);
+    }
+}
+
 .controller('HomeCtrl', function ($scope, ionicDatePicker) {
 
     var ipObj1 = {
