@@ -1,9 +1,6 @@
 {
   "name": "ionic-datepicker-locale",
   "version": "1.2.2",
-  "authors": [
-    "rajeshwarpatlolla <rajeshwar.patlolla@gmail.com>"
-  ],
   "description": "A date picker for ionic framework",
   "main": [
     "./dist/ionic-datepicker.bundle.min.js",
@@ -18,7 +15,6 @@
     "localization"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/Oleg-Imanilov/ionic-datepicker",
   "ignore": [
     "**/.*",
     "node_modules",
