@@ -1,5 +1,5 @@
 {
-  "name": "ionic-datepicker",
+  "name": "ionic-datepicker-locale",
   "version": "1.2.0",
   "description": "A date picker for ionic framework",
   "main": ["./dist/ionic-datepicker.bundle.min.js","./dist/ionic-datepicker.bundle.min.js.map"],
