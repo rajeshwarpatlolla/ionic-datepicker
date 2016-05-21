@@ -44,7 +44,7 @@ angular.module('ionic-datepicker.provider', [])
           $scope.currentDate.setFullYear($scope.currentDate.getFullYear());
         }
         $scope.currentDate.setMonth($scope.currentDate.getMonth() - 1);
-        $scope.currentMonth = $scope.mainObj.monthsList[$scope.currentDate.getMonth()];
+        $scope.data.currentMonth = $scope.mainObj.monthsList[$scope.currentDate.getMonth()];
         $scope.data.currentYear = $scope.currentDate.getFullYear();
         refreshDateList($scope.currentDate);
       };
@@ -56,7 +56,7 @@ angular.module('ionic-datepicker.provider', [])
         }
         $scope.currentDate.setDate(1);
         $scope.currentDate.setMonth($scope.currentDate.getMonth() + 1);
-        $scope.currentMonth = $scope.mainObj.monthsList[$scope.currentDate.getMonth()];
+        $scope.data.currentMonth = $scope.mainObj.monthsList[$scope.currentDate.getMonth()];
         $scope.data.currentYear = $scope.currentDate.getFullYear();
         refreshDateList($scope.currentDate);
       };
@@ -154,9 +154,9 @@ angular.module('ionic-datepicker.provider', [])
         $scope.rows = [0, 7, 14, 21, 28, 35];
         $scope.cols = [0, 1, 2, 3, 4, 5, 6];
 
-        $scope.currentMonth = $scope.mainObj.monthsList[currentDate.getMonth()];
+        $scope.data.currentMonth = $scope.mainObj.monthsList[currentDate.getMonth()];
         $scope.data.currentYear = currentDate.getFullYear();
-        $scope.currentMonthSelected = angular.copy($scope.currentMonth);
+        $scope.data.currentMonthSelected = angular.copy($scope.data.currentMonth);
         $scope.currentYearSelected = angular.copy($scope.data.currentYear);
         $scope.numColumns = 7;
       }
