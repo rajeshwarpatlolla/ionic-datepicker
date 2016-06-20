@@ -154,7 +154,7 @@ angular.module('ionic-datepicker.provider', [])
         $scope.cols = [0, 1, 2, 3, 4, 5, 6];
 
         $scope.currentMonth = $scope.mainObj.monthsList[currentDate.getMonth()];
-        $scope.currentYear = currentDate.getFullYear().toString();
+        $scope.currentYear = currentDate.getFullYear();
         $scope.currentMonthSelected = angular.copy($scope.currentMonth);
         $scope.currentYearSelected = angular.copy($scope.currentYear);
         $scope.numColumns = 7;
