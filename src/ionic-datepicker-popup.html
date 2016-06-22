@@ -13,7 +13,7 @@
           <label class="item item-input item-select month_select">
             <span class="input-label">&nbsp;</span>
             <select ng-model="currentMonth" ng-change="monthChanged(currentMonth)">
-              <option ng-repeat="month in monthsList" ng-selected="month==currentMonthSelected" value="{{month}}">
+              <option ng-repeat="month in getMonthsList() track by $index" ng-selected="month==currentMonthSelected" value="{{month}}">
                 {{month}}
               </option>
             </select>
@@ -37,7 +37,7 @@
   <div class="calendar_grid">
     <div class="row weeks_row">
       <div class="col text-center font_bold"
-           ng-repeat="weekName in weeksList track by $index" ng-bind="weekName"></div>
+           ng-repeat="weekName in getWeeksList() track by $index" ng-bind="weekName"></div>
     </div>
     <div>
       <div class="row text-center padding_top_zero" ng-repeat="row in rows track by $index">

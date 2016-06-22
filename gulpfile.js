@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var del = require('del');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var sourcemaps = require('gulp-sourcemaps');
 var ngHtml2Js = require("gulp-ng-html2js");
 var minifyHtml = require("gulp-minify-html");
 var css2js = require("gulp-css2js");
@@ -26,9 +27,11 @@ gulp.task('css2js', function () {
 
 gulp.task('make-bundle', ['del', 'html2js', 'css2js'], function () {
   return gulp.src(['./dist/*', './src/*.js'])
-    .pipe(concat('ionic-datepicker.bundle.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('./dist/'));
+      .pipe(sourcemaps.init())
+      .pipe(concat('ionic-datepicker.bundle.min.js'))
+      .pipe(uglify())
+      .pipe(sourcemaps.write('./'))
+      .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('del-temp-files', ['make-bundle'], function () {

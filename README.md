@@ -20,11 +20,11 @@ From version 1.0.0, this component has got so many new features and the way you 
 
 1) In your project folder, please install this plugin using bower
 
-`bower install ionic-datepicker --save`
+`bower install ionic-datepicker-locale --save`
 
 This will install the latest version of this plugin. If you wish to install any specific version(eg : 0.9.0) then
  
-`bower install ionic-datepicker#0.9.0 --save`
+`bower install ionic-datepicker-locale#1.2.2 --save`
 
 2) Specify the path of  `ionic-datepicker.bundle.min.js` in your `index.html` file.
 
@@ -45,14 +45,10 @@ Your config method may look like this if you wish to setup the configuration. Bu
 
 ````javascript
 .config(function (ionicDatePickerProvider) {
+
     var datePickerObj = {
       inputDate: new Date(),
-      setLabel: 'Set',
-      todayLabel: 'Today',
-      closeLabel: 'Close',
       mondayFirst: false,
-      weeksList: ["S", "M", "T", "W", "T", "F", "S"],
-      monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
       templateType: 'popup',
       from: new Date(2012, 8, 1),
       to: new Date(2018, 8, 1),
@@ -62,6 +58,24 @@ Your config method may look like this if you wish to setup the configuration. Bu
       disableWeekdays: [6]
     };
     ionicDatePickerProvider.configDatePicker(datePickerObj);
+    
+    ionicDatePickerProvider.addLocale('ru-RU', {
+        setLabel: 'OK',
+        todayLabel: 'Сегодня',
+        closeLabel: 'Отмена',
+        weeksList: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+        monthsList: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+    });
+
+    ionicDatePickerProvider.addLocale('en-US', {
+        setLabel: 'OK',
+        todayLabel: 'Today',
+        closeLabel: 'Cancel',
+        weeksList: ["Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat"],
+        monthsList: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    });    
+    
+    ionicDatePickerProvider.setLocale('en-US');    
   })
 ````
 In the above code i am not configuring all the properties, but you can configure as many properties as you can.
@@ -156,6 +170,16 @@ The properties you can configure are as follows.
 ````
 
 Apart from the config method, you can re configure all options in the controller also. If you again set any of the properties, they will be overridden by the values mentioned in the controller. This will be useful if there are multiple date pickers in the app, which has different properties.
+
+6) To change the locale of datepicker put somewhere
+
+````javascript
+.controller('Settings', function($scope, ionicDatePicker) {
+    $scope.setLocale(loc)  {
+      ionicDatePicker.setLocale(loc);
+    }
+}
+````
 
 In all the above steps the only mandatory thing is the `callback` where you will get the selected date value.
 
