@@ -1,8 +1,8 @@
 <div class="selected_date_full">{{selctedDateEpoch | date : mainObj.dateFormat}}</div>
 <div class="date_selection">
   <div class="row show_nav">
-    <div class="col col-10 prev_btn_section">
-      <button class="button-clear" ng-click="prevMonth()"
+    <div class="col col-10 prev_btn_section" ng-click="prevMonth()">
+      <button class="button-clear"
               ng-class="{'pointer_events_none':((firstDayEpoch - 86400000) < fromDate)}">
         <i class="icon ion-chevron-left"></i>
       </button>
@@ -27,8 +27,8 @@
         </div>
       </div>
     </div>
-    <div class="col col-10 next_btn_section">
-      <button class="button-clear" ng-click="nextMonth()"
+    <div class="col col-10 next_btn_section" ng-click="nextMonth()">
+      <button class="button-clear"
               ng-class="{'pointer_events_none':((lastDayEpoch + 86400000)> toDate)}">
         <i class="icon ion-chevron-right"></i>
       </button>

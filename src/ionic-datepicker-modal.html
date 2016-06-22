@@ -5,8 +5,8 @@
   <ion-content class="ionic_datepicker_modal_content">
     <div class="">
       <div class="row text-center">
-        <div class="col col-10 left_arrow">
-          <button class="button-clear font_22px" ng-click="prevMonth()"
+        <div class="col col-10 left_arrow" ng-click="prevMonth()">
+          <button class="button-clear font_22px"
                   ng-class="{'pointer_events_none':((firstDayEpoch - 86400000) < fromDate)}">
             <i class="icon ion-chevron-left"></i>
           </button>
@@ -31,8 +31,8 @@
             </div>
           </div>
         </div>
-        <div class="col col-10 right_arrow">
-          <button class=" button-clear font_22px" ng-click="nextMonth()"
+        <div class="col col-10 right_arrow" ng-click="nextMonth()">
+          <button class=" button-clear font_22px"
                   ng-class="{'pointer_events_none':((lastDayEpoch + 86400000)> toDate)}">
             <i class="icon ion-chevron-right"></i>
           </button>
