@@ -5,8 +5,8 @@
   <ion-content class="ionic_datepicker_modal_content">
     <div class="">
       <div class="row text-center">
-        <div class="col col-10 left_arrow">
-          <button class="button-clear font_22px" ng-click="prevMonth()"
+        <div class="col col-10 left_arrow" ng-click="prevMonth()">
+          <button class="button-clear font_22px"
                   ng-class="{'pointer_events_none':((firstDayEpoch - 86400000) < fromDate)}">
             <i class="icon ion-chevron-left"></i>
           </button>
@@ -26,13 +26,13 @@
             <div class="col-50 padding_left_5px">
               <label class="item item-input item-select year_select">
                 <span class="input-label">&nbsp;</span>
-                <select ng-model="currentYear" ng-change="yearChanged(currentYear)" ng-options="year for year in yearsList"></select>
+                <select ng-model="currentYear" ng-options="year for year in yearsList track by year" ng-change="yearChanged(currentYear)"></select>
               </label>
             </div>
           </div>
         </div>
-        <div class="col col-10 right_arrow">
-          <button class=" button-clear font_22px" ng-click="nextMonth()"
+        <div class="col col-10 right_arrow" ng-click="nextMonth()">
+          <button class=" button-clear font_22px"
                   ng-class="{'pointer_events_none':((lastDayEpoch + 86400000)> toDate)}">
             <i class="icon ion-chevron-right"></i>
           </button>
