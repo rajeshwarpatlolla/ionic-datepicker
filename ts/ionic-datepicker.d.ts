@@ -2,7 +2,7 @@
  * Created by beenotung on 7/3/16.
  */
 declare namespace ionic {
-    module ionicDatePicker {
+    namespace IonicDatePickerService {
         interface IDatePickerOption {
             callback:(val?:number)=>void;
             disabledDates?:Date[];
@@ -17,7 +17,7 @@ declare namespace ionic {
             closeLabel?:string
         }
     }
-    class ionicDatePicker {
-        openDatePicker(cakkbacoption:ionicDatePicker.IDatePickerOption):void;
+    interface IonicDatePickerService {
+        openDatePicker(cakkbacoption:IonicDatePickerService.IDatePickerOption):void;
     }
 }
