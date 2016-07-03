@@ -13,11 +13,8 @@ declare namespace ionic {
             disableWeekdays?:number[];
             closeOnSelect?:boolean;
             templateType?:string; // 'popup' | 'Modal'
-            // setLabel?:string;
-            // closeLabel?:string
-            // inputTime?:number;
-            // format?:number;
-            // step?:number;
+            setLabel?:string;
+            closeLabel?:string
         }
     }
     class ionicDatePicker {
