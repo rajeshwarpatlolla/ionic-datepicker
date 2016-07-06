@@ -344,7 +344,8 @@ Few more features are also added apart from the above mentioned features.
 
 ### 15) v1.2.0
 
-**New Features**
+**Features**
+
 When from date and to date are within a year, months that aren't in range are disabled
 
 **BugFixes**
