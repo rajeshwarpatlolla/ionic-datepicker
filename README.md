@@ -351,7 +351,7 @@ When from date and to date are within a year, months that aren't in range are di
 **BugFixes**
 * [Bug#198](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/198)
 * [Bug#215](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/215)
-* [Bug#290](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/229)
+* [Bug#229](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/229)
 * Styles on next month and previous month icon
 * Pointer Events none on next and previous month button not working 
 * Fixed some bugs which came from bug fix #215 (PR #229)
