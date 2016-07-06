@@ -265,7 +265,7 @@ angular.module('ionic-datepicker.provider', [])
           text: $scope.mainObj.closeLabel,
           type: 'button_close',
           onTap: function () {
-            $scope.mainObj.callback(void 0);
+            $scope.mainObj.callback($scope.selctedDateEpoch);
           }
         });
 
