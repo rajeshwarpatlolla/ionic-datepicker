@@ -25,23 +25,25 @@ angular.module('ionic-datepicker.service', [])
       var toDate = to ? new Date(to) : new Date(maxYear, 11, 31, 23, 59, 59, 999);
 
       // if from and to have less than a year between each other
-      if (fromDate.setMonth(fromDate.getMonth() + 12) >= toDate) {
-        // reset fromDate and enabled months
-        fromDate = from ? new Date(from) : new Date(minYear, 0, 1);
+      if (fromDate.getFullYear() + 1 >= toDate.getFullYear()) {
+        var fromMonth = fromDate.getMonth();
+        var toMonth = toDate.getMonth();
+
+        var minMonth = Math.min(fromMonth, toMonth);
+        var maxMonth = Math.max(fromMonth, toMonth);
+
+        // from is in a different year than to
+        var betweenYears = toMonth <= fromMonth;
+
+        // reset enabled months
         enabledMonths = [];
         
         // get enabled months
         for (var i = 0; i < 12; i++) {
-          // aux dates
-          // first date of first month
-          var monthA = new Date(fromDate.getFullYear(), i, 1);
-          // last minute of last day of last mont
-          var monthB = new Date(toDate.getFullYear(), i, 0, 23, 59, 59, 999);
-
-          if (monthA >= fromDate || monthB <= toDate) {
-            enabledMonths.push(true);
+          if(minMonth <= i && maxMonth >= i) {
+            enabledMonths.push(!betweenYears);
           } else {
-            enabledMonths.push(false);
+            enabledMonths.push(betweenYears);
           }
         }
       }
