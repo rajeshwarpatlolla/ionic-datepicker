@@ -78,6 +78,9 @@
 .ionic_datepicker_popup .popup-body .show_nav {
   padding: 10px 0 0 0;
 }
+.ionic_datepicker_popup .popup-body .show_nav > .col {
+  padding: 0;
+}
 .ionic_datepicker_popup .popup-body .show_nav .prev_btn_section {
   padding: 5px 0;
   text-align: left;
