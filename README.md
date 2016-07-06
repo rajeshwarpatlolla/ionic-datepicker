@@ -342,6 +342,19 @@ Few more features are also added apart from the above mentioned features.
 [Bug#179](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/179),
 [Bug#180](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/180)
 
+### 15) v1.2.0
+
+**New Features**
+When from date and to date are within a year, months that aren't in range are disabled
+
+**BugFixes**
+* [Bug#198](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/198)
+* [Bug#215](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/215)
+* [Bug#290](https://github.com/rajeshwarpatlolla/ionic-datepicker/issues/229)
+* Styles on next month and previous month icon
+* Pointer Events none on next and previous month button not working 
+* Fixed some bugs which came from bug fix #215 (PR #229)
+
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")
