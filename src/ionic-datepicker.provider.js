@@ -264,9 +264,7 @@ angular.module('ionic-datepicker.provider', [])
         buttons.push({
           text: $scope.mainObj.closeLabel,
           type: 'button_close',
-          onTap: function (e) {
-            console.log('ionic-datepicker popup closed.');
-          }
+          onTap: function () {}
         });
 
         if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
