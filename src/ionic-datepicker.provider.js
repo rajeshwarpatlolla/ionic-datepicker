@@ -45,7 +45,7 @@ angular.module('ionic-datepicker.provider', [])
         }
         $scope.currentDate.setMonth($scope.currentDate.getMonth() - 1);
         $scope.currentMonth = $scope.mainObj.monthsList[$scope.currentDate.getMonth()];
-        $scope.currentYear = $scope.currentDate.getFullYear();
+        $scope.currentYear = $scope.currentDate.getFullYear().toString();
         refreshDateList($scope.currentDate);
       };
 
@@ -57,7 +57,7 @@ angular.module('ionic-datepicker.provider', [])
         $scope.currentDate.setDate(1);
         $scope.currentDate.setMonth($scope.currentDate.getMonth() + 1);
         $scope.currentMonth = $scope.mainObj.monthsList[$scope.currentDate.getMonth()];
-        $scope.currentYear = $scope.currentDate.getFullYear();
+        $scope.currentYear = $scope.currentDate.getFullYear().toString();
         refreshDateList($scope.currentDate);
       };
 
