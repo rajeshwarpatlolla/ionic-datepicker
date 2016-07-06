@@ -28,7 +28,8 @@ gulp.task('make-bundle', ['del', 'html2js', 'css2js'], function () {
   return gulp.src(['./dist/*', './src/*.js'])
     .pipe(concat('ionic-datepicker.bundle.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest('./demo/'));
 });
 
 gulp.task('del-temp-files', ['make-bundle'], function () {
