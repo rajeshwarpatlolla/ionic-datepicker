@@ -27,6 +27,7 @@ angular.module('ionic-datepicker.provider', [])
       var $scope = $rootScope.$new();
       $scope.today = resetHMSM(new Date()).getTime();
       $scope.disabledDates = [];
+      $scope.enabledMonths = [];
 
       //Reset the hours, minutes, seconds and milli seconds
       function resetHMSM(currentDate) {
@@ -121,6 +122,7 @@ angular.module('ionic-datepicker.provider', [])
         }
 
         $scope.yearsList = IonicDatepickerService.getYearsList($scope.mainObj.from, $scope.mainObj.to);
+        $scope.enabledMonths = IonicDatepickerService.getEnabledMonths($scope.mainObj.from, $scope.mainObj.to);
 
         $scope.dayList = [];
 

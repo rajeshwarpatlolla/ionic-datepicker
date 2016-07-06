@@ -13,9 +13,9 @@
           <label class="item item-input item-select month_select">
             <span class="input-label">&nbsp;</span>
             <select ng-model="currentMonth" ng-change="monthChanged(currentMonth)">
-              <option ng-repeat="month in monthsList" ng-selected="month==currentMonthSelected" value="{{month}}">
-                {{month}}
-              </option>
+              <option ng-repeat="month in monthsList" ng-selected="month == currentMonthSelected" value="{{month}}" ng-disabled="!enabledMonths[$index]">
+                    {{month}}
+                  </option>
             </select>
           </label>
         </div>
