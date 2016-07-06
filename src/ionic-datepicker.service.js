@@ -33,14 +33,17 @@ angular.module('ionic-datepicker.service', [])
         var maxMonth = Math.max(fromMonth, toMonth);
 
         // from is in a different year than to
-        var betweenYears = toMonth <= fromMonth;
+        var betweenYears = toMonth < fromMonth;
 
         // reset enabled months
         enabledMonths = [];
-        
+
         // get enabled months
         for (var i = 0; i < 12; i++) {
-          if(minMonth <= i && maxMonth >= i) {
+          // first and last month are always enabled
+          if (minMonth === i || maxMonth === i) {
+            enabledMonths.push(true);
+          } else if (minMonth < i && maxMonth > i) {
             enabledMonths.push(!betweenYears);
           } else {
             enabledMonths.push(betweenYears);
