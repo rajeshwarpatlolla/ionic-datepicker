@@ -346,6 +346,8 @@ Few more features are also added apart from the above mentioned features.
 
 Lots of bug fixes. Lots of PR's merged.
 
+CSS changes for popup, so that all the dates of all the months fits in the specified height.
+
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-datepicker/blob/master/LICENSE.MD "MIT")
