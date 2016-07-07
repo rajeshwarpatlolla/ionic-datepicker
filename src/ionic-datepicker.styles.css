@@ -18,6 +18,10 @@
   padding-right: 5px;
 }
 
+.ionic_datepicker_popup .month_year_section {
+  padding: 5px 0;
+}
+
 .ionic_datepicker_popup .calendar_grid {
   height: 215px;
 }

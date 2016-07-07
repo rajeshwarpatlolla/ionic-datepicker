@@ -344,7 +344,7 @@ Few more features are also added apart from the above mentioned features.
 
 ### 15) v1.2.0
 
-Lots of bug fixes.
+Lots of bug fixes. Lots of PR's merged.
 
 
 ##License:
