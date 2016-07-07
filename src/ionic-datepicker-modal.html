@@ -16,8 +16,8 @@
             <div class="col col-50 padding_right_5px">
               <label class="item item-input item-select month_select">
                 <span class="input-label">&nbsp;</span>
-                <select ng-model="currentMonth" ng-change="monthChanged(currentMonth)">
-                  <option ng-repeat="month in monthsList" ng-selected="month == currentMonthSelected" value="{{month}}">
+                <select ng-model="data.currentMonth" ng-change="monthChanged(data.currentMonth)">
+                  <option ng-repeat="month in monthsList" ng-selected="month == data.currentMonthSelected" value="{{month}}">
                     {{month}}
                   </option>
                 </select>
@@ -26,7 +26,7 @@
             <div class="col col-50 padding_left_5px">
               <label class="item item-input item-select year_select">
                 <span class="input-label">&nbsp;</span>
-                <select ng-model="currentYear" ng-change="yearChanged(currentYear)" ng-options="year for year in yearsList"></select>
+                <select ng-model="data.currentYear" ng-change="yearChanged(data.currentYear)" ng-options="year for year in yearsList"></select>
               </label>
             </div>
           </div>
