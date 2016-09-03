@@ -59,7 +59,7 @@ Your config method may look like this if you wish to setup the configuration. Bu
       showTodayButton: true,
       dateFormat: 'dd MMMM yyyy',
       closeOnSelect: false,
-      disableWeekdays: [6]
+      disableWeekdays: []
     };
     ionicDatePickerProvider.configDatePicker(datePickerObj);
   })
@@ -103,7 +103,7 @@ The properties you can configure are as follows.
       new Date(),
       new Date(2016, 7, 10), //Months are 0-based, this is August, 10th.
       new Date('Wednesday, August 12, 2015'), //Works with any valid Date formats like long format
-      new Date("08-14-2015"), //Short format
+      new Date("08-14-2016"), //Short format
       new Date(1439676000000) //UNIX format
   ];
 ````
@@ -347,6 +347,10 @@ Few more features are also added apart from the above mentioned features.
 Lots of bug fixes. Lots of PR's merged.
 
 CSS changes for popup, so that all the dates of all the months fits in the specified height.
+
+### 16) v1.2.1
+
+Version modified to match with the current release version.
 
 
 ##License:
