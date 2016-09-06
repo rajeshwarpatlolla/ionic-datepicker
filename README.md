@@ -71,7 +71,7 @@ The properties you can configure are as follows.
 
 **a) inputDate**(Optional) : This is the date object we can pass to the component. You can give any date object to this property. Default value is `new Date()`.
 
-**b) titleLabel**(Optional) : Optional title for the popup or modal. Default value is currently selected day in format `MMM dd, yyyy`
+**b) titleLabel**(Optional) : Optional title for the popup or modal. If omitted or set to `null`, title will default to currently selected day in format `MMM dd, yyyy`
 
 **c) setLabel**(Optional) : The label for `Set` button. Default value is `Set`
 
