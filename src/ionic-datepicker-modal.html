@@ -50,7 +50,7 @@
                       'today' : (dayList[row + $index].epoch == today),
                       'pointer_events_none':((disabledDates.indexOf(dayList[row + $index].epoch) >= 0) || (dayList[row + $index].disabled))}"
                  ng-click="dateSelected(dayList[row + $index])">
-              <div class="date_cell">
+              <div class="date_cell" ng-class="{'marked_date':(markedDates.indexOf(dayList[row + $index].epoch) >= 0)}">
                 {{dayList[row + col].date}}
               </div>
             </div>
