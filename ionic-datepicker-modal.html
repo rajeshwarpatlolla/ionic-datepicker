@@ -1,0 +1,75 @@
+<ion-modal-view class="ionic_datepicker_modal">
+  <ion-header-bar class="header">
+    <h1 class="title">{{selctedDateEpoch | date : mainObj.dateFormat}}</h1>
+  </ion-header-bar>
+  <ion-content class="ionic_datepicker_modal_content">
+    <div class="">
+      <div class="row text-center">
+        <div class="col col-10 left_arrow" ng-click="prevMonth()">
+          <button class="button-clear font_22px"
+                  ng-class="{'pointer_events_none':((firstDayEpoch - 86400000) < fromDate)}">
+            <i class="icon ion-chevron-left"></i>
+          </button>
+        </div>
+        <div class="col col-80 text-center">
+          <div class="row select_section">
+            <div class="col col-50 padding_right_5px">
+              <label class="item item-input item-select month_select">
+                <span class="input-label">&nbsp;</span>
+                <select ng-model="data.currentMonth" ng-change="monthChanged(data.currentMonth)">
+                  <option ng-repeat="month in monthsList" ng-selected="month == data.currentMonthSelected" value="{{month}}">
+                    {{month}}
+                  </option>
+                </select>
+              </label>
+            </div>
+            <div class="col col-50 padding_left_5px">
+              <label class="item item-input item-select year_select">
+                <span class="input-label">&nbsp;</span>
+                <select ng-model="data.currentYear" ng-change="yearChanged(data.currentYear)" ng-options="year for year in yearsList"></select>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col col-10 right_arrow" ng-click="nextMonth()">
+          <button class=" button-clear font_22px"
+                  ng-class="{'pointer_events_none':((lastDayEpoch + 86400000)> toDate)}">
+            <i class="icon ion-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="calendar_grid">
+        <div class="row padding-top weeks_row">
+          <div class="col text-center font_bold"
+               ng-repeat="weekName in weeksList track by $index" ng-bind="weekName"></div>
+        </div>
+        <div>
+          <div class="row text-center padding_top_zero" ng-repeat="row in rows track by $index">
+            <div class="col padding_zero date_col" ng-repeat="col in cols track by $index"
+                 ng-class="{'selected_date': (dayList[row + $index].epoch === selctedDateEpoch),
+                      'today' : (dayList[row + $index].epoch == today),
+                      'pointer_events_none':((disabledDates.indexOf(dayList[row + $index].epoch) >= 0) || (dayList[row + $index].disabled))}"
+                 ng-click="dateSelected(dayList[row + $index])">
+              <div class="date_cell" ng-class="{'marked_date':(markedDates.indexOf(dayList[row + $index].epoch) >= 0)}">
+                {{dayList[row + col].date}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="footer">
+    <div class="row padding_zero">
+      <button class="button button-clear button-block button_set" ng-if="!mainObj.closeOnSelect"
+              ng-click="setIonicDatePickerDate()">{{mainObj.setLabel}}
+      </button>
+      <button class="button button-clear button-block button_today"  ng-if="mainObj.showTodayButton"
+              ng-click="setIonicDatePickerTodayDate()">{{mainObj.todayLabel}}
+      </button>
+      <button class="button button-clear button-block button_close"
+              ng-click="closeIonicDatePickerModal()">{{mainObj.closeLabel}}
+      </button>
+    </div>
+  </ion-footer-bar>
+</ion-modal-view>
