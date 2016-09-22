@@ -65,10 +65,10 @@ angular.module('ionic-datepicker.provider', [])
       //Date selected
       $scope.dateSelected = function (selectedDate) {
         if (!selectedDate || Object.keys(selectedDate).length === 0) return;
-        $scope.selctedDateEpoch = selectedDate.epoch;
+        $scope.selectedDateEpoch = selectedDate.epoch;
 
         if ($scope.mainObj.closeOnSelect) {
-          $scope.mainObj.callback($scope.selctedDateEpoch);
+          $scope.mainObj.callback($scope.selectedDateEpoch);
           if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
             $scope.popup.close();
           } else {
@@ -81,16 +81,16 @@ angular.module('ionic-datepicker.provider', [])
       $scope.setIonicDatePickerTodayDate = function () {
         var today = new Date();
         refreshDateList(new Date());
-        $scope.selctedDateEpoch = resetHMSM(today).getTime();
+        $scope.selectedDateEpoch = resetHMSM(today).getTime();
         if ($scope.mainObj.closeOnSelect) {
-          $scope.mainObj.callback($scope.selctedDateEpoch);
+          $scope.mainObj.callback($scope.selectedDateEpoch);
           closeModal();
         }
       };
 
       //Set date for the modal
       $scope.setIonicDatePickerDate = function () {
-        $scope.mainObj.callback($scope.selctedDateEpoch);
+        $scope.mainObj.callback($scope.selectedDateEpoch);
         closeModal();
       };
 
@@ -178,7 +178,7 @@ angular.module('ionic-datepicker.provider', [])
       //Setting up the initial object
       function setInitialObj(ipObj) {
         $scope.mainObj = angular.copy(ipObj);
-        $scope.selctedDateEpoch = resetHMSM($scope.mainObj.inputDate).getTime();
+        $scope.selectedDateEpoch = resetHMSM($scope.mainObj.inputDate).getTime();
 
         if ($scope.mainObj.weeksList && $scope.mainObj.weeksList.length === 7) {
           $scope.weeksList = $scope.mainObj.weeksList;
@@ -241,7 +241,7 @@ angular.module('ionic-datepicker.provider', [])
             text: $scope.mainObj.setLabel,
             type: 'button_set',
             onTap: function (e) {
-              $scope.mainObj.callback($scope.selctedDateEpoch);
+              $scope.mainObj.callback($scope.selectedDateEpoch);
             }
           }];
         }
@@ -253,7 +253,7 @@ angular.module('ionic-datepicker.provider', [])
             onTap: function (e) {
               var today = new Date();
               refreshDateList(new Date());
-              $scope.selctedDateEpoch = resetHMSM(today).getTime();
+              $scope.selectedDateEpoch = resetHMSM(today).getTime();
               if (!$scope.mainObj.closeOnSelect) {
                 e.preventDefault();
               }
