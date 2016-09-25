@@ -261,7 +261,7 @@ b) Added feature to show Monday as the first day of the week.
 
 **Features**
 
-a) `From` and `to` dates functionality added.
+a) `from` and `to` dates functionality added.
 
 b) Code re-structuring.
 
