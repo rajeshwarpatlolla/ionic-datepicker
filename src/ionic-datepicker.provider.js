@@ -3,6 +3,7 @@ angular.module('ionic-datepicker.provider', [])
   .provider('ionicDatePicker', function () {
 
     var config = {
+      titleLabel: null,
       setLabel: 'Set',
       todayLabel: 'Today',
       closeLabel: 'Close',

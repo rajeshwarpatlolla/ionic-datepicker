@@ -1,4 +1,4 @@
-<div class="selected_date_full">{{selctedDateEpoch | date : mainObj.dateFormat}}</div>
+<div class="selected_date_full">{{mainObj.titleLabel || selctedDateEpoch | date : mainObj.dateFormat}}</div>
 <div class="date_selection">
   <div class="row show_nav">
     <div class="col col-10 prev_btn_section col-center" ng-click="prevMonth()">
