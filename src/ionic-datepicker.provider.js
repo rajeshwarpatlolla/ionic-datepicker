@@ -66,7 +66,6 @@ angular.module('ionic-datepicker.provider', [])
       $scope.dateSelected = function (selectedDate) {
         if (!selectedDate || Object.keys(selectedDate).length === 0) return;
         $scope.selctedDateEpoch = selectedDate.epoch;
-
         if ($scope.mainObj.closeOnSelect) {
           $scope.mainObj.callback($scope.selctedDateEpoch);
           if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
@@ -166,11 +165,21 @@ angular.module('ionic-datepicker.provider', [])
       $scope.monthChanged = function (month) {
         var monthNumber = $scope.monthsList.indexOf(month);
         $scope.currentDate.setMonth(monthNumber);
+        if($scope.selctedDateEpoch!=null){
+          tmpDate = new Date($scope.selctedDateEpoch);
+          tmpDate = tmpDate.setMonth(monthNumber);
+          $scope.selctedDateEpoch = tmpDate;
+        }
         refreshDateList($scope.currentDate);
       };
 
       //Year changed
       $scope.yearChanged = function (year) {
+        if($scope.selctedDateEpoch!=null){
+          tmpDate = new Date($scope.selctedDateEpoch);
+          tmpDate = tmpDate.setYear(year);
+          $scope.selctedDateEpoch = tmpDate;
+        }
         $scope.currentDate.setFullYear(year);
         refreshDateList($scope.currentDate);
       };
@@ -238,10 +247,10 @@ angular.module('ionic-datepicker.provider', [])
 
         if (!$scope.mainObj.closeOnSelect) {
           buttons = [{
-            text: $scope.mainObj.setLabel,
-            type: 'button_set',
+            text: $scope.mainObj.closeLabel,
+            type: 'button_close',
             onTap: function (e) {
-              $scope.mainObj.callback($scope.selctedDateEpoch);
+              console.log('ionic-datepicker popup closed.');
             }
           }];
         }
@@ -262,10 +271,10 @@ angular.module('ionic-datepicker.provider', [])
         }
 
         buttons.push({
-          text: $scope.mainObj.closeLabel,
-          type: 'button_close',
+          text: $scope.mainObj.setLabel,
+          type: 'button_set',
           onTap: function (e) {
-            console.log('ionic-datepicker popup closed.');
+            $scope.mainObj.callback($scope.selctedDateEpoch);
           }
         });
 
