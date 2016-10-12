@@ -247,10 +247,10 @@ angular.module('ionic-datepicker.provider', [])
 
         if (!$scope.mainObj.closeOnSelect) {
           buttons = [{
-            text: $scope.mainObj.closeLabel,
-            type: 'button_close',
+            text: $scope.mainObj.setLabel,
+            type: 'button_set',
             onTap: function (e) {
-              console.log('ionic-datepicker popup closed.');
+              $scope.mainObj.callback($scope.selctedDateEpoch);
             }
           }];
         }
@@ -271,10 +271,10 @@ angular.module('ionic-datepicker.provider', [])
         }
 
         buttons.push({
-          text: $scope.mainObj.setLabel,
-          type: 'button_set',
+          text: $scope.mainObj.closeLabel,
+          type: 'button_close',
           onTap: function (e) {
-            $scope.mainObj.callback($scope.selctedDateEpoch);
+            console.log('ionic-datepicker popup closed.');
           }
         });
 
