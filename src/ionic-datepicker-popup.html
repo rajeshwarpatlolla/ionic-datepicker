@@ -10,18 +10,15 @@
     <div class="col col-80 month_year_section text-center">
       <div class="row select_section">
         <div class="col col-50 padding_right_5px">
-            <select ng-model="data.currentMonth" ng-change="monthChanged(data.currentMonth)">
-              <option ng-repeat="month in monthsList" ng-selected="month==data.currentMonthSelected" value="{{month}}">
-                {{month}}
-              </option>
-            </select>
+          <select ng-model="data.currentMonth" ng-change="monthChanged(data.currentMonth)">
+            <option ng-repeat="month in monthsList" ng-selected="month==data.currentMonthSelected" value="{{month}}">
+              {{month}}
+            </option>
+          </select>
         </div>
         <div class="col col-50 padding_left_5px">
-          <label class="item item-input item-select year_select">
-            <span class="input-label">&nbsp;</span>
-            <select ng-model="data.currentYear" ng-change="yearChanged(data.currentYear)"
-                    ng-options="year for year in yearsList"></select>
-          </label>
+        <select ng-model="data.currentYear" ng-change="yearChanged(data.currentYear)"
+                ng-options="year for year in yearsList"></select>
         </div>
       </div>
     </div>
