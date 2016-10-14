@@ -236,15 +236,14 @@ angular.module('ionic-datepicker.provider', [])
         }
         setInitialObj($scope.mainObj);
 
-        if (!$scope.mainObj.closeOnSelect) {
-          buttons = [{
-            text: $scope.mainObj.setLabel,
-            type: 'button_set',
-            onTap: function (e) {
-              $scope.mainObj.callback($scope.selctedDateEpoch);
-            }
-          }];
-        }
+        buttons = [];
+        buttons.push({
+          text: $scope.mainObj.closeLabel,
+          type: 'button_close',
+          onTap: function (e) {
+            // console.log('ionic-datepicker popup closed.');
+          }
+        });
 
         if ($scope.mainObj.showTodayButton) {
           buttons.push({
@@ -261,13 +260,15 @@ angular.module('ionic-datepicker.provider', [])
           });
         }
 
-        buttons.push({
-          text: $scope.mainObj.closeLabel,
-          type: 'button_close',
-          onTap: function (e) {
-            console.log('ionic-datepicker popup closed.');
-          }
-        });
+        if (!$scope.mainObj.closeOnSelect) {
+          buttons.push({
+            text: $scope.mainObj.setLabel,
+            type: 'button_set',
+            onTap: function (e) {
+              $scope.mainObj.callback($scope.selctedDateEpoch);
+            }
+          });
+        }
 
         if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
           $scope.popup = $ionicPopup.show({
