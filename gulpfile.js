@@ -5,6 +5,7 @@ var uglify = require('gulp-uglify');
 var ngHtml2Js = require("gulp-ng-html2js");
 var minifyHtml = require("gulp-minify-html");
 var css2js = require("gulp-css2js");
+var webserver = require('gulp-webserver');
 
 gulp.task('html2js', function () {
   return gulp.src(['./src/*.html'])
@@ -40,4 +41,15 @@ gulp.task('del', function () {
 });
 
 gulp.task('build', ['del-temp-files']);
+
+gulp.task('serve', function() {
+	gulp.src('./')
+		.pipe(webserver({
+			baseDir:"./",
+			port:3000,
+			livereload: false,
+			directoryListing: true,
+			open: "/demo/index.html"
+		}));
+});
 
