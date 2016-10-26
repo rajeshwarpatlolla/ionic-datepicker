@@ -21,7 +21,7 @@ angular.module('ionic-datepicker.provider', [])
       angular.extend(config, inputObj);
     };
 
-    this.$get = ['$rootScope', '$ionicPopup', '$ionicModal', 'IonicDatepickerService', function ($rootScope, $ionicPopup, $ionicModal, IonicDatepickerService) {
+    this.$get = ['$rootScope', '$ionicPopover','$ionicPopup', '$ionicModal', 'IonicDatepickerService', function ($rootScope, $ionicPopover, $ionicPopup, $ionicModal, IonicDatepickerService) {
 
       var provider = {};
 
@@ -88,10 +88,15 @@ angular.module('ionic-datepicker.provider', [])
         }
       };
 
-      //Set date for the modal
+      //Set date for the modal or popover
       $scope.setIonicDatePickerDate = function () {
         $scope.mainObj.callback($scope.selctedDateEpoch);
-        closeModal();
+        if ($scope.mainObj.templateType.toLowerCase() == 'popover'){
+          $scope.popover.hide();
+        }
+        else{ // Modal mode
+          closeModal();
+        }
       };
 
       //Setting the disabled dates list.
@@ -179,6 +184,8 @@ angular.module('ionic-datepicker.provider', [])
       function setInitialObj(ipObj) {
         $scope.mainObj = angular.copy(ipObj);
         $scope.selctedDateEpoch = resetHMSM($scope.mainObj.inputDate).getTime();
+        // usign angular.copy with MouseEevnt causes llegal invocation at MouseEvent.remoteFunction so we override it with referance of origianl events
+        $scope.mainObj.mouseEvent = ipObj.mouseEvent;
 
         if ($scope.mainObj.weeksList && $scope.mainObj.weeksList.length === 7) {
           $scope.weeksList = $scope.mainObj.weeksList;
@@ -276,10 +283,18 @@ angular.module('ionic-datepicker.provider', [])
             cssClass: 'ionic_datepicker_popup',
             buttons: buttons
           });
+        } else if ($scope.mainObj.templateType.toLowerCase() == 'popover') {
+          $ionicPopover.fromTemplateUrl('ionic-datepicker-popover.html', {
+            scope: $scope
+          }).then(function (popover) {
+            popover.show($scope.mainObj.mouseEvent);
+            $scope.popover = popover;
+          });
         } else {
           openModal();
         }
       };
+
 
       return provider;
 
