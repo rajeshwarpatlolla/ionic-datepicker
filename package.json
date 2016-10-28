@@ -8,12 +8,14 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "gulp": "*",
     "del": "*",
+    "gulp": "*",
+    "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "*",
     "gulp-css2js": "*",
     "gulp-minify-html": "*",
     "gulp-ng-html2js": "*",
+    "gulp-sass": "^2.3.2",
     "gulp-uglify": "*"
   }
 }
