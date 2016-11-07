@@ -177,6 +177,8 @@ angular.module('ionic-datepicker.provider', [])
         var monthNumber = $scope.monthsList.indexOf(month);
         $scope.currentDate.setMonth(monthNumber);
         refreshDateList($scope.currentDate);
+
+        changeDaySelected();
       };
 
       //Year changed
