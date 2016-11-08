@@ -13,7 +13,7 @@ gulp.task('html2js', function () {
       moduleName: "ionic-datepicker.templates"
     }))
     .pipe(concat("templates.js"))
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest("./dist"));
 });
 

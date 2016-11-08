@@ -269,13 +269,17 @@ angular.module('ionic-datepicker.provider', [])
           }
         });
 
-        if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
+        var templateName = $scope.mainObj.templateType.toLowerCase();
+
+        if (templateName === 'popup') {
           $scope.popup = $ionicPopup.show({
             templateUrl: 'ionic-datepicker-popup.html',
             scope: $scope,
             cssClass: 'ionic_datepicker_popup',
             buttons: buttons
           });
+        } else if (templateName === 'inline') {
+          // does nothing
         } else {
           openModal();
         }
