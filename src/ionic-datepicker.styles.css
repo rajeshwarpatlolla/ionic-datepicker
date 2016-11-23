@@ -232,3 +232,27 @@
 .platform-ios .ionic_datepicker_modal select {
   left: 5%;
 }
+
+.ionic_datepicker_popover {
+  height: 360px;
+  width: 250px;
+}
+
+.ionic_datepicker_popover .row, .row + .row{
+  padding: 0;
+}
+
+.ionic_datepicker_popover .date_col {
+  height: 35px;
+  line-height: 35px;
+  cursor: pointer;
+}
+
+.ionic_datepicker_popover .selected_date {
+  background-color: #009688;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+}
+
+
