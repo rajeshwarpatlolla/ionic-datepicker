@@ -79,13 +79,7 @@ angular.module('ionic-datepicker.provider', [])
 
       //Set today as date for the modal
       $scope.setIonicDatePickerTodayDate = function () {
-        var today = new Date();
-        refreshDateList(new Date());
-        $scope.selctedDateEpoch = resetHMSM(today).getTime();
-        if ($scope.mainObj.closeOnSelect) {
-          $scope.mainObj.callback($scope.selctedDateEpoch);
-          closeModal();
-        }
+        $scope.dateSelected($scope.today);
       };
 
       //Set date for the modal
@@ -251,12 +245,16 @@ angular.module('ionic-datepicker.provider', [])
             text: $scope.mainObj.todayLabel,
             type: 'button_today',
             onTap: function (e) {
-              var today = new Date();
-              refreshDateList(new Date());
-              $scope.selctedDateEpoch = resetHMSM(today).getTime();
-              if (!$scope.mainObj.closeOnSelect) {
-                e.preventDefault();
-              }
+              var today = new Date($scope.today);
+              var today_obj = {
+                date: today.getDate(),
+                month: today.getMonth(),
+                year: today.getFullYear(),
+                day: today.getDay(),
+                epoch: today.getTime(),
+                disabled: false
+              };
+              $scope.dateSelected(today_obj);
             }
           });
         }
