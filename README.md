@@ -7,7 +7,7 @@ This plugin is completely open source. Please rate this plugin @ [Ionic Market](
 
 From version 1.0.0, this component has got so many new features and the way you should use is different from the older versions of this component. If you wish to see the documentation for the previous versions of this component, please check the [previous releases](https://github.com/rajeshwarpatlolla/ionic-datepicker/releases)
 
-## For ionic v2, this component is under development. You can check it [here](https://github.com/rajeshwarpatlolla/ionic2-timepicker)
+## For ionic v2, this component is under development. You can check it [here](https://github.com/rajeshwarpatlolla/ionic2-datepicker)
 
 [View Demo](http://rajeshwarpatlolla.github.io/DatePickerForIonicFramework/demo/ "Demo")
 
