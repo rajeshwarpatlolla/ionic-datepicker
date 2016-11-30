@@ -66,7 +66,6 @@ angular.module('ionic-datepicker.provider', [])
       $scope.dateSelected = function (selectedDate) {
         if (!selectedDate || Object.keys(selectedDate).length === 0) return;
         $scope.selctedDateEpoch = selectedDate.epoch;
-
         if ($scope.mainObj.closeOnSelect) {
           $scope.mainObj.callback($scope.selctedDateEpoch);
           if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
@@ -166,11 +165,21 @@ angular.module('ionic-datepicker.provider', [])
       $scope.monthChanged = function (month) {
         var monthNumber = $scope.monthsList.indexOf(month);
         $scope.currentDate.setMonth(monthNumber);
+        if($scope.selctedDateEpoch!=null){
+          tmpDate = new Date($scope.selctedDateEpoch);
+          tmpDate = tmpDate.setMonth(monthNumber);
+          $scope.selctedDateEpoch = tmpDate;
+        }
         refreshDateList($scope.currentDate);
       };
 
       //Year changed
       $scope.yearChanged = function (year) {
+        if($scope.selctedDateEpoch!=null){
+          tmpDate = new Date($scope.selctedDateEpoch);
+          tmpDate = tmpDate.setYear(year);
+          $scope.selctedDateEpoch = tmpDate;
+        }
         $scope.currentDate.setFullYear(year);
         refreshDateList($scope.currentDate);
       };
