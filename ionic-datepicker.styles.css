@@ -80,7 +80,7 @@
 }
 
 .ionic_datepicker_popup .popup-body .marked_date {
-  border: 1px solid blue;
+  border: 3px solid #0B57B3;
 }
 
 .ionic_datepicker_popup .popup-body .month_select, .ionic_datepicker_popup .popup-body .year_select {

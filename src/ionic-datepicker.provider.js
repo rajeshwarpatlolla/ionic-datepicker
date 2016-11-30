@@ -28,6 +28,7 @@ angular.module('ionic-datepicker.provider', [])
       var $scope = $rootScope.$new();
       $scope.today = resetHMSM(new Date()).getTime();
       $scope.disabledDates = [];
+      $scope.markedDates = [];
       $scope.data = {};
 
       //Reset the hours, minutes, seconds and milli seconds
@@ -103,6 +104,19 @@ angular.module('ionic-datepicker.provider', [])
           angular.forEach(mainObj.disabledDates, function (val, key) {
             val = resetHMSM(new Date(val));
             $scope.disabledDates.push(val.getTime());
+          });
+        }
+      }
+      
+    //Setting the marked dates list.
+      function setMarkedDates(mainObj) {
+        if (!mainObj.markedDates || mainObj.markedDates.length === 0) {
+          $scope.markedDates = [];
+        } else {
+          $scope.markedDates = [];
+          angular.forEach(mainObj.markedDates, function (val, key) {
+            val = resetHMSM(new Date(val));
+            $scope.markedDates.push(val.getTime());
           });
         }
       }
@@ -192,6 +206,7 @@ angular.module('ionic-datepicker.provider', [])
 
         refreshDateList($scope.mainObj.inputDate);
         setDisabledDates($scope.mainObj);
+        setMarkedDates($scope.mainObj);
       }
 
       $ionicModal.fromTemplateUrl('ionic-datepicker-modal.html', {
