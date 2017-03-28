@@ -7,6 +7,8 @@ This plugin is completely open source. Please rate this plugin @ [Ionic Market](
 
 From version 1.0.0, this component has got so many new features and the way you should use is different from the older versions of this component. If you wish to see the documentation for the previous versions of this component, please check the [previous releases](https://github.com/rajeshwarpatlolla/ionic-datepicker/releases)
 
+## For ionic v2, this component is under development. You can check it [here](https://github.com/rajeshwarpatlolla/ionic2-datepicker)
+
 [View Demo](http://rajeshwarpatlolla.github.io/DatePickerForIonicFramework/demo/ "Demo")
 
 ##Prerequisites.
@@ -264,7 +266,7 @@ b) Added feature to show Monday as the first day of the week.
 
 **Features**
 
-a) `From` and `to` dates functionality added.
+a) `from` and `to` dates functionality added.
 
 b) Code re-structuring.
 
