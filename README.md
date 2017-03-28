@@ -133,7 +133,7 @@ The properties you can configure are as follows.
 .controller('HomeCtrl', function ($scope, ionicDatePicker) {
 
     var ipObj1 = {
-      callback: function (val) {  //Mandatory
+      callback: function (val) {  //Optional, see promise solution below
         console.log('Return value from the datepicker popup is : ' + val, new Date(val));
       },
       disabledDates: [            //Optional
@@ -164,7 +164,29 @@ Apart from the config method, you can re configure all options in the controller
 
 In all the above steps the only mandatory thing is the `callback` where you will get the selected date value.
 
+### Access value with promise 
+Instead using the ``callback`` option in the configuration, you can receive a promise, which will be resolved, when a date was picked or closed.
+If the promise resolves with ``undefined`` the user closed the modal/popup using the "close" button.
 
+```
+var picker = ionicDatePicker.openDatePicker(oOptions);
+
+picker.then(function (val) { 
+    console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+});
+```
+### Close manually
+If you want to close the popup / modal by code, you can do like so:
+(To implement a back button eg.)
+```
+var picker = ionicDatePicker.openDatePicker(oOptions);
+
+picker.then(onDatePicked);
+
+$ionicPlatform.registerBackButtonAction(function(){
+  picker.close(); // close the picker
+}, 501);
+```
 ##Screen Shots:
 
 Once you are successfully done with the above steps, you should be able to use this plugin.
