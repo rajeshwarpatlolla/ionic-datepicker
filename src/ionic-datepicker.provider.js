@@ -219,13 +219,6 @@ angular.module('ionic-datepicker.provider', [])
         }
       });
 
-      $scope.$on('$destroy', function () {
-        var modal = ionicDatePickerModalCache.get('ionic-datepicker-modal');
-        if (modal) {
-          modal.remove();
-        }
-      });
-
       function openModal() {
         var modal = ionicDatePickerModalCache.get('ionic-datepicker-modal');
         if (modal) {
@@ -312,6 +305,7 @@ angular.module('ionic-datepicker.provider', [])
         var modal = ionicDatePickerModalCache.get('ionic-datepicker-modal');
         if (modal) {
           modal.remove();
+          ionicDatePickerModalCache.remove('ionic-datepicker-modal');
         }
       }
 
