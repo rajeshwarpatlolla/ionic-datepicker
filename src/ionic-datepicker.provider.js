@@ -21,9 +21,11 @@ angular.module('ionic-datepicker.provider', [])
       angular.extend(config, inputObj);
     };
 
-    this.$get = ['$rootScope', '$ionicPopup', '$ionicModal', 'IonicDatepickerService', function ($rootScope, $ionicPopup, $ionicModal, IonicDatepickerService) {
+    this.$get = ['$rootScope', '$ionicPopup', '$ionicModal', 'IonicDatepickerService', '$cacheFactory', function ($rootScope, $ionicPopup, $ionicModal, IonicDatepickerService, $cacheFactory) {
 
       var provider = {};
+
+      var ionicDatePickerModalCache = $cacheFactory('ionicDatePickerModalCache');
 
       var $scope = $rootScope.$new();
       $scope.today = resetHMSM(new Date()).getTime();
@@ -212,19 +214,30 @@ angular.module('ionic-datepicker.provider', [])
         scope: $scope,
         animation: 'slide-in-up'
       }).then(function (modal) {
-        $scope.modal = modal;
+        if (!ionicDatePickerModalCache.get('ionic-datepicker-modal')) {
+          ionicDatePickerModalCache.put('ionic-datepicker-modal', modal);
+        }
       });
 
       $scope.$on('$destroy', function () {
-        $scope.modal.remove();
+        var modal = ionicDatePickerModalCache.get('ionic-datepicker-modal');
+        if (modal) {
+          modal.remove();
+        }
       });
 
       function openModal() {
-        $scope.modal.show();
+        var modal = ionicDatePickerModalCache.get('ionic-datepicker-modal');
+        if (modal) {
+          modal.show();
+        }
       }
 
       function closeModal() {
-        $scope.modal.hide();
+        var modal = ionicDatePickerModalCache.get('ionic-datepicker-modal');
+        if (modal) {
+          modal.hide();
+        }
       }
 
       $scope.closeIonicDatePickerModal = function () {
@@ -296,8 +309,9 @@ angular.module('ionic-datepicker.provider', [])
       };
 
       provider.removeIonicDatePickerModal = function () {
-        if ($scope.modal) {
-          $scope.modal.remove();
+        var modal = ionicDatePickerModalCache.get('ionic-datepicker-modal');
+        if (modal) {
+          modal.remove();
         }
       }
 
