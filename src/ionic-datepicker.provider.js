@@ -65,7 +65,7 @@ angular.module('ionic-datepicker.provider', [])
         changeDaySelected();
       };
 
-      var changeDaySelected = function() {
+      var changeDaySelected = function () {
         var newSelectedDate = new Date($scope.selctedDateEpoch);
         newSelectedDate.setMonth($scope.currentDate.getMonth());
         newSelectedDate.setYear($scope.currentDate.getFullYear());
@@ -294,6 +294,12 @@ angular.module('ionic-datepicker.provider', [])
           openModal();
         }
       };
+
+      provider.removeIonicDatePickerModal = function () {
+        if ($scope.modal) {
+          $scope.modal.remove();
+        }
+      }
 
       return provider;
 
