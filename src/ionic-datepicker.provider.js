@@ -32,6 +32,8 @@ angular.module('ionic-datepicker.provider', [])
       $scope.disabledDates = [];
       $scope.data = {};
 
+      initModal();
+
       //Reset the hours, minutes, seconds and milli seconds
       function resetHMSM(currentDate) {
         currentDate.setHours(0);
@@ -210,14 +212,16 @@ angular.module('ionic-datepicker.provider', [])
         setDisabledDates($scope.mainObj);
       }
 
-      $ionicModal.fromTemplateUrl('ionic-datepicker-modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-      }).then(function (modal) {
-        if (!ionicDatePickerModalCache.get('ionic-datepicker-modal')) {
-          ionicDatePickerModalCache.put('ionic-datepicker-modal', modal);
-        }
-      });
+      function initModal() {
+        $ionicModal.fromTemplateUrl('ionic-datepicker-modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function (modal) {
+          if (!ionicDatePickerModalCache.get('ionic-datepicker-modal')) {
+            ionicDatePickerModalCache.put('ionic-datepicker-modal', modal);
+          }
+        });
+      }
 
       function openModal() {
         var modal = ionicDatePickerModalCache.get('ionic-datepicker-modal');
@@ -306,6 +310,7 @@ angular.module('ionic-datepicker.provider', [])
         if (modal) {
           modal.remove();
           ionicDatePickerModalCache.remove('ionic-datepicker-modal');
+          initModal();
         }
       }
 
