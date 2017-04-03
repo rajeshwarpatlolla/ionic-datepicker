@@ -46,7 +46,8 @@
         <div>
           <div class="row text-center padding_top_zero" ng-repeat="row in rows track by $index">
             <div class="col padding_zero date_col" ng-repeat="col in cols track by $index"
-                 ng-class="{'selected_date': (dayList[row + $index].epoch === selctedDateEpoch),
+                 ng-class="{'selected_date': ((mainObj.selectMode === 'day' && dayList[row + $index].epoch === selctedDateEpoch)
+                 || (mainObj.selectMode !== 'day' && dayList[row + $index].epoch >= selctedDateEpoch && dayList[row + $index].epoch <= selctedDateEpochEndWeek)),
                       'today' : (dayList[row + $index].epoch == today),
                       'pointer_events_none':((disabledDates.indexOf(dayList[row + $index].epoch) >= 0) || (dayList[row + $index].disabled))}"
                  ng-click="dateSelected(dayList[row + $index])">

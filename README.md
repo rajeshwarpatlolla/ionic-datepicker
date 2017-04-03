@@ -62,7 +62,8 @@ Your config method may look like this if you wish to setup the configuration. Bu
       showTodayButton: true,
       dateFormat: 'dd MMMM yyyy',
       closeOnSelect: false,
-      disableWeekdays: []
+      disableWeekdays: [],
+      selectMode: 'day'
     };
     ionicDatePickerProvider.configDatePicker(datePickerObj);
   })
@@ -127,6 +128,8 @@ The properties you can configure are as follows.
 
 **p) disableWeekdays**(Optional) : Accepts array of numbers starting from 0(Sunday) to 6(Saturday). If you specify any values for this array, then it will disable that week day in the whole calendar. For example if you pass [0,6], then all the Sundays and Saturdays will be disabled.
 
+**q) selectMode**(Optional): This is a string type which takes three values i.e. `day`, `week` or `month`. Default value is `day`. If you wish the whole week to be selected rather than the day, and the first day of week to be the datepicker's value, set it to `week`.
+
 5) Inject `ionicDatePicker` in the controller, where you wish to use this component. Then using the below method you can call the datepicker.
 
 ````javascript
@@ -151,7 +154,8 @@ The properties you can configure are as follows.
       mondayFirst: true,          //Optional
       disableWeekdays: [0],       //Optional
       closeOnSelect: false,       //Optional
-      templateType: 'popup'       //Optional
+      templateType: 'popup',      //Optional
+      selectMode: 'day'           //Optional
     };
 
     $scope.openDatePicker = function(){
