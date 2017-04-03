@@ -71,21 +71,26 @@ angular.module('ionic-datepicker.provider', [])
         newSelectedDate.setMonth($scope.currentDate.getMonth());
         newSelectedDate.setYear($scope.currentDate.getFullYear());
         $scope.selctedDateEpoch = newSelectedDate.getTime();
-        $scope.mainObj.callback($scope.selctedDateEpoch);
-      }
+          $scope.mainObj.callback($scope.mainObj.selectMode == 'day'
+              ? $scope.selctedDateEpoch
+              : { start: $scope.selctedDateEpoch, end: $scope.selctedDateEpochEndWeek });
+      };
 
       //Date selected
       $scope.dateSelected = function (selectedDate) {
-        if (!selectedDate || Object.keys(selectedDate).length === 0) return;
-        $scope.selctedDateEpoch = selectedDate.epoch;
+        if (!selectedDate || Object.keys(selectedDate).length === 0)
+          return;
+        $scope.adjustSelctedDateEpoch(selectedDate, false);
         if ($scope.mainObj.closeOnSelect) {
-          $scope.mainObj.callback($scope.selctedDateEpoch);
+          $scope.mainObj.callback($scope.mainObj.selectMode == 'day'
+              ? $scope.selctedDateEpoch
+              : { start: $scope.selctedDateEpoch, end: $scope.selctedDateEpochEndWeek });
           if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
             $scope.popup.close();
           } else {
             closeModal();
           }
-        }
+      }
       };
 
       //Set today as date for the modal
@@ -94,19 +99,21 @@ angular.module('ionic-datepicker.provider', [])
         refreshDateList(new Date());
         $scope.selctedDateEpoch = resetHMSM(today).getTime();
         if ($scope.mainObj.closeOnSelect) {
-          $scope.mainObj.callback($scope.selctedDateEpoch);
-          closeModal();
+            $scope.mainObj.callback($scope.selctedDateEpoch);
+            closeModal();
         }
       };
 
       //Set date for the modal
       $scope.setIonicDatePickerDate = function () {
-        $scope.mainObj.callback($scope.selctedDateEpoch);
-        closeModal();
+          $scope.mainObj.callback($scope.mainObj.selectMode == 'day'
+              ? $scope.selctedDateEpoch
+              : { start: $scope.selctedDateEpoch, end: $scope.selctedDateEpochEndWeek });
+          closeModal();
       };
 
         // Adjust $scope.selctedDateEpoch and $scope.selctedDateEpochEndWeek in case
-        // select mode is week, with value from param dat
+        // select mode is week, with value from param date
         // @param selectedDate - an item of $scope.dayList or a Date
         // @param initialSelRawDate - when true, initial selection and Date value passed.
         // When false, event call and item of $scope.dayList passed.
@@ -285,7 +292,9 @@ angular.module('ionic-datepicker.provider', [])
             text: $scope.mainObj.setLabel,
             type: 'button_set',
             onTap: function (e) {
-              $scope.mainObj.callback($scope.selctedDateEpoch);
+                $scope.mainObj.callback($scope.mainObj.selectMode == 'day'
+                    ? $scope.selctedDateEpoch
+                    : { start: $scope.selctedDateEpoch, end: $scope.selctedDateEpochEndWeek });
             }
           }];
         }
