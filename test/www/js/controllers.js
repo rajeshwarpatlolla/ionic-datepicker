@@ -15,7 +15,12 @@ angular.module('starter.controllers', [])
     $scope.openDatePicker = function() {
       var ipObj1 = {
         callback: function (val) {  //Mandatory
-          $scope.datepicker1 = new Date(val);
+          console.debug("callback called");
+          if(val.start) {
+            $scope.datepicker1 = new Date(val.start) + " - " + new Date(val.end);
+          } else {
+            $scope.datepicker1 = new Date(val);
+          }
         },
         mondayFirst: $scope.options.start == "monday",          //Optional
         closeOnSelect: $scope.options.close == "close",       //Optional
