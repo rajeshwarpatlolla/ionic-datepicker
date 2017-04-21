@@ -48,8 +48,7 @@ angular.module('ionic-datepicker.provider', [])
         $scope.currentDate.setMonth($scope.currentDate.getMonth() - 1);
         $scope.data.currentMonth = $scope.mainObj.monthsList[$scope.currentDate.getMonth()];
         $scope.data.currentYear = $scope.currentDate.getFullYear();
-        refreshDateList($scope.currentDate);
-        changeDaySelected();
+        $scope.monthChanged();
       };
 
       //Next month
@@ -62,9 +61,7 @@ angular.module('ionic-datepicker.provider', [])
         $scope.currentDate.setMonth($scope.currentDate.getMonth() + 1);
         $scope.data.currentMonth = $scope.mainObj.monthsList[$scope.currentDate.getMonth()];
         $scope.data.currentYear = $scope.currentDate.getFullYear();
-        $scope.monthChanged($scope.currentDate.getMonth());
-        refreshDateList(new Date());
-        changeDaySelected();
+        $scope.monthChanged();
       };
 
       var changeDaySelected = function() {
@@ -72,8 +69,7 @@ angular.module('ionic-datepicker.provider', [])
         newSelectedDate.setMonth($scope.currentDate.getMonth());
         newSelectedDate.setYear($scope.currentDate.getFullYear());
         $scope.selctedDateEpoch = newSelectedDate.getTime();
-        $scope.mainObj.callback($scope.selctedDateEpoch);
-      }
+      };
 
       //Date selected
       $scope.dateSelected = function (selectedDate) {
@@ -175,11 +171,8 @@ angular.module('ionic-datepicker.provider', [])
       }
 
       //Month changed
-      $scope.monthChanged = function (month) {
-        var monthNumber = $scope.monthsList.indexOf(month);
-        $scope.currentDate.setMonth(monthNumber);
+      $scope.monthChanged = function () {
         refreshDateList($scope.currentDate);
-
         changeDaySelected();
       };
 
