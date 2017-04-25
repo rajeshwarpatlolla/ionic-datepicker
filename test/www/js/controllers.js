@@ -26,7 +26,9 @@ angular.module('starter.controllers', [])
         closeOnSelect: $scope.options.close == "close",       //Optional
         templateType: $scope.options.style,       //Optional
         selectMode: $scope.options.range, //Optional
-        showTodayButton: $scope.options.today == "today" //Optional
+        showTodayButton: $scope.options.today == "today", //Optional
+        from: new Date(2012, 0, 1), //Optional
+        to: new Date(2018, 11, 31) //Optional
       };
 
       ionicDatePicker.openDatePicker(ipObj1);
