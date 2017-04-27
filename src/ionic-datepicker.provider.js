@@ -64,7 +64,18 @@ angular.module('ionic-datepicker.provider', [])
         $scope.monthChanged($scope.data.currentMonth);
       };
 
-      var changeDaySelected = function() {
+        //Get the acceptable day
+        var getAcceptableDay = function(currentDay, newMonth, newYear) {
+            var selectedDate = new Date(newYear, newMonth, 1);
+            var nbDaysInMonth = new Date(selectedDate.getYear(), selectedDate.getMonth()+1, 0).getDate();
+            if(currentDay > nbDaysInMonth) {
+                return nbDaysInMonth;
+            }
+            return currentDay;
+        };
+
+
+        var changeDaySelected = function() {
         var newSelectedDate = new Date($scope.selctedDateEpoch);
           console.log("newSelectedDate before changing selected day: ", newSelectedDate);
         var currentDay = newSelectedDate.getDate();
