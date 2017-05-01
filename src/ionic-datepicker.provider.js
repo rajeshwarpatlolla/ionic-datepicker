@@ -14,7 +14,8 @@ angular.module('ionic-datepicker.provider', [])
       templateType: 'popup',
       showTodayButton: false,
       closeOnSelect: false,
-      disableWeekdays: []
+      disableWeekdays: [],
+      selectMode: 'day'
     };
 
     this.configDatePicker = function (inputObj) {
@@ -56,12 +57,10 @@ angular.module('ionic-datepicker.provider', [])
         if ($scope.currentDate.getMonth() === 11) {
           $scope.currentDate.setFullYear($scope.currentDate.getFullYear());
         }
-        $scope.currentDate.setDate(1);
         $scope.currentDate.setMonth($scope.currentDate.getMonth() + 1);
         $scope.data.currentMonth = $scope.mainObj.monthsList[$scope.currentDate.getMonth()];
         $scope.data.currentYear = $scope.currentDate.getFullYear();
-        $scope.monthChanged($scope.currentDate.getMonth());
-        refreshDateList(new Date());
+        refreshDateList($scope.currentDate);
         changeDaySelected();
       };
 
@@ -70,21 +69,24 @@ angular.module('ionic-datepicker.provider', [])
         newSelectedDate.setMonth($scope.currentDate.getMonth());
         newSelectedDate.setYear($scope.currentDate.getFullYear());
         $scope.selctedDateEpoch = newSelectedDate.getTime();
-        $scope.mainObj.callback($scope.selctedDateEpoch);
-      }
+        $scope.adjustSelctedDateEpoch(newSelectedDate, true);
+      };
 
       //Date selected
       $scope.dateSelected = function (selectedDate) {
-        if (!selectedDate || Object.keys(selectedDate).length === 0) return;
-        $scope.selctedDateEpoch = selectedDate.epoch;
+        if (!selectedDate || Object.keys(selectedDate).length === 0)
+          return;
+        $scope.adjustSelctedDateEpoch(selectedDate, false);
         if ($scope.mainObj.closeOnSelect) {
-          $scope.mainObj.callback($scope.selctedDateEpoch);
+          $scope.mainObj.callback($scope.mainObj.selectMode == 'day'
+              ? $scope.selctedDateEpoch
+              : { start: $scope.selctedDateEpoch, end: $scope.selctedDateEpochEndWeek });
           if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
             $scope.popup.close();
           } else {
             closeModal();
           }
-        }
+      }
       };
 
       //Set today as date for the modal
@@ -93,18 +95,48 @@ angular.module('ionic-datepicker.provider', [])
         refreshDateList(new Date());
         $scope.selctedDateEpoch = resetHMSM(today).getTime();
         if ($scope.mainObj.closeOnSelect) {
-          $scope.mainObj.callback($scope.selctedDateEpoch);
-          closeModal();
+            $scope.mainObj.callback($scope.selctedDateEpoch);
+            closeModal();
         }
       };
 
       //Set date for the modal
       $scope.setIonicDatePickerDate = function () {
-        $scope.mainObj.callback($scope.selctedDateEpoch);
-        closeModal();
+          $scope.mainObj.callback($scope.mainObj.selectMode == 'day'
+              ? $scope.selctedDateEpoch
+              : { start: $scope.selctedDateEpoch, end: $scope.selctedDateEpochEndWeek });
+          closeModal();
       };
 
-      //Setting the disabled dates list.
+        // Adjust $scope.selctedDateEpoch and $scope.selctedDateEpochEndWeek in case
+        // select mode is week, with value from param date
+        // @param selectedDate - an item of $scope.dayList or a Date
+        // @param initialSelRawDate - when true, initial selection and Date value passed.
+        // When false, event call and item of $scope.dayList passed.
+        $scope.adjustSelctedDateEpoch = function(selectedDate, initialSelRawDate) {
+            var selectedTime = initialSelRawDate ? selectedDate.getTime() : selectedDate.epoch;
+            if($scope.mainObj.selectMode == 'week') {
+                var d = new Date(selectedTime);
+                if($scope.mainObj.mondayFirst) {
+                    d.setDate(d.getDate() - new Date(selectedTime).getDay() + 1);
+                } else {
+                    d.setDate(d.getDate() - new Date(selectedTime).getDay());
+                }
+                selectedTime = d.getTime();
+                d.setDate(d.getDate() + 6);
+                $scope.selctedDateEpochEndWeek = d.getTime();
+            } else if($scope.mainObj.selectMode == 'month') {
+                var d = new Date(selectedTime);
+                d.setDate(1);
+                selectedTime = d.getTime();
+                var nbDaysInMonth = new Date(d.getYear(), d.getMonth()+1, 0).getDate();
+                d = new Date(d.getFullYear(), d.getMonth(), nbDaysInMonth);
+                $scope.selctedDateEpochEndWeek = d.getTime();
+            }
+            $scope.selctedDateEpoch = selectedTime;
+        };
+
+        //Setting the disabled dates list.
       function setDisabledDates(mainObj) {
         if (!mainObj.disabledDates || mainObj.disabledDates.length === 0) {
           $scope.disabledDates = [];
@@ -192,9 +224,10 @@ angular.module('ionic-datepicker.provider', [])
       //Setting up the initial object
       function setInitialObj(ipObj) {
         $scope.mainObj = angular.copy(ipObj);
-        $scope.selctedDateEpoch = resetHMSM($scope.mainObj.inputDate).getTime();
+        $scope.mainObj.inputDate = resetHMSM($scope.mainObj.inputDate);
+        $scope.adjustSelctedDateEpoch($scope.mainObj.inputDate, true);
 
-        if ($scope.mainObj.weeksList && $scope.mainObj.weeksList.length === 7) {
+          if ($scope.mainObj.weeksList && $scope.mainObj.weeksList.length === 7) {
           $scope.weeksList = $scope.mainObj.weeksList;
         } else {
           $scope.weeksList = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -255,7 +288,9 @@ angular.module('ionic-datepicker.provider', [])
             text: $scope.mainObj.setLabel,
             type: 'button_set',
             onTap: function (e) {
-              $scope.mainObj.callback($scope.selctedDateEpoch);
+                $scope.mainObj.callback($scope.mainObj.selectMode == 'day'
+                    ? $scope.selctedDateEpoch
+                    : { start: $scope.selctedDateEpoch, end: $scope.selctedDateEpochEndWeek });
             }
           }];
         }
