@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="../../dist/ionic-datepicker.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <style type="text/css">
+      input.selectedDate { width: 100%; }
+      div#options div.col25 { padding-left:50px; padding-right:50px;}
+      input[type=radio] { margin-right:5px; }
+    </style>
+  </head>
+  <body ng-app="starter">
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Test of ionic date picker</h1>
+      </ion-header-bar>
+      <ion-content ng-controller="mainController">
+
+        <div id="options">
+          <div class="row">
+            <div class="col100">Dates: From 2012-01-01 to 2018-12-31.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col25">OPTIONS
+            </div>
+            <div class="col25">Start:
+              <div class="row">
+                <input type="radio" name="start" value="sunday" ng-model="options.start">Sunday
+              </div>
+              <div class="row">
+                <input type="radio" name="start" value="monday" ng-model="options.start">Monday
+              </div>
+            </div>
+            <div class="col25">Style:
+              <div class="row">
+                <input type="radio" name="style" value="modal" ng-model="options.style">Modal
+              </div>
+              <div class="row">
+                <input type="radio" name="style" value="popup" ng-model="options.style">Popup
+              </div>
+            </div>
+            <div class="col25">Select mode:
+              <div class="row">
+                <input type="radio" name="range" value="day" ng-model="options.range">Day
+              </div>
+              <div class="row">
+                <input type="radio" name="range" value="week" ng-model="options.range">Week
+              </div>
+              <div class="row">
+                <input type="radio" name="range" value="month" ng-model="options.range">Month
+              </div>
+            </div>
+            <div class="col25">Show today button:
+              <div class="row">
+                <input type="radio" name="today" value="today" ng-model="options.today">Yes
+              </div>
+              <div class="row">
+                <input type="radio" name="today" value="not_today" ng-model="options.today">No
+              </div>
+            </div>
+            <div class="col25">Close on select:
+              <div class="row">
+                <input type="radio" name="close" value="close" ng-model="options.close">Yes
+              </div>
+              <div class="row">
+                <input type="radio" name="close" value="do_not_close" ng-model="options.close">No
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="button button-block button-balanced" ng-click="openDatePicker()">Open date picker</button>
+        </div>
+        <div>
+          <input type="text" class="selectedDate" ng-model="datepicker1"/>
+        </div>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
