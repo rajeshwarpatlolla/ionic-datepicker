@@ -88,10 +88,6 @@ angular.module('ionic-datepicker.provider', [])
         var today = new Date();
         refreshDateList(new Date());
         $scope.selctedDateEpoch = resetHMSM(today).getTime();
-        if ($scope.mainObj.closeOnSelect) {
-          $scope.mainObj.callback($scope.selctedDateEpoch);
-          closeModal();
-        }
       };
 
       //Set date for the modal
@@ -263,9 +259,7 @@ angular.module('ionic-datepicker.provider', [])
               var today = new Date();
               refreshDateList(new Date());
               $scope.selctedDateEpoch = resetHMSM(today).getTime();
-              if (!$scope.mainObj.closeOnSelect) {
                 e.preventDefault();
-              }
             }
           });
         }
