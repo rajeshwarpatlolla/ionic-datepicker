@@ -2,7 +2,6 @@
 
 ## Introduction:
 
-Forked from [ionic-datepicker](https://github.com/rajeshwarpatlolla/ionic-datepicker)
 This is an `ionic-datepicker` bower component, which can be used in any Ionic framework's application. No additional plugins required for this component.
 This plugin is completely open source. Please rate this plugin @ [Ionic Market](http://market.ionic.io/plugins/ionicdatepicker)
 
