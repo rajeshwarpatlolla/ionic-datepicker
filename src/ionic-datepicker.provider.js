@@ -269,7 +269,6 @@ angular.module('ionic-datepicker.provider', [])
               
               refreshDateList(new Date());
               $scope.selctedDateEpoch = resetHMSM(today).getTime();
-              $scope.mainObj.callback($scope.selctedDateEpoch);
               if (!$scope.mainObj.closeOnSelect) {
                 e.preventDefault();
               }
