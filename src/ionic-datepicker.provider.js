@@ -63,7 +63,7 @@ angular.module('ionic-datepicker.provider', [])
         changeDaySelected();
       };
 
-      var changeDaySelected = function() {
+      var changeDaySelected = function () {
         var newSelectedDate = new Date($scope.selctedDateEpoch);
         newSelectedDate.setMonth($scope.currentDate.getMonth());
         newSelectedDate.setYear($scope.currentDate.getFullYear());
@@ -256,22 +256,7 @@ angular.module('ionic-datepicker.provider', [])
             text: $scope.mainObj.todayLabel,
             type: 'button_today',
             onTap: function (e) {
-              var today = new Date($scope.today);
-              var today_obj = {
-                date: today.getDate(),
-                month: today.getMonth(),
-                year: today.getFullYear(),
-                day: today.getDay(),
-                epoch: today.getTime(),
-                disabled: false
-              };
-              $scope.dateSelected(today_obj);
-              
-              refreshDateList(new Date());
-              $scope.selctedDateEpoch = resetHMSM(today).getTime();
-              if (!$scope.mainObj.closeOnSelect) {
-                e.preventDefault();
-              }
+              $scope.setIonicDatePickerTodayDate();
             }
           });
         }
