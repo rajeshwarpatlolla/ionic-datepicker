@@ -39,6 +39,19 @@ angular.module('ionic-datepicker.provider', [])
         return currentDate;
       }
 
+      function getDatePickerDay(dateObj) {
+        var disabled = (dateObj.getTime() < $scope.fromDate) || (dateObj.getTime() > $scope.toDate) || $scope.mainObj.disableWeekdays.indexOf(dateObj.getDay()) >= 0;
+
+        return {
+          date: dateObj.getDate(),
+          month: dateObj.getMonth(),
+          year: dateObj.getFullYear(),
+          day: dateObj.getDay(),
+          epoch: dateObj.getTime(),
+          disabled: disabled
+        };
+      }
+
       //Previous month
       $scope.prevMonth = function () {
         if ($scope.currentDate.getMonth() === 1) {
@@ -84,9 +97,10 @@ angular.module('ionic-datepicker.provider', [])
         }
       };
 
-      //Set today as date for the modal
+      //Set today as date for the modal and popup
       $scope.setIonicDatePickerTodayDate = function () {
-        $scope.dateSelected($scope.today);
+        refreshDateList(new Date($scope.today));        
+        $scope.dateSelected(getDatePickerDay(new Date($scope.today)));
       };
 
       //Set date for the modal
@@ -133,16 +147,7 @@ angular.module('ionic-datepicker.provider', [])
 
         for (var i = firstDay; i <= lastDay; i++) {
           tempDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
-          disabled = (tempDate.getTime() < $scope.fromDate) || (tempDate.getTime() > $scope.toDate) || $scope.mainObj.disableWeekdays.indexOf(tempDate.getDay()) >= 0;
-
-          $scope.dayList.push({
-            date: tempDate.getDate(),
-            month: tempDate.getMonth(),
-            year: tempDate.getFullYear(),
-            day: tempDate.getDay(),
-            epoch: tempDate.getTime(),
-            disabled: disabled
-          });
+          $scope.dayList.push(getDatePickerDay(tempDate));
         }
 
         //To set Monday as the first day of the week.
@@ -256,6 +261,7 @@ angular.module('ionic-datepicker.provider', [])
             text: $scope.mainObj.todayLabel,
             type: 'button_today',
             onTap: function (e) {
+              e.preventDefault();
               $scope.setIonicDatePickerTodayDate();
             }
           });
