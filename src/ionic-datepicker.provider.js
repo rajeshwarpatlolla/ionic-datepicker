@@ -26,7 +26,6 @@ angular.module('ionic-datepicker.provider', [])
       var provider = {};
 
       var $scope = $rootScope.$new();
-      $scope.today = resetHMSM(new Date()).getTime();
       $scope.disabledDates = [];
       $scope.data = {};
 
@@ -233,6 +232,7 @@ angular.module('ionic-datepicker.provider', [])
         delete $scope.fromDate;
         delete $scope.toDate;
 
+        $scope.today = resetHMSM(new Date()).getTime();                
         $scope.mainObj = angular.extend({}, config, ipObj);
         if ($scope.mainObj.from) {
           $scope.fromDate = resetHMSM(new Date($scope.mainObj.from)).getTime();
