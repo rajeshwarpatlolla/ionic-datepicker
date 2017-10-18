@@ -240,6 +240,19 @@
   left: 5%;
 }
 
+.ionic_datepicker_modal {
+  .date_cell {
+    position: relative;
+    .weeknumber {
+      position: absolute;
+      top: -15px;
+      right: 1px;
+      font-weight: normal;
+      font-size: 9px;
+    }
+  }
+}
+
 .date_col {
   cursor: pointer;
 }

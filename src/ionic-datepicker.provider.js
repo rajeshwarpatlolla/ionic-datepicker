@@ -14,14 +14,16 @@ angular.module('ionic-datepicker.provider', [])
       templateType: 'popup',
       showTodayButton: false,
       closeOnSelect: false,
-      disableWeekdays: []
+      disableWeekdays: [],
+      enableWeekNumber: true,
+      weekNumberLabel: 'CW'
     };
 
     this.configDatePicker = function (inputObj) {
       angular.extend(config, inputObj);
     };
 
-    this.$get = ['$rootScope', '$ionicPopup', '$ionicModal', 'IonicDatepickerService', function ($rootScope, $ionicPopup, $ionicModal, IonicDatepickerService) {
+    this.$get = ['$rootScope', '$ionicPopup', '$ionicModal', 'IonicDatepickerService' , '$filter', function ($rootScope, $ionicPopup, $ionicModal, IonicDatepickerService, $filter) {
 
       var provider = {};
 
@@ -140,6 +142,7 @@ angular.module('ionic-datepicker.provider', [])
 
           $scope.dayList.push({
             date: tempDate.getDate(),
+            weekNumber: weekNumber(tempDate),
             month: tempDate.getMonth(),
             year: tempDate.getFullYear(),
             day: tempDate.getDay(),
@@ -183,6 +186,12 @@ angular.module('ionic-datepicker.provider', [])
         changeDaySelected();
       };
 
+      function weekNumber(myDate) {
+          if ($scope.mainObj.enableWeekNumber) {
+              return $scope.mainObj.weekNumberLabel + ' '+ $filter('date')(myDate, 'ww');
+          }
+      }
+
       //Setting up the initial object
       function setInitialObj(ipObj) {
         $scope.mainObj = angular.copy(ipObj);
@@ -197,6 +206,7 @@ angular.module('ionic-datepicker.provider', [])
           $scope.weeksList.push($scope.mainObj.weeksList.shift());
         }
         $scope.disableWeekdays = $scope.mainObj.disableWeekdays;
+        $scope.enableWeekNumber = $scope.mainObj.enableWeekNumber;
 
         refreshDateList($scope.mainObj.inputDate);
         setDisabledDates($scope.mainObj);
@@ -242,6 +252,7 @@ angular.module('ionic-datepicker.provider', [])
         if (ipObj.disableWeekdays && config.disableWeekdays) {
           $scope.mainObj.disableWeekdays = ipObj.disableWeekdays.concat(config.disableWeekdays);
         }
+
         setInitialObj($scope.mainObj);
 
         if (!$scope.mainObj.closeOnSelect) {
@@ -269,7 +280,7 @@ angular.module('ionic-datepicker.provider', [])
                 disabled: false
               };
               $scope.dateSelected(today_obj);
-              
+
               refreshDateList(new Date());
               $scope.selctedDateEpoch = resetHMSM(today).getTime();
               $scope.mainObj.callback($scope.selctedDateEpoch);
