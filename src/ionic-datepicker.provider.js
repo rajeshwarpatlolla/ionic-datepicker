@@ -15,7 +15,7 @@ angular.module('ionic-datepicker.provider', [])
       showTodayButton: false,
       closeOnSelect: false,
       disableWeekdays: [],
-      enableWeekNumber: true,
+      enableWeekNumber: false,
       weekNumberLabel: 'CW'
     };
 
