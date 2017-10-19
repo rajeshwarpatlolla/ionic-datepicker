@@ -80,7 +80,7 @@ angular.module('ionic-datepicker.provider', [])
         if (!selectedDate || Object.keys(selectedDate).length === 0) return;
         $scope.selctedDateEpoch = selectedDate.epoch;
         if ($scope.mainObj.closeOnSelect) {
-          $scope.mainObj.callback($scope.selctedDateEpoch);
+          $scope.mainObj.callback($scope.selctedDateEpoch,'closed');
           if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
             $scope.popup.close();
           } else {
