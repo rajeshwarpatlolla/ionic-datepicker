@@ -186,11 +186,24 @@ angular.module('ionic-datepicker.provider', [])
         changeDaySelected();
       };
 
+      // set weeknumber
       function weekNumber(myDate) {
           if ($scope.mainObj.enableWeekNumber) {
-              return $scope.mainObj.weekNumberLabel + ' '+ $filter('date')(myDate, 'ww');
+              return $scope.mainObj.weekNumberLabel + ' ' + ISO8601_week_no(myDate);
           }
       }
+      function ISO8601_week_no(dt) {
+            var tdt = new Date(dt.valueOf());
+            var dayn = (dt.getDay() + 6) % 7;
+            tdt.setDate(tdt.getDate() - dayn + 3);
+            var firstThursday = tdt.valueOf();
+            tdt.setMonth(0, 1);
+            if (tdt.getDay() !== 4)
+            {
+                tdt.setMonth(0, 1 + ((4 - tdt.getDay()) + 7) % 7);
+            }
+            return 1 + Math.ceil((firstThursday - tdt) / 604800000);
+        }
 
       //Setting up the initial object
       function setInitialObj(ipObj) {
