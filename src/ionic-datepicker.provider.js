@@ -26,7 +26,6 @@ angular.module('ionic-datepicker.provider', [])
       var provider = {};
 
       var $scope = $rootScope.$new();
-      $scope.today = resetHMSM(new Date()).getTime();
       $scope.disabledDates = [];
       $scope.data = {};
 
@@ -37,6 +36,19 @@ angular.module('ionic-datepicker.provider', [])
         currentDate.setSeconds(0);
         currentDate.setMilliseconds(0);
         return currentDate;
+      }
+
+      function getDatePickerDay(dateObj) {
+        var disabled = (dateObj.getTime() < $scope.fromDate) || (dateObj.getTime() > $scope.toDate) || $scope.mainObj.disableWeekdays.indexOf(dateObj.getDay()) >= 0;
+
+        return {
+          date: dateObj.getDate(),
+          month: dateObj.getMonth(),
+          year: dateObj.getFullYear(),
+          day: dateObj.getDay(),
+          epoch: dateObj.getTime(),
+          disabled: disabled
+        };
       }
 
       //Previous month
@@ -56,21 +68,18 @@ angular.module('ionic-datepicker.provider', [])
         if ($scope.currentDate.getMonth() === 11) {
           $scope.currentDate.setFullYear($scope.currentDate.getFullYear());
         }
-        $scope.currentDate.setDate(1);
         $scope.currentDate.setMonth($scope.currentDate.getMonth() + 1);
         $scope.data.currentMonth = $scope.mainObj.monthsList[$scope.currentDate.getMonth()];
         $scope.data.currentYear = $scope.currentDate.getFullYear();
-        $scope.monthChanged($scope.currentDate.getMonth());
-        refreshDateList(new Date());
+        refreshDateList($scope.currentDate);
         changeDaySelected();
       };
 
-      var changeDaySelected = function() {
+      var changeDaySelected = function () {
         var newSelectedDate = new Date($scope.selctedDateEpoch);
         newSelectedDate.setMonth($scope.currentDate.getMonth());
         newSelectedDate.setYear($scope.currentDate.getFullYear());
         $scope.selctedDateEpoch = newSelectedDate.getTime();
-        $scope.mainObj.callback($scope.selctedDateEpoch);
       }
 
       //Date selected
@@ -87,9 +96,10 @@ angular.module('ionic-datepicker.provider', [])
         }
       };
 
-      //Set today as date for the modal
+      //Set today as date for the modal and popup
       $scope.setIonicDatePickerTodayDate = function () {
-        $scope.dateSelected($scope.today);
+        refreshDateList(new Date($scope.today));        
+        $scope.dateSelected(getDatePickerDay(new Date($scope.today)));
       };
 
       //Set date for the modal
@@ -136,16 +146,7 @@ angular.module('ionic-datepicker.provider', [])
 
         for (var i = firstDay; i <= lastDay; i++) {
           tempDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
-          disabled = (tempDate.getTime() < $scope.fromDate) || (tempDate.getTime() > $scope.toDate) || $scope.mainObj.disableWeekdays.indexOf(tempDate.getDay()) >= 0;
-
-          $scope.dayList.push({
-            date: tempDate.getDate(),
-            month: tempDate.getMonth(),
-            year: tempDate.getFullYear(),
-            day: tempDate.getDay(),
-            epoch: tempDate.getTime(),
-            disabled: disabled
-          });
+          $scope.dayList.push(getDatePickerDay(tempDate));
         }
 
         //To set Monday as the first day of the week.
@@ -231,6 +232,7 @@ angular.module('ionic-datepicker.provider', [])
         delete $scope.fromDate;
         delete $scope.toDate;
 
+        $scope.today = resetHMSM(new Date()).getTime();                
         $scope.mainObj = angular.extend({}, config, ipObj);
         if ($scope.mainObj.from) {
           $scope.fromDate = resetHMSM(new Date($scope.mainObj.from)).getTime();
@@ -259,23 +261,8 @@ angular.module('ionic-datepicker.provider', [])
             text: $scope.mainObj.todayLabel,
             type: 'button_today',
             onTap: function (e) {
-              var today = new Date($scope.today);
-              var today_obj = {
-                date: today.getDate(),
-                month: today.getMonth(),
-                year: today.getFullYear(),
-                day: today.getDay(),
-                epoch: today.getTime(),
-                disabled: false
-              };
-              $scope.dateSelected(today_obj);
-              
-              refreshDateList(new Date());
-              $scope.selctedDateEpoch = resetHMSM(today).getTime();
-              $scope.mainObj.callback($scope.selctedDateEpoch);
-              if (!$scope.mainObj.closeOnSelect) {
-                e.preventDefault();
-              }
+              e.preventDefault();
+              $scope.setIonicDatePickerTodayDate();
             }
           });
         }
