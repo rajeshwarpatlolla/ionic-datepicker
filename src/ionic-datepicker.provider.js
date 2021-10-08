@@ -230,7 +230,7 @@ angular.module('ionic-datepicker.provider', [])
         var buttons = [];
         delete $scope.fromDate;
         delete $scope.toDate;
-
+        $scope.today = resetHMSM(new Date()).getTime();
         $scope.mainObj = angular.extend({}, config, ipObj);
         if ($scope.mainObj.from) {
           $scope.fromDate = resetHMSM(new Date($scope.mainObj.from)).getTime();
